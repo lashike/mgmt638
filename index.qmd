@@ -1,0 +1,6 @@
+## MGMT 638<br>Machine Learning for Financial Markets<br>Rice University<br>Fall 2022
+
+[Course Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
+
+
+

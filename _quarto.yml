@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - tree_classifiers.qmd
+   
+website:
+  title: ""
+
+  navbar:
+    background: "#00205B"
+    search: true
+    left:
+
+      - text: "Home"
+        file: index.qmd
+
+      - text: "Tree Classifiers"
+        file: tree_classifiers.qmd
+
+    
+
+      
+
+
+            
+          
+    
+     
+format: 
+  html:
+    theme: cyborg
+    scss: styles.css
+    # toc: true
+
+
+
