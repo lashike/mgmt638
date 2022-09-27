@@ -4,13 +4,24 @@ project:
   render:
     - index.qmd
     - tree_classifiers.qmd
+    - tree_regression.qmd
+    - forests.qmd
+    - nets.qmd
+    - pipelines.qmd
+    - sql.qmd
+    - linear_models.qmd
+    - features.qmd
+    - deployment.qmd
+    
+
    
 website:
   title: ""
+  search: false
 
   navbar:
     background: "#00205B"
-    search: true
+    search: false
     left:
 
       - text: "Home"
@@ -18,6 +29,34 @@ website:
 
       - text: "Tree Classifiers"
         file: tree_classifiers.qmd
+
+      - text: Tree Regression
+        file: tree_regression.qmd
+        
+      - text: Forests
+        file: forests.qmd
+        
+      - text: Neural Nets
+        file: nets.qmd
+        
+      - text: Pipelines
+        file: pipelines.qmd
+        
+      - text: SQL
+        file: sql.qmd
+
+      - text: Linear Models
+        file: linear_models.qmd
+        
+      - text: Feature Importance
+        file: features.qmd
+        
+      - text: Online Deployment
+        file: deployment.qmd
+
+      
+
+
 
     
 

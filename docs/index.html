@@ -21,10 +21,6 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -35,12 +31,6 @@ ul.task-list{list-style: none;}
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -74,8 +64,31 @@ ul.task-list{list-style: none;}
   <li class="nav-item">
     <a class="nav-link" href="./tree_classifiers.html">Tree Classifiers</a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./tree_regression.html">Tree Regression</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./forests.html">Forests</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./nets.html">Neural Nets</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pipelines.html">Pipelines</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./sql.html">SQL</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./linear_models.html">Linear Models</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./features.html">Feature Importance</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment.html">Online Deployment</a>
+  </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -90,11 +103,72 @@ ul.task-list{list-style: none;}
 
 
 
-<section id="mgmt-638-machine-learning-for-financial-markets-rice-university-fall-2022" class="level2">
-<h2 class="anchored" data-anchor-id="mgmt-638-machine-learning-for-financial-markets-rice-university-fall-2022">MGMT 638<br>Machine Learning for Financial Markets<br>Rice University<br>Fall 2022</h2>
+<section id="mgmt-638-machine-learning-for-financial-markets-jgsb-rice-university-fall-2022" class="level2">
+<h2 class="anchored" data-anchor-id="mgmt-638-machine-learning-for-financial-markets-jgsb-rice-university-fall-2022">MGMT 638<br>Machine Learning for Financial Markets<br>JGSB, Rice University<br>Fall 2022</h2>
 <p><a href="https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD">Course Code Binder</a></p>
+<hr>
+<section id="instructor" class="level4">
+<h4 class="anchored" data-anchor-id="instructor">Instructor</h4>
+<p>Kerry Back<br> J. Howard Creekmore Professor of Finance and Professor of Economics<br> <a href="mailto:kerryback@gmail.com">kerryback@gmail.com</a></p>
+</section>
+<section id="course-description" class="level4">
+<h4 class="anchored" data-anchor-id="course-description">Course Description</h4>
+<p>This course introduces machine learning in financial markets. It is a hands-on “how-to” course. All topics will be taught by example. Our primary example will be stock return prediction, but the methods apply to multiple problems: default prediction, asset valuation, robo-advisors, fraud detection, time-series forecasting, etc. We will study regression problems (predicting a continuous variable like a stock return) and classification problems (predicting a category, like high, medium, and low for stock returns).</p>
+<p>We will use python throughout the course. Proficiency in programming is not expected. Code snippets will be provided that can be modified and used for assignments. Python is a programming language, and it is not a point-and-click GUI. However, once we have our data in a usable format, training and prediction is almost as easy as point-and-click. Three short lines of code will define a model, train a model, and use a model for prediction.</p>
+<p>In addition to python, we will use some SQL in the course. We will use data that is stored in a SQL database hosted at <a href="http://cloudclusters.io">Cloud Clusters</a>.</p>
+<p>The course deliverables are weekly individual assignments and a final group project. There will be no final exam. The weekly assignments are small assignments intended to ensure that everyone is keeping up. They will be graded on a Pass/Fail basis. The group project has three parts: (i) deliver a trained stock prediction model, (ii) present the model and the steps leading to it in the last week of class, (iii) deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models.</p>
+<p>The trained models will be deployed to <a href="https://mgmt638.herokuapp.com">MGMT 638 Robo Analysts</a>. We will spend one class day on how to create and deploy machine learning apps.</p>
+</section>
+<section id="course-topics" class="level4">
+<h4 class="anchored" data-anchor-id="course-topics">Course Topics</h4>
+<ol type="1">
+<li>Classification with decision trees
+<ul>
+<li>Evaluation: recall, precision, ROC curves, confusion matrices</li>
+<li>Train and test</li>
+<li>Complexity and overfitting</li>
+</ul></li>
+<li>Regression with decision trees
+<ul>
+<li>Optimization criteria</li>
+<li>Regularizing the target variable</li>
+</ul></li>
+<li>Random forests and adaptive boosting
+<ul>
+<li>Hyperparameters and cross-validation</li>
+</ul></li>
+<li>Neural networks
+<ul>
+<li>MLPs</li>
+<li>Regularizing predictors</li>
+</ul></li>
+<li>Pipelines</li>
+<li>SQL via python
+<ul>
+<li>Reading from a SQL database</li>
+<li>Creating your own SQL database</li>
+</ul></li>
+<li>Penalized linear models</li>
+<li>Visualizing feature importance</li>
+<li>Creating and deploying machine learning apps with python</li>
+</ol>
+</section>
+<section id="extra-cqa-competition-and-quant-investments-lab" class="level4">
+<h4 class="anchored" data-anchor-id="extra-cqa-competition-and-quant-investments-lab">Extra: CQA Competition and Quant Investments Lab</h4>
+<p>Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the <a href="https://www.cqa.org/investment_challenge">CQA Challenge</a>. In 2021-2022, a team of <a href="https://www.cqa.org/past_challenges">JGSB MBA students won it</a>, finishing first among 40 or so teams. The competition is to run a diversified long-short market neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.</p>
+<p>The machine learning techniques covered in this course can be and are used as the backbones of quantitative investment strategies, so this course should prepare you to participate in the competition if you are interested. A team is limited to five persons, but Rice can enter multiple teams, so there is no limit on participation. The competition begins in the first part of November. The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested. The contest lasts until the first of April, and participation entails a commitment until then. Access to a SQL database with daily updates of returns and financial reports will be provided to participants.</p>
+<p>There will be a 3-credit-hour full semester course in the spring called Quantitative Investments Lab. Those participating in the CQA competition will find the course to be of assistance, but participation in the competition is not a prerequisite for taking the course. The course will provide additional hands-on training in models to predict returns and construct portfolios, and it will also cover practical issues that arise in the management of investment strategies, including managing turnover, estimating tracking errors, and evaluating performance.</p>
+</section>
+<section id="honor-code" class="level4">
+<h4 class="anchored" data-anchor-id="honor-code">Honor Code</h4>
+<p>The Rice University honor code applies to all work in this course. Each student must do his or her own assignments, but it is allowed and in fact encouraged for students to seek advice from each other. Likewise, groups must do their projects, but they can seek advice from students in other groups. Also, searching for advice on the internet is allowed.</p>
+</section>
+<section id="disability-accommodations" class="level4">
+<h4 class="anchored" data-anchor-id="disability-accommodations">Disability Accommodations</h4>
+<p>Any student with a documented disability requiring accommodations in this course is encouraged to contact me outside of class. All discussions will remain confidential. Any adjustments or accommodations regarding assignments or the final exam must be made in advance. Students with disabilities should also contact Disability Support Services in the Allen Center.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
