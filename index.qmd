@@ -44,7 +44,7 @@ The assignment due dates are
 - Wednesday, Nov 30
 
 
-#### Data-Driven Investments sequence
+#### Data-Driven Investments Sequence
 
 This course is part of a new JGSB sequence.  *Data-Driven Investments: Credit* (Prof. Dittmar) will be offered in Spring Term 1, and *Data Driven Investments Lab* (Profs. Back and Crotty) will be offered as a full-semester spring course.  This course (Equity) and the Credit courses are self-contained, but there are obvious synergies.  The Lab course requires
 either the Equity course or the Credit course as a pre/co-requisite.  The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies.  The plan is that, in the second half of the course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.
