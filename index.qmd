@@ -1,4 +1,4 @@
-## MGMT 638<br>Machine Learning for Financial Markets<br>JGSB, Rice University<br>Fall 2022
+## MGMT 638<br>Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
 
 [Course Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
 
@@ -13,18 +13,20 @@ J. Howard Creekmore Professor of Finance and Professor of Economics<br>
    
 #### Course Description   
 
-This course introduces machine learning in financial markets.  It is a hands-on "how-to" course.  All topics will be taught by example.  Our primary example will be stock return prediction, but the methods apply to multiple problems: default prediction, asset valuation, robo-advisors, fraud detection, time-series forecasting, etc.  We will study regression problems (predicting a continuous variable like a stock return) and classification problems (predicting a category, like high, medium, and low for stock returns).  
+Many new and rich data sources are being employed by equity managers.  This course provides an introduction to evaluating and employing data in equity management.  We don't have access to, for example, satellite or drone imagery or phone location data, but we do have access to data that has been shown to be useful, including past prices, corporate fundamentals, earnings announcements, analyst forecast revisions, etc.  We will analyze this data on panels containing thousands of stocks over multiple years.  We will train models, devise portfolio strategies based on model predictions, and backtest the strategies.
 
-We will use python throughout the course.  Proficiency in programming is not expected.  Code snippets will be provided that can be modified and used for assignments.  Python is a programming language, and it is not a point-and-click GUI.  However, once we have our data in a usable format, training and prediction is almost as easy as point-and-click.  Three short lines of code will define a model, train a model, and use a model for prediction.  
+We will use python throughout the course.  There are no programming prerequisites, and proficiency in programming is not at all expected.  Code snippets will be provided that can be modified and used for assignments.  
 
-In addition to python, we will use some SQL in the course.  We will use data that is stored in a SQL database hosted at [Cloud Clusters](http://cloudclusters.io).
-
-The course deliverables are weekly individual assignments and a final group project.  There will be no final exam.  The weekly assignments are small assignments intended to ensure that everyone is keeping up.  They will be graded on a Pass/Fail basis.  The group project has three parts: (i) deliver a trained stock prediction model, (ii) present the model and the steps leading to it in the last week of class, (iii) deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models.
-
-
-The trained models will be deployed to [MGMT 638 Robo Analysts](https://mgmt638.herokuapp.com).  We will spend one class day on how to create and deploy machine learning apps.
+The course deliverables are weekly individual assignments and a final group project.  There will be no final exam.  The weekly assignments are small assignments intended to ensure that everyone is keeping up.  They will be graded on a Pass/Fail basis.  The group project is to train and evaluate a stock prediction model and deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models.
 
 #### Course Topics
+
+1. Constructing price signals: moving averages, relative strength index, etc.
+2. Evaluating individual signals: sorts and regressions
+3. Training a machine learning model
+4. Evaluating model predictions
+5. Portfolio strategies: when to trade on signals
+6. 
 
 1. Classification with decision trees
     - Evaluation: recall, precision, ROC curves, confusion matrices

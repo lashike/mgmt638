@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.32">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -103,8 +108,8 @@ ul.task-list{list-style: none;}
 
 
 
-<section id="mgmt-638-machine-learning-for-financial-markets-jgsb-rice-university-fall-2022" class="level2">
-<h2 class="anchored" data-anchor-id="mgmt-638-machine-learning-for-financial-markets-jgsb-rice-university-fall-2022">MGMT 638<br>Machine Learning for Financial Markets<br>JGSB, Rice University<br>Fall 2022</h2>
+<section id="mgmt-638-data-driven-investments-equity-jgsb-rice-university-fall-2022" class="level2">
+<h2 class="anchored" data-anchor-id="mgmt-638-data-driven-investments-equity-jgsb-rice-university-fall-2022">MGMT 638<br>Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022</h2>
 <p><a href="https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD">Course Code Binder</a></p>
 <hr>
 <section id="instructor" class="level4">
@@ -113,11 +118,9 @@ ul.task-list{list-style: none;}
 </section>
 <section id="course-description" class="level4">
 <h4 class="anchored" data-anchor-id="course-description">Course Description</h4>
-<p>This course introduces machine learning in financial markets. It is a hands-on “how-to” course. All topics will be taught by example. Our primary example will be stock return prediction, but the methods apply to multiple problems: default prediction, asset valuation, robo-advisors, fraud detection, time-series forecasting, etc. We will study regression problems (predicting a continuous variable like a stock return) and classification problems (predicting a category, like high, medium, and low for stock returns).</p>
-<p>We will use python throughout the course. Proficiency in programming is not expected. Code snippets will be provided that can be modified and used for assignments. Python is a programming language, and it is not a point-and-click GUI. However, once we have our data in a usable format, training and prediction is almost as easy as point-and-click. Three short lines of code will define a model, train a model, and use a model for prediction.</p>
-<p>In addition to python, we will use some SQL in the course. We will use data that is stored in a SQL database hosted at <a href="http://cloudclusters.io">Cloud Clusters</a>.</p>
-<p>The course deliverables are weekly individual assignments and a final group project. There will be no final exam. The weekly assignments are small assignments intended to ensure that everyone is keeping up. They will be graded on a Pass/Fail basis. The group project has three parts: (i) deliver a trained stock prediction model, (ii) present the model and the steps leading to it in the last week of class, (iii) deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models.</p>
-<p>The trained models will be deployed to <a href="https://mgmt638.herokuapp.com">MGMT 638 Robo Analysts</a>. We will spend one class day on how to create and deploy machine learning apps.</p>
+<p>Many new and rich data sources are being employed by equity managers. This course provides an introduction to evaluating and employing data in equity management. We don’t have access to, for example, satellite or drone imagery or phone location data, but we do have access to data that has been shown to be useful, including past prices, corporate fundamentals, earnings announcements, analyst forecast revisions, etc. We will analyze this data on panels containing thousands of stocks over multiple years. We will train models, devise portfolio strategies based on model predictions, and backtest the strategies.</p>
+<p>We will use python throughout the course. There are no programming prerequisites, and proficiency in programming is not at all expected. Code snippets will be provided that can be modified and used for assignments.</p>
+<p>The course deliverables are weekly individual assignments and a final group project. There will be no final exam. The weekly assignments are small assignments intended to ensure that everyone is keeping up. They will be graded on a Pass/Fail basis. The group project is to train and evaluate a stock prediction model and deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models.</p>
 </section>
 <section id="course-topics" class="level4">
 <h4 class="anchored" data-anchor-id="course-topics">Course Topics</h4>
@@ -241,7 +244,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
