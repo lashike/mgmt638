@@ -67,31 +67,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./tree_classifiers.html">Tree Classifiers</a>
+    <a class="nav-link" href="./slides.html">Slide Decks</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./tree_regression.html">Tree Regression</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./forests.html">Forests</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./nets.html">Neural Nets</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./pipelines.html">Pipelines</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./sql.html">SQL</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./linear_models.html">Linear Models</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./features.html">Feature Importance</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./deployment.html">Online Deployment</a>
+    <a class="nav-link" href="./assignments.html">Assignments</a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -118,49 +97,42 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="course-description" class="level4">
 <h4 class="anchored" data-anchor-id="course-description">Course Description</h4>
-<p>Many new and rich data sources are being employed by equity managers. This course provides an introduction to evaluating and employing data in equity management. We don’t have access to, for example, satellite or drone imagery or phone location data, but we do have access to data that has been shown to be useful, including past prices, corporate fundamentals, earnings announcements, analyst forecast revisions, etc. We will analyze this data on panels containing thousands of stocks over multiple years. We will train models, devise portfolio strategies based on model predictions, and backtest the strategies.</p>
-<p>We will use python throughout the course. There are no programming prerequisites, and proficiency in programming is not at all expected. Code snippets will be provided that can be modified and used for assignments.</p>
-<p>The course deliverables are weekly individual assignments and a final group project. There will be no final exam. The weekly assignments are small assignments intended to ensure that everyone is keeping up. They will be graded on a Pass/Fail basis. The group project is to train and evaluate a stock prediction model and deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models.</p>
+<p>Many new data sources are being employed by equity managers. This course provides an introduction to evaluating and employing data in equity management. We don’t have access to, for example, satellite or drone imagery or phone location data, but we do have access to data that has been shown to be useful, including past prices, corporate fundamentals, earnings announcements, analyst forecast revisions, etc. We will analyze this data on panels containing thousands of stocks over multiple years. We will train models, devise portfolio strategies based on model predictions, and backtest the strategies.</p>
+<p>We will use python throughout the course. There are no programming prerequisites, and proficiency in programming is not at all expected. Code snippets will be provided that can be modified and used for assignments. We will explore different machine learning models for return prediction. In python, this is almost “point and click” – three short lines of code will define a model, train a model, and predict using a model.</p>
 </section>
 <section id="course-topics" class="level4">
 <h4 class="anchored" data-anchor-id="course-topics">Course Topics</h4>
 <ol type="1">
-<li>Classification with decision trees
-<ul>
-<li>Evaluation: recall, precision, ROC curves, confusion matrices</li>
-<li>Train and test</li>
-<li>Complexity and overfitting</li>
-</ul></li>
-<li>Regression with decision trees
-<ul>
-<li>Optimization criteria</li>
-<li>Regularizing the target variable</li>
-</ul></li>
-<li>Random forests and adaptive boosting
-<ul>
-<li>Hyperparameters and cross-validation</li>
-</ul></li>
-<li>Neural networks
-<ul>
-<li>MLPs</li>
-<li>Regularizing predictors</li>
-</ul></li>
-<li>Pipelines</li>
-<li>SQL via python
-<ul>
-<li>Reading from a SQL database</li>
-<li>Creating your own SQL database</li>
-</ul></li>
-<li>Penalized linear models</li>
-<li>Visualizing feature importance</li>
-<li>Creating and deploying machine learning apps with python</li>
+<li>Constructing price signals: moving averages, relative strength index, etc.</li>
+<li>Evaluating signals with sorts and regressions</li>
+<li>Training, validating, and testing machine learning models</li>
+<li>Portfolio strategies: when to trade on signals</li>
+<li>Backtesting strategies</li>
+<li>Industry sectors: to trade or not to trade?</li>
+<li>Using corporate fundamental data</li>
 </ol>
 </section>
-<section id="extra-cqa-competition-and-quant-investments-lab" class="level4">
-<h4 class="anchored" data-anchor-id="extra-cqa-competition-and-quant-investments-lab">Extra: CQA Competition and Quant Investments Lab</h4>
-<p>Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the <a href="https://www.cqa.org/investment_challenge">CQA Challenge</a>. In 2021-2022, a team of <a href="https://www.cqa.org/past_challenges">JGSB MBA students won it</a>, finishing first among 40 or so teams. The competition is to run a diversified long-short market neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.</p>
-<p>The machine learning techniques covered in this course can be and are used as the backbones of quantitative investment strategies, so this course should prepare you to participate in the competition if you are interested. A team is limited to five persons, but Rice can enter multiple teams, so there is no limit on participation. The competition begins in the first part of November. The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested. The contest lasts until the first of April, and participation entails a commitment until then. Access to a SQL database with daily updates of returns and financial reports will be provided to participants.</p>
-<p>There will be a 3-credit-hour full semester course in the spring called Quantitative Investments Lab. Those participating in the CQA competition will find the course to be of assistance, but participation in the competition is not a prerequisite for taking the course. The course will provide additional hands-on training in models to predict returns and construct portfolios, and it will also cover practical issues that arise in the management of investment strategies, including managing turnover, estimating tracking errors, and evaluating performance.</p>
+<section id="grading" class="level4">
+<h4 class="anchored" data-anchor-id="grading">Grading</h4>
+<p>The course deliverables are five weekly individual assignments and a group project due the last day of class (Dec 5). The individual assignments are small assignments intended to ensure that everyone is keeping up. The group project is to train and evaluate a stock prediction model, deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models, and make a presentation to the class.</p>
+<p>Each of the individual assignments will contribute 10% of the final course grade. The group project will contribute 40%, and group peer evaluations will contribute 10%.</p>
+<p>The assignment due dates are</p>
+<ul>
+<li>Monday, Oct.&nbsp;31</li>
+<li>Monday, Nov.&nbsp;7</li>
+<li>Monday, Nov 14</li>
+<li>Monday, Nov 21</li>
+<li>Wednesday, Nov 30</li>
+</ul>
+</section>
+<section id="data-driven-investments-sequence" class="level4">
+<h4 class="anchored" data-anchor-id="data-driven-investments-sequence">Data-Driven Investments sequence</h4>
+<p>This course is part of a new JGSB sequence. <em>Data-Driven Investments: Credit</em> (Prof.&nbsp;Dittmar) will be offered in Spring Term 1, and <em>Data Driven Investments Lab</em> (Profs. Back and Crotty) will be offered as a full-semester spring course. This course (Equity) and the Credit courses are self-contained, but there are obvious synergies. The Lab course requires either the Equity course or the Credit course as a pre/co-requisite. The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies. The plan is that, in the second half of the course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.</p>
+</section>
+<section id="cqa-competition" class="level4">
+<h4 class="anchored" data-anchor-id="cqa-competition">CQA Competition</h4>
+<p>Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the <a href="https://www.cqa.org/investment_challenge">CQA Challenge</a>. In 2021-2022, a team of <a href="https://www.cqa.org/past_challenges">JGSB MBA students won it</a>, finishing first among 40 or so teams. The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.</p>
+<p>If a group participates in the CQA competition, then they can work as a group in the <em>Data-Driven Investments Lab</em> course, and the project in that course can be configured to support participation in the competition. A team in the CQA competition is limited to five persons, but Rice can enter up to three teams. The competition begins in the first part of November. The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested. The contest lasts until the first of April, and participation entails a commitment until then.</p>
 </section>
 <section id="honor-code" class="level4">
 <h4 class="anchored" data-anchor-id="honor-code">Honor Code</h4>

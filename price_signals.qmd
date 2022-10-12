@@ -1,0 +1,20 @@
+---
+title:  "Price Signals"
+author: <br>MGMT 638<br>Jones Graduate School of Business<br>Rice University<br>Fall 2022<br><br>Kerry Back
+output-dir: docs
+execute:
+  echo: false
+  jupyter: python3
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---

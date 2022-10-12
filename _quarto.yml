@@ -3,75 +3,37 @@ project:
   output-dir: docs
   render:
     - index.qmd
-    - tree_classifiers.qmd
-    - tree_regression.qmd
-    - forests.qmd
-    - nets.qmd
-    - pipelines.qmd
-    - sql.qmd
-    - linear_models.qmd
-    - features.qmd
-    - deployment.qmd
-    
+    - slides.qmd
+    - assignments.qmd
+    - assignment1.qmd
+    - assignment2.qmd
+    - assignment3.qmd
+    - assignment4.qmd
+    - assignment5.qmd
 
-   
+    
 website:
   title: ""
-  search: false
-
+  search: false  
   navbar:
     background: "#00205B"
     search: false
     left:
-
+       
       - text: "Home"
         file: index.qmd
 
-      - text: "Tree Classifiers"
-        file: tree_classifiers.qmd
+      - text: "Slide Decks"
+        file: slides.qmd
 
-      - text: Tree Regression
-        file: tree_regression.qmd
-        
-      - text: Forests
-        file: forests.qmd
-        
-      - text: Neural Nets
-        file: nets.qmd
-        
-      - text: Pipelines
-        file: pipelines.qmd
-        
-      - text: SQL
-        file: sql.qmd
-
-      - text: Linear Models
-        file: linear_models.qmd
-        
-      - text: Feature Importance
-        file: features.qmd
-        
-      - text: Online Deployment
-        file: deployment.qmd
-
-      
-
-
-
+      - text: "Assignments"
+        file: assignments.qmd
     
-
-      
-
-
-            
-          
-    
-     
 format: 
   html:
     theme: cyborg
     scss: styles.css
-    # toc: true
+    
 
 
 
