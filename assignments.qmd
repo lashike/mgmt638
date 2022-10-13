@@ -1,15 +1,10 @@
-[1. Price signals](price_signals.html)
+[Assignment 1](assignment1.qmd)
 
-[2. Sorts and regressions](sorts_regressions.html)
+[Assignment 2](assignment2.qmd)
 
-[3. Machine learning](machine_learning.html)
+[Assignment 3](assignment3.qmd)
 
-[4. Trading](trading.html)
+[Assignment 4](assignment4.qmd)
 
-[5. Backtesting](backtesting.html)
+[Assignment 5](assignment5.qmd)
 
-[6. Industries](industries.html)
-
-[7. Fundamentals](fundamentals.html)
-
-[Home](index.qmd)
