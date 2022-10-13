@@ -1,4 +1,4 @@
-[1. Data Providers](1-data_providers.html)
+[1. Data providers](1-data_providers.html)
 
 [2. Sorts and regressions](2-sorts_regressions.html)
 
