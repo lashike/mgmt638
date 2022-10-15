@@ -151,7 +151,7 @@ _ = vix.plot()
 
 ```{.p code-line-numbers="1-2|3-6|7"}
 import quandl
-quandl.ApiConfig.api_key = # must be filled in
+quandl.ApiConfig.api_key = "" # paste api key between quote marks
 data = quandl.get_table(
   'SHARADAR/DAILY',
   ticker="CVX", 
