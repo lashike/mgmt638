@@ -1,6 +1,8 @@
 ## MGMT 638<br>Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
 
-[Course Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
+[GHZ-Predictors.xlsx](ghz-predictors.xlsx)
+
+[Python Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
 
 <hr>
 
@@ -20,7 +22,7 @@ We will use python throughout the course.  Many of the things we want to discuss
 
 #### Course Topics
 
-1. A look at some data providers: Nasdaq Data Link and Yahoo Finance
+1. Sources of data
 2. Evaluating signals with sorts and regressions
 3. Training, validating, and testing machine learning models
 4. Portfolio strategies: when to trade on signals
