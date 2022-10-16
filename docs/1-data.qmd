@@ -25,7 +25,7 @@ format:
 - Free sources like Yahoo usually suffer from survivorship bias
   - Only have data on currently existing companies
   - Will miss poor returns of companies that delisted
-- Alternative sources like FactSet or Nasdaq Data Link
+- Bloomberg, FactSet, Capital IQ, ...
 - Academic work usually uses CRSP data
   - Center for Research in Security Prices at U. Chicago
   - dates back to 1926
@@ -37,9 +37,8 @@ format:
 - Could scrape SEC's EDGAR site
 - FactSet, Nasdaq Data Link, and others
 - Academic work usually uses Compustat (Capital I.Q.)
-  - Data goes back to 1960s
-  - Usually don't get daily updates
-
+  - dates back to 1960s
+  
 ## Trade data
 
 - Corporate insiders
@@ -67,7 +66,7 @@ format:
 
 ## Consumer data
 
-- Search engine data
+- Search engine traffic
 - Store traffic
 - Retail sales
 
@@ -107,6 +106,13 @@ ret.plot()
 ```{python}
 from pandas_datareader import DataReader as pdr
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.rcParams['legend.fontsize'] = 'x-large'
+mpl.rcParams['axes.titlesize'] = 'xx-large'
+mpl.rcParams['axes.labelsize'] = 'xx-large'
+mpl.rcParams['xtick.labelsize'] = 'x-large'
+mpl.rcParams['ytick.labelsize'] = 'x-large'
+
 data = pdr('cvx', 'yahoo', start=2010)
 price = data['Adj Close']
 ret = price.pct_change()
@@ -125,7 +131,6 @@ fed.plot()
 
 ```{python}
 
-import matplotlib as mpl
 mpl.rcParams['figure.figsize'] = (16,5)
 fed = pdr('dff', 'fred', start=2010)
 _ = fed.plot()
@@ -173,11 +178,12 @@ _ = data.set_index("date").plot()
 
 - We'll use monthly data 2000-2021.
 - Monthly returns
-- 100+ stock characteristics calculated at the beginning of each month
+- 100+ stock characteristics known at the beginning of each month
 - Mimic trading monthly
   - Form portfolio at beginning of month
   - Observe returns and changes in characteristics
   - Form new portfolio, ...
+
 
 #
 

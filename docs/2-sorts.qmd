@@ -1,0 +1,183 @@
+---
+title:  "Sorts"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+  cache: true
+format: 
+  revealjs:
+    link-external-newwindow: true
+    highlight-style: monokai
+    code-fold: true
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+
+## Decile returns
+
+- At beginning of each time period, sort stocks into deciles based on a predictor.
+- Time periods could be days, weeks, months, ...
+- Days would be realistic.  Months is easier.
+- Each decile is a portfolio. Compute return for the period.  
+- Repeat next period.
+
+
+
+
+
+## Data
+
+- Monthly data in SQL database
+- 100+ predictors described in ghz-predictors.xlsx
+- Today, sort on individual predictors
+- Next topic: combine predictors via machine learning
+
+## SQL 
+
+- select [columns] from [table] 
+- join [another table] on [variables to match on]
+- where [select rows based on conditions]
+- order by [columns to sort on]
+
+## Connect with python
+
+```{.p}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "" # paste password between quote marks
+database = "ghz"
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+conn = create_engine(string).connect()
+```
+
+## Example: ROEQ
+
+```{.p code-line-numbers="3-5|1-8|9|10"}
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq 
+    from data
+    order by date
+    """, 
+    conn
+)
+data = data.dropna()
+data.head()
+```
+
+. . .
+
+```{python}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "RiceOwls1912" 
+database = "ghz"
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+conn = create_engine(string).connect()
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq 
+    from data
+    order by date
+    """, 
+    conn
+)
+data = data.dropna()
+data.head()
+```
+
+## Sort into deciles each month
+
+```p
+data["decile"] = data.groupby("date").roeq.transform(
+  lambda x: pd.qcut(x, 10, labels=range(1, 11))
+)
+data.head()
+```
+
+. . .
+
+```{python}
+data["decile"] = data.groupby("date").roeq.transform(
+  lambda x: pd.qcut(x, 10, labels=range(1, 11))
+)
+data.head()
+```
+
+## Compute portfolio returns each month
+
+. . .
+
+```p
+rets = data.groupby(['date', 'decile']).ret.mean()
+rets = rets.unstack()
+rets.head()
+```
+
+. . .
+
+```{python}
+rets = data.groupby(['date', 'decile']).ret.mean()
+rets = rets.unstack()
+rets.head()
+```
+
+## Average returns across months
+
+. . .
+
+```p
+rets.mean()
+```
+
+. . .
+
+```{python}
+rets.mean()
+```
+
+## Compound returns across months
+
+. . .
+
+```p
+(1+rets).cumprod().plot()
+```
+
+. . .
+
+```{python}
+import matplotlib as mpl
+mpl.rcParams['legend.fontsize'] = 'x-large'
+mpl.rcParams['axes.titlesize'] = 'xx-large'
+mpl.rcParams['axes.labelsize'] = 'xx-large'
+mpl.rcParams['xtick.labelsize'] = 'x-large'
+mpl.rcParams['ytick.labelsize'] = 'x-large'
+mpl.rcParams['figure.figsize'] = (16,5)
+_ = (1+rets).cumprod().plot()
+```
+
+## Factor investing
+
+- Factors are stock characteristics for which stocks that share the characteristic
+  - tend to move together
+  -  have had higher average returns than other stocks
+- High ROE is an ingredient in quality factors.
+- [Factor investing at BlackRock](https://www.blackrock.com/us/individual/investment-ideas/what-is-factor-investing){.external target="_blank"}

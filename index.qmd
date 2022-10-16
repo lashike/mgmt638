@@ -1,6 +1,6 @@
 ## MGMT 638<br>Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
 
-[GHZ-Predictors.xlsx](ghz-predictors.xlsx)
+[GHZ Predictor Definitions](ghz-predictors.xlsx)
 
 [Python Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
 
@@ -15,7 +15,7 @@ J. Howard Creekmore Professor of Finance and Professor of Economics<br>
    
 #### Course Description   
 
-This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  Many different data sources are used to generate trading signals.  In this course, we will illustrate concepts using price signals and corporate fundamentals.  Some additional data sources will be analyzed in *Data Driven Investments Lab* (see below).  We will discuss the full process of quantitative management, from preliminary analysis of signals to training models to backtesting and strategy assessment.  
+This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  Many different data sources are used to generate trading signals.  In this course, we will illustrate concepts using predictors formed from corporate fundamentals, past prices, analyst forecasts, and earnings surprises.  We will discuss the full process of quantitative management, from preliminary analysis of signals to training models to backtesting and strategy assessment.  
 
 We will use python throughout the course.  Many of the things we want to discuss simply can't be implemented in Excel.  There are no programming prerequisites, and proficiency in programming is not at all expected.  Code snippets will be provided that can be modified and used for assignments.  An important part of the course is exploring different machine learning models for return prediction.  In python, this is almost "point and click" -- three short lines of code will define a model, train a model, and predict using a model.
 
@@ -23,8 +23,8 @@ We will use python throughout the course.  Many of the things we want to discuss
 #### Course Topics
 
 1. Sources of data
-2. Evaluating signals with sorts and regressions
-3. Training, validating, and testing machine learning models
+2. Sorting stocks on predictors
+3. Training and testing machine learning models
 4. Portfolio strategies: when to trade on signals
 5. Backtesting strategies
 6. Industries: to trade or not to trade?
@@ -47,7 +47,7 @@ The assignment due dates are
 
 #### Data-Driven Investments Sequence
 
-This course is part of a new JGSB sequence.  *Data-Driven Investments: Credit* (Prof. Dittmar) will be offered in Spring Term 1, and *Data Driven Investments Lab* (Profs. Back and Crotty) will be offered as a full-semester spring course.  This course (Equity) and the Credit course are self-contained, but there are obvious synergies.  The Lab course requires
+This course is part of a new JGSB sequence: *Data-Driven Investments: Credit* will be offered in Spring Term 1, and *Data Driven Investments Lab* will be offered as a full-semester spring course.  This course (Equity) and the Credit course are self-contained, but there are obvious synergies.  The Lab course requires
 either the Equity course or the Credit course as a pre/co-requisite.  The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies.  The plan is that, in the second half of the course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.
 
 #### CQA Competition
