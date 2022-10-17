@@ -1,0 +1,341 @@
+---
+title:  "Forests"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+  cache: true
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+## Overview
+
+- What do we want to predict?
+  - Return?
+  - Return minus average return?
+  - Rank of return (1, 2, 3, ...)
+  - Whether return will be in top, middle, bottom?  Or deciles?
+- What predictors do we want to use?
+- What model do we want to use?
+
+## Some models
+
+- Forests
+  - Random forests
+  - Boosting
+- Neural networks
+- Penalized regression
+
+## A decision tree
+
+. . .
+
+![](decision-tree.png){height=440}
+
+. . .
+
+Prediction in each cell is the plurality class (for classification) or the cell mean (for regression).
+
+## Another example
+
+. . .
+
+![](decision-tree-partition.png){height=560}
+
+## Splitting criterion for classification
+
+- In each cell, prediction is class with most representation.
+- Each observation of other classes is an error.
+- Try to create "pure" classes.
+- Perfect purity means each cell contains only one class <br>$\Rightarrow$ no errors.
+
+## Splitting criterion for regression
+
+- In each cell, prediction is mean.
+- Usually try to minimize sum of squared errors.
+- Algorithm will try to find splits that separate outliers into their own cells.
+- To avoid dependence on outliers,
+  - Minimize sum of absolute errors instead, or
+  - Choose target variable that does not have outliers
+
+
+
+## Get some data
+
+. . . 
+
+Create connection to SQL database as before
+
+. . .
+
+```p
+
+
+``{.p code-line-numbers="3-5|1-8|9|10"}
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data.info()
+```
+
+```{python}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "RiceOwls1912" # paste password between quote marks
+database = "ghz"
+
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+
+conn = create_engine(string).connect()
+
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data.info()
+```
+
+## Fit a classification tree
+
+. . .
+
+```{.p code-line-numbers="1|3-5|6-7|9-12|13"}
+from sklearn.tree import DecisionTreeClassifier
+
+data['class'] = data.ret.transform(
+  lambda x: pd.qcut(x, 3, labels=(0, 1, 2))
+)
+X = data[["roeq", "mom12m"]]
+y = data["class"]
+
+model = DecisionTreeClassifier(
+  max_depth=2, 
+  random_state=0
+)
+model.fit(X, y)
+```
+
+```{python}
+from sklearn.tree import DecisionTreeClassifier
+
+data['class'] = data.ret.transform(
+  lambda x: pd.qcut(x, 3, labels=(0, 1, 2))
+)
+X = data[["roeq", "mom12m"]]
+y = data["class"]
+
+model = DecisionTreeClassifier(max_depth=2)
+_ = model.fit(X, y)
+```
+
+## View the classification tree
+
+. . .
+
+```p
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+
+plot_tree(model)
+plt.show()
+```
+
+. . .
+
+```{python}
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.rcParams["figure.figsize"] = (16,4)
+
+
+plot_tree(model)
+plt.show()
+```
+
+## Confusion matrix
+
+. . .
+
+```p
+from sklearn.metrics import ConfusionMatrixDisplay
+ConfusionMatrixDisplay.from_estimator(model, X=X, y=y)
+plt.show()
+```
+
+. . .
+
+```{python}
+from sklearn.metrics import ConfusionMatrixDisplay
+ConfusionMatrixDisplay.from_estimator(model, X=X, y=y)
+plt.show()
+```
+
+
+## Fit a regression tree
+
+. . .
+
+```{.p code-line-numbers="1|3-5|6-7|9|10"}
+from sklearn.tree import DecisionTreeRegressor
+
+X = data[["roeq", "mom12m"]]
+y = data["ret"]
+
+model = DecisionTreeRegressor(max_depth=2)
+model.fit(X, y)
+```
+
+```{python}
+from sklearn.tree import DecisionTreeRegressor
+
+X = data[["roeq", "mom12m"]]
+y = data["ret"]
+
+model = DecisionTreeRegressor(max_depth=2)
+_ = model.fit(X, y)
+```
+
+## View the regression tree
+
+. . .
+
+```p
+plot_tree(model)
+plt.show()
+```
+
+. . .
+
+```{python}
+mpl.rcParams["figure.figsize"] = (16,5)
+
+plot_tree(model)
+plt.show()
+```
+
+## Which are the low ROE, high MOM stocks?
+
+```p
+subset = data[
+  (data.roeq<=-0.181) & (data.mom12m>1.672)
+]
+subset
+```
+
+. . .
+
+```{python}
+subset = data[
+  (data.roeq<=-0.181) & (data.mom12m>1.672)
+]
+subset
+```
+
+## Predicting ranks
+
+. . .
+
+```{.p code-line-numbers="1|3-5|6-7|9|10"}
+data['rnk'] = data.ret.rank(pct=True)
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+model = DecisionTreeRegressor(max_depth=2)
+model.fit(X, y)
+```
+
+```{python}
+data['rnk'] = data.ret.rank(pct=True)
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+model = DecisionTreeRegressor(max_depth=2)
+_ = model.fit(X, y)
+```
+
+## View the regression tree for ranks
+
+. . .
+
+```p
+plot_tree(model)
+plt.show()
+```
+
+. . .
+
+```{python}
+mpl.rcParams["figure.figsize"] = (16,5)
+
+plot_tree(model)
+plt.show()
+```
+
+## Predicting numerical classes
+
+. . .
+
+```p
+X = data[["roeq", "mom12m"]]
+y = data["class"]
+
+model = DecisionTreeRegressor(max_depth=2)
+model.fit(X, y)
+```
+
+. . .
+
+```{python}
+X = data[["roeq", "mom12m"]]
+y = data["class"]
+
+model = DecisionTreeRegressor(max_depth=2)
+_ = model.fit(X, y)
+```
+
+## View the regression tree for classes
+
+. . .
+
+```p
+plot_tree(model)
+plt.show()
+```
+
+. . .
+
+```{python}
+mpl.rcParams["figure.figsize"] = (16,5)
+
+plot_tree(model)
+plt.show()
+```

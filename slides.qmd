@@ -1,11 +1,17 @@
-[1. Sources of Data](1-data.html)
+[1. Data](1-data.html)
 
-[2. Sorts and regressions](2-sorts_regressions.html)
+[2. Sorts](2-sorts.html)
 
-[3. Machine learning](3-machine_learning.html)
+[3. Trees](3-trees.html)
 
-[4. Trading](4-trading.html)
+[4. Forests](4-forests.html)
 
-[5. Backtesting](5-backtesting.html)
+[5. Train and Test](5-train-test.html)
 
-[6. Industries](6-industries.html)
+[6. Neural Nets](6-neural-nets.html)
+
+[7. Trading](4-trading.html)
+
+[8. Backtesting](5-backtesting.html)
+
+[9. Industries](6-industries.html)
