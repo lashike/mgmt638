@@ -204,13 +204,13 @@ plt.show()
 ## Predicted class probabilities
 
 - Three of the four leaves have a plurality of High, so all observations in those leaves get a prediction of High.
-- But the three leaves are not all equal.
+- But the three leaves are not the same.
 - The fraction of Highs in a leaf is the probability that an observation in the leaf is High. The probabilities are
   - 53/69 = 77%
   - 315/695 = 45%
   - 409/1664 = 25%
   - 70/114 = 61%
-  
+
 ## Fit a regression tree
 
 . . .

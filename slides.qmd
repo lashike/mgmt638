@@ -10,8 +10,8 @@
 
 [6. Neural Nets](6-neural-nets.html)
 
-[7. Trading](4-trading.html)
+[7. Trading](7-trading.html)
 
-[8. Backtesting](5-backtesting.html)
+[8. Backtesting](8-backtesting.html)
 
-[9. Industries](6-industries.html)
+[9. Industries](9-industries.html)
