@@ -68,7 +68,7 @@ conn = create_engine(string).connect()
 ```{.p code-line-numbers="3-5|1-8|9|10"}
 data = pd.read_sql(
     """
-    select ticker, date, ret, roeq 
+    select ticker, date, ret, roeq
     from data
     order by date
     """, 

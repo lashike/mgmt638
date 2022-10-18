@@ -1,6 +1,6 @@
 ---
 title:  "Forests"
-author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#505050;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
 execute:
   echo: false
   jupyter: python3
@@ -179,4 +179,4 @@ rets
   - Backtest the strategy.
 - Fit over multiple months (past months in backtest).
 - Include more predictors.
-- Implement a strategy for choosing max_depth.
+- Implement a strategy for choosing max_depth and deciding whether to predict returns, ranks, classes, or ...
