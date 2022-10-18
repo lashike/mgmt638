@@ -32,7 +32,7 @@
     "href": "assignment2.html",
     "title": "",
     "section": "",
-    "text": "Fit a random forest to the 2021-01 data using roeq, mom12m, and bm (book-to-market) as the predictors. Use ret as the target variable (rather than rnk). Set max_depth=4. Compute the in-sample \\(R^2\\) as model.score(X,y).\nSubmit a Jupyter notebook to canvas with your code and showing the \\(R^2\\)."
+    "text": "Fit a random forest to the 2021-01 data using roeq, mom12m, and bm (book-to-market) as the predictors. Use ret as the target variable (rather than rnk). Set max_depth=4. Compute the in-sample \\(R^2\\) as model.score(X,y).\nSubmit a Jupyter notebook to Ccanvas that contains your code and shows the \\(R^2\\)."
   },
   {
     "objectID": "assignment3.html",
