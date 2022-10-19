@@ -6,7 +6,7 @@
 
 [4. Forests](4-forests.html)
 
-[5. Neural Nets](5-neural-nets.html)
+[5. Neural Nets](5-nets.html)
 
 [6. Applying Models](6-applying.html)
 
