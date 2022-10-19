@@ -4,7 +4,7 @@
 
 [3. Trees](3-trees.html)
 
-[4. Forests](4-forests.html)
+[4. Random Forests](4-forests.html)
 
 [5. Neural Nets](5-nets.html)
 
