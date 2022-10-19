@@ -6,10 +6,12 @@
 
 [4. Forests](4-forests.html)
 
-[5. Neural Nets](6-neural-nets.html)
+[5. Neural Nets](5-neural-nets.html)
 
-[6. Trading](7-trading.html)
+[6. Applying Models](6-applying.html)
 
-[7. Backtesting](8-backtesting.html)
+[7. Trade Filters](7-trading.html)
 
-[8. Industries](9-industries.html)
+[8. Backtesting](8-backtesting.html)
+
+[9. Industries](9-industries.html)

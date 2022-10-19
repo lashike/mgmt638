@@ -20,14 +20,17 @@ This course provides an introduction to quantitative equity management.  Quantit
 We will use python throughout the course.  Many of the things we want to discuss simply can't be implemented in Excel.  There are no programming prerequisites, and proficiency in programming is not at all expected.  Code snippets will be provided that can be modified and used for assignments.  An important part of the course is exploring different machine learning models for return prediction.  In python, this is almost "point and click" -- three short lines of code will define a model, train a model, and predict using a model.
 
 
-#### Course Topics
+#### Course Outline
 
-1. Sources of data
+1. Types of data and sources
 2. Sorting stocks on predictors
-3. Training and testing machine learning models
-4. Portfolio strategies: when to trade on signals
-5. Backtesting strategies
-6. Industries: to trade or not to trade?
+3. Decision trees
+4. Random forests
+5. Neural nets
+6. Applying models
+7. Trade filters
+8. Backtesting strategies
+9. Industries: to trade or not to trade?
 
 
 #### Grading

@@ -1,0 +1,201 @@
+---
+title:  "Neural Nets"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#404040;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+  cache: true
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+## Multi-layer perceptrons
+
+* A multi-layer perceptron (MLP) consists of "neurons" arranged in layers.
+* A neuron is a mathematical function.  It takes inputs $x_1, \ldots, x_n$, calculates a function $y=f(x_1, \ldots, x_n)$ and passes $y$ to the neurons in the next level.
+* The inputs in the first layer are the predictors.
+* The inputs in successive layers are the calculations from the prior level. 
+* The last layer is a single neuron that produces the output.
+
+## Illustration
+
+. . .
+
+::: {layout="[70, 30]"}
+
+![](neuralnet.png)
+
+* inputs $x_1, x_2, x_3, x_4$
+* variables $y_1, \ldots, y_5$  are calculated in hidden layer
+* output depends on $y_1, \ldots, y_5$
+
+:::
+
+
+
+
+## Rectified linear units
+
+- The usual function for the neurons (except in the last layer) is 
+
+. . .
+
+$$ y = \max(0,b+w_1x_1 + \cdots + w_nx_n)$$
+
+- Parameters $b$ (called bias) and $w_1, \ldots w_n$ (called weights) are different for different neurons. 
+- This function is called a rectified linear unit (RLU).  
+
+
+## Analogy to neurons firing
+
+- If $w_i>0$ then $y>0$ only when $x_i$ are large enough. 
+- A neuron  fires when it is sufficiently stimulated by signals from other neurons (in prior layer).
+
+## Output function
+
+- The output doesn't have an option-like truncation, so it can be negative.
+- For regression problems, it is linear:
+
+. . .
+
+$$z = b+w_1y_1 + \cdots + w_ny_n$$ 
+
+- For classification, there is a linear function for each class and the prediction is the class with the largest value.
+
+## Deep learning
+
+- Deep learning means a neural network with  many layers.  It is behind facial recognition, self-driving cars, ...
+- Need specialized library, probably TensorFlow (from Google) or PyTorch (from Facebook), 
+- and probably need graphical processing units (GPUs) -- i.e., run on video cards,
+
+
+## Example
+
+- Use roeq and mom12m for 2021-01 as before.
+- Predict rnk as before.
+- Two hidden layers with 4 nodes in the first and 2 in the second.
+
+## Define and fit model
+
+. . .
+
+```{.p code-line-numbers="1|3-4|6-9|10"}
+from sklearn.neural_network import MLPRegressor
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+model = MLPRegressor(
+  hidden_layer_sizes=(4, 2),
+  random_state=0
+)
+model.fit(X,y)
+```
+
+```{python}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "RiceOwls1912" # paste password between quote marks
+database = "ghz"
+
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+
+conn = create_engine(string).connect()
+
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data['rnk'] = data.ret.rank(pct=True)
+
+from sklearn.neural_network import MLPRegressor
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+model = MLPRegressor(
+  hidden_layer_sizes=(4, 2),
+  random_state=0
+)
+_ = model.fit(X,y)
+```
+
+#
+
+R-squared:
+
+. . .
+
+```p
+model.score(X,y)
+```
+
+. . .
+
+```{python}
+model.score(X,y)
+```
+
+. . .
+
+<br>
+A prediction:
+
+. . .
+
+```p
+import numpy as np
+x = np.array([.1, .4]).reshape(1,2)
+model.predict(x)
+```
+
+. . .
+
+```{python}
+import numpy as np
+x = np.array([.1, .4]).reshape(1,2)
+model.predict(x)
+```
+
+## Sorts
+
+. . .
+
+Sort based on predictions and compute portfolio returns (in sample):
+
+. . .
+
+```p
+prnk = model.predict(X)
+data['quintile'] = pd.qcut(prnk, 5, labels=range(1,6))
+rets = data.groupby('quintile').ret.mean()
+rets
+```
+
+. . .
+
+```{python}
+prnk = model.predict(X)
+data['quintile'] = pd.qcut(prnk, 5, labels=range(1,6))
+rets = data.groupby('quintile').ret.mean()
+rets
+```
