@@ -1,6 +1,6 @@
 [1. Data](1-data.html)
 
-[2. Sorting Stocks on Predictions](2-sorts.html)
+[2. Sorting Stocks on Predictors](2-sorts.html)
 
 [3. Trees](3-trees.html)
 

@@ -19,13 +19,16 @@ format:
     incremental: true
 ---
 
-## Outliers and scaling
+## Outliers, scaling, and polynomial features
 
-- For neural nets and other methods (not forests), it is important to have predictors that are
+- For neural nets and other methods, it is important to have predictors that are
   - on the same scale
   - free of outliers
+- It is also useful to add squares and products of our predictors.
+- We will (i) take care of outliers and scaling, (ii) add squares and products, and (iii) define a machine learning model all within a [pipeline]{style="color:tomato;"}.
+  
 
-## Neural net example
+## Neural net example of scaling and outliers
 
 . . .
 
@@ -239,31 +242,52 @@ fig.show()
 ::::
 :::
 
+
+
 ## Pipelines
 
-. . .
+- This will be our process:
+  - Apply quantile transformer
+  - Add squares and products
+  - Apply quantile transformer again
+- We do this and define our ML model in a pipeline.
+- Then we fit the pipeline and predict with it.
 
-- We put the transformation and the model in a pipeline.
-- Then we fit the pipeline and predict with the pipeline.
-- sklearn will remember the transformation, so it can apply it to new observations.
-- neural net example for rnk in 2021-01:
 
-. . .
+#
 
-```{.p code-line-numbers="1-2|3-4"}
+
+```{.p code-line-numbers="1-2|4|5-10|11|12"}
+from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-pipe = make_pipeline(transform, model)
+
+poly = PolynomialFeatures(degree=2)
+pipe = make_pipeline(
+  transform, 
+  poly,
+  transform,
+  model
+)
 pipe.fit(X, y)
-pipe.score(X, y)
 ```
 
 . . .
 
 ```{python}
+from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-pipe = make_pipeline(transform, model)
-_ = pipe.fit(X, y)
-pipe.score(X, y)
+
+poly = PolynomialFeatures(degree=2)
+pipe = make_pipeline(
+  transform, 
+  poly,
+  transform,
+  model
+)
+
+from joblib import dump
+pipe.fit(X, y)
+_ = dump(pipe, "net2.joblib")
 ```
 
 ## Entire workflow: connect to database
@@ -302,26 +326,39 @@ data = data.dropna()
 data['rnk'] = data.ret.rank(pct=True)
 ```
 
-## Define pipeline
+## Import from scikit-learn
 
 . . .
 
 ```{.p}
 from sklearn.preprocessing import QuantileTransformer
+from sklearn.preprocessing import PolynomialFeatures
 from sklearn.neural_network import MLPRegressor
 from sklearn.pipeline import make_pipeline
+```
 
+## Define pipeline
+
+. . .
+
+```p
 transform = QuantileTransformer(
     output_distribution="normal"
 )
+poly = PolynomialFeatures(degree=2)
 model = MLPRegressor(
   hidden_layer_sizes=(4, 2),
   random_state=0
 )
-pipe = make_pipeline(transform, model)
+pipe = make_pipeline(
+  transform, 
+  poly,
+  transform,
+  model
+)
 ```
 
-## Fit the pipeline
+## Fit and save the pipeline
 
 . . .
 
@@ -330,10 +367,24 @@ X = data[["roeq", "mom12m"]]
 y = data["rnk"]
 
 pipe.fit(X, y)
+
+from joblib import dump, load
+dump(pipe, "net2.joblib")
 ```
 
 . . .
 
 <br>
-Workflow is same for random forest, except that we can just fit the model and skip the pipeline.
+Later:
+
+. . .
+
+```p
+model = load("net2.joblib")
+```
+
+## Comments
+
+- Same workflow for random forest.  Just import RandomForestRegressor and use it in model = .
+- We're going to change the last block in the next section.  Put the pipeline through GridSearchCV and fit it.
 

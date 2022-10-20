@@ -102,7 +102,7 @@ model = MLPRegressor(
   hidden_layer_sizes=(4, 2),
   random_state=0
 )
-model.fit(X,y)
+model.fit(X, y)
 ```
 
 
@@ -140,7 +140,10 @@ model = MLPRegressor(
   hidden_layer_sizes=(4, 2),
   random_state=0
 )
-_ = model.fit(X,y)
+model.fit(X,y)
+
+from joblib import dump 
+_ = dump(model, "net1.joblib")
 ```
 
 #
@@ -178,6 +181,18 @@ model.predict(x)
 import numpy as np
 x = np.array([.1, .4]).reshape(1,2)
 model.predict(x)
+```
+
+. . .
+
+<br>
+Save model:
+
+. . .
+
+```p
+from joblib import dump
+dump(model, "net1.joblib")
 ```
 
 ## Sorts
