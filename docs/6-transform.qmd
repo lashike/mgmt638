@@ -1,0 +1,339 @@
+---
+title:  "Transforming Features"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#404040;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+  cache: true
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+## Outliers and scaling
+
+- For neural nets and other methods (not forests), it is important to have predictors that are
+  - on the same scale
+  - free of outliers
+
+## Neural net example
+
+. . .
+
+For a neuron with
+
+. . .
+
+$$ y = \max(0, b + w_1x_1 + \cdots + w_n x_n)$$
+
+- to find the right $w$'s, it helps to have $x$'s of similar scales
+- multiplying an outlier by a weight $w$ can produce an outlier $y$
+
+## Quantile transformer
+
+. . .
+
+There are many ways to take care of outliers and scaling, but we'll just use one.
+
+. . .
+
+```p
+from sklearn.preprocessing import QuantileTransformer
+
+transform = QuantileTransformer(
+    output_distribution="normal"
+)
+```
+
+
+```{python}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "RiceOwls1912" # paste password between quote marks
+database = "ghz"
+
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+
+conn = create_engine(string).connect()
+
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data['rnk'] = data.ret.rank(pct=True)
+
+from sklearn.preprocessing import QuantileTransformer
+transform = QuantileTransformer(
+    output_distribution="normal"
+)
+
+old = data.roeq.to_numpy().reshape(-1,1)
+new = transform.fit_transform(old)
+
+from sklearn.neural_network import MLPRegressor
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+model = MLPRegressor(
+  hidden_layer_sizes=(4, 2),
+  random_state=0
+)
+```
+
+
+## Example: roeq in 2021-01
+
+. . .
+
+Distribution before (old) and after (new)
+
+. . .
+
+::: {.panel-tabset}
+
+## Box plots
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+```{python}
+import plotly.graph_objects as go
+import numpy as np
+
+old = np.ravel(old)
+new = np.ravel(new)
+
+trace1 = go.Box(
+    y=old,
+    name="old",
+)
+
+fig = go.Figure(trace1)
+
+fig.update_layout(
+    template="plotly_dark",
+    xaxis_title_font_size=24,
+    yaxis_title_font_size=24,
+    font_size=20,
+    yaxis_tickformat=".0%",
+    width=480,
+    height=420,
+)
+
+fig.show()
+```
+:::
+::: {.column width="50%"}
+
+```{python}
+trace2 = go.Box(
+    y=new,
+    name="new",
+)
+fig = go.Figure(trace2)
+fig.update_layout(
+    template="plotly_dark",
+    xaxis_title_font_size=24,
+    yaxis_title_font_size=24,
+    font_size=20,
+    yaxis_tickformat=".0%",
+    width=480,
+    height=420,
+)
+
+fig.show()
+```
+
+:::
+::::
+
+## Density plots
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+
+from scipy.stats import gaussian_kde as kde
+
+density = kde(old)
+mn = np.min(old)
+mx = np.max(old)
+grid = np.linspace(mn, mx, 100)
+
+trace = go.Scatter(
+  x=grid, 
+  y=density(grid),
+  mode="lines", 
+  name="old"
+)
+fig = go.Figure(trace)
+fig.update_layout(
+    template="plotly_dark",
+    yaxis_title="",
+    xaxis_title_font_size=24,
+    yaxis_title_font_size=24,
+    font_size=20,
+    xaxis_tickformat=".0%",
+    yaxis_tickformat="",
+    width=480,
+    height=420,
+)
+
+fig.show()
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+density = kde(new)
+mn = np.min(new)
+mx = np.max(new)
+grid = np.linspace(mn, mx, 100)
+
+trace = go.Scatter(
+  x=grid, 
+  y=density(grid),
+  mode="lines", 
+  name="new"
+)
+fig = go.Figure(trace)
+fig.update_layout(
+    template="plotly_dark",
+    yaxis_title="",
+    xaxis_title_font_size=24,
+    yaxis_title_font_size=24,
+    font_size=20,
+    xaxis_tickformat=".0%",
+    yaxis_tickformat="",
+    width=480,
+    height=420,
+)
+
+fig.show()
+```
+
+:::
+::::
+:::
+
+## Pipelines
+
+. . .
+
+- We put the transformation and the model in a pipeline.
+- Then we fit the pipeline and predict with the pipeline.
+- sklearn will remember the transformation, so it can apply it to new observations.
+- neural net example for rnk in 2021-01:
+
+. . .
+
+```{.p code-line-numbers="1-2|3-4"}
+from sklearn.pipeline import make_pipeline
+pipe = make_pipeline(transform, model)
+pipe.fit(X, y)
+pipe.score(X, y)
+```
+
+. . .
+
+```{python}
+from sklearn.pipeline import make_pipeline
+pipe = make_pipeline(transform, model)
+_ = pipe.fit(X, y)
+pipe.score(X, y)
+```
+
+## Entire workflow: connect to database
+
+. . .
+
+```{.p}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "" # paste password between quote marks
+database = "ghz"
+
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+
+conn = create_engine(string).connect()
+```
+
+## Download data
+
+. . .
+
+```{.p}
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data['rnk'] = data.ret.rank(pct=True)
+```
+
+## Define pipeline
+
+. . .
+
+```{.p}
+from sklearn.preprocessing import QuantileTransformer
+from sklearn.neural_network import MLPRegressor
+from sklearn.pipeline import make_pipeline
+
+transform = QuantileTransformer(
+    output_distribution="normal"
+)
+model = MLPRegressor(
+  hidden_layer_sizes=(4, 2),
+  random_state=0
+)
+pipe = make_pipeline(transform, model)
+```
+
+## Fit the pipeline
+
+. . .
+
+```{.p}
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+pipe.fit(X, y)
+```
+
+. . .
+
+<br>
+Workflow is same for random forest, except that we can just fit the model and skip the pipeline.
+

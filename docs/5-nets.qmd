@@ -44,6 +44,9 @@ format:
 
 
 
+
+
+
 ## Rectified linear units
 
 - The usual function for the neurons (except in the last layer) is 
@@ -85,7 +88,7 @@ $$z = b+w_1y_1 + \cdots + w_ny_n$$
 - Predict rnk as before.
 - Two hidden layers with 4 nodes in the first and 2 in the second.
 
-## Define and fit model
+## Define model
 
 . . .
 
@@ -101,6 +104,7 @@ model = MLPRegressor(
 )
 model.fit(X,y)
 ```
+
 
 ```{python}
 from sqlalchemy import create_engine

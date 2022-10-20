@@ -27,10 +27,11 @@ We will use python throughout the course.  Many of the things we want to discuss
 3. Decision trees
 4. Random forests
 5. Neural nets
-6. Applying models
-7. Trade filters
-8. Backtesting strategies
-9. Industries: to trade or not to trade?
+6. Transforming data features
+7. Applying models
+8. Trade filters
+9. Backtesting strategies
+10. Industries: to trade or not to trade?
 
 
 #### Grading

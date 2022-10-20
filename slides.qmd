@@ -8,10 +8,12 @@
 
 [5. Neural Nets](5-nets.html)
 
-[6. Applying Models](6-applying.html)
+[6. Transforming Data Features](6-transform.html)
 
-[7. Trade Filters](7-trading.html)
+[7. Applying Models](6-applying.html)
 
-[8. Backtesting](8-backtesting.html)
+[8. Trade Filters](7-trading.html)
 
-[9. Industries](9-industries.html)
+[9. Backtesting](8-backtesting.html)
+
+[10. Industries](9-industries.html)
