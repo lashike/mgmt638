@@ -1,0 +1,334 @@
+---
+title:  "Validating Hyperparameters"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#404040;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+  cache: true
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+## Hyperparameters
+
+- The max depth of trees in a forest and the number of trees are called hyperparameters.
+- Hyperparameter means that they are specified ex ante rather than calculated through fitting.
+- The hidden layer sizes in a neural net are also hyperparameters.
+
+## Overfitting
+
+- Hyperparameters control how complex the model is.
+- More complex models will better fit the training data.
+- But we risk overfitting.
+  - Overfitting means fitting our model to random peculiarities of the training data.
+  - An overfit model will not work well on new data.
+- So more complexity is not necessarily better.
+
+## Validation
+
+- To choose hyperparameters from the data and minimize the risk of overfitting, reserve some data called validation data.
+- Train with different hyperparameters on training data that does not include validation data.
+- Choose hyperparameters that perform best on validation data.
+
+## Cross validation
+
+- Split data into, for example, 3 sets of equal size, say A, B, and C.
+- Train on A $\cup$ B, assess performance on C
+- Train on A $\cup$ C, assess performance on B
+- Train on B $\cup$ C, assess performance on A
+- Choose hyperparameters with best average performance on A, B, and C.
+
+## Grid Search CV
+
+. . .
+
+```p
+from sklearn.model_selection import GridSearchCV
+```
+
+- Pass a model or pipeline to GridSearchCV without specifying the hyperparameters.
+- Pass a set ("grid") of hyperparameters to evaluate.
+- Fit the GridSearchCV.
+
+## Everything in one step
+
+Fitting GridSearchCV does all of the following:
+
+- Randomly choose the subsets A, B, and C (default is 5 subsets rather than 3).
+- Fit the model or pipeline on training sets and evaluate on validation sets.
+- Choose hyperparameters with best average performance.
+- Refit the model on the entire dataset using the best hyperparameters.
+
+
+
+
+## Random forest example
+
+- roeq, mom12m, and rnk for 2021-01 as before
+- Define model without specifying max depth.
+
+. . .
+
+```p
+model = RandomForestRegressor(
+  random_state=0
+)
+```
+
+- Specify depths to consider. 
+
+. . .
+
+```p
+param_grid = {
+    "max_depth": [4, 6, 8]
+}
+```
+
+## Define and fit GridSearchCV
+
+. . .
+
+```p
+cv = GridSearchCV(
+  model, 
+  param_grid=param_grid
+)
+cv.fit(X, y)
+```
+
+# 
+
+```{python}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "RiceOwls1912" # paste password between quote marks
+database = "ghz"
+
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+
+conn = create_engine(string).connect()
+
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data['rnk'] = data.ret.rank(pct=True)
+```
+
+#
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestRegressor
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+model = RandomForestRegressor(
+  random_state=0
+)
+
+param_grid = {
+    "max_depth": [4, 6, 8]
+}
+
+cv = GridSearchCV(
+  model, 
+  param_grid=param_grid
+)
+cv.fit(X, y)
+```
+
+
+#
+
+R-squared
+
+. . .
+
+```p
+cv.score(X, y)
+```
+
+. . .
+
+```{python}
+cv.score(X,y)
+```
+
+. . .
+
+<br>
+Best depth
+
+
+. . .
+
+```p
+cv.best_params_
+```
+
+. . .
+
+```{python}
+cv.best_params_
+```
+
+. . .
+
+<br>
+Make a prediction
+
+. . .
+
+```p
+import numpy as np
+x = np.array([.1, .4]).reshape(1,2)
+cv.predict(x)
+```
+
+. . .
+
+```{python}
+import numpy as np
+x = np.array([.1, .4]).reshape(1,2)
+cv.predict(x)
+```
+
+## Neural net example
+
+. . .
+
+```{.p code-line-numbers="4-6|1-7"}
+transform = QuantileTransformer(
+    output_distribution="normal"
+)
+model = MLPRegressor(
+  random_state=0
+)
+pipe = make_pipeline(transform, model)
+```
+
+- We pass the pipeline to GridSearchCV.
+
+#
+
+- We have to specify what part of the pipeline that the hyperparameters belong to.
+- Name in lowercase.  Double underscore between name and parameter name.
+
+. . .
+
+```{.p code-line-numbers="1-4|6-9|10"}
+param_grid = {
+    "mlpregressor__hidden_layer_sizes": 
+    [(4, 2), (8, 4, 2), (16, 8, 4, 2)]
+}
+
+cv = GridSearchCV(
+  pipe, 
+  param_grid=param_grid
+)
+cv.fit(X, y)
+```
+
+#
+
+```{python}
+from sklearn.preprocessing import QuantileTransformer
+from sklearn.neural_network import MLPRegressor
+from sklearn.pipeline import make_pipeline
+
+transform = QuantileTransformer(
+    output_distribution="normal"
+)
+model = MLPRegressor(
+  random_state=0
+)
+pipe = make_pipeline(transform, model)
+
+param_grid = {
+    "mlpregressor__hidden_layer_sizes": 
+    [(4, 2), (8, 4, 2), (16, 8, 4, 2)]
+}
+
+cv = GridSearchCV(
+  pipe, 
+  param_grid=param_grid
+)
+cv.fit(X, y)
+```
+
+#
+
+R-squared
+
+. . .
+
+```p
+cv.score(X, y)
+```
+
+. . .
+
+```{python}
+cv.score(X,y)
+```
+
+. . .
+
+<br>
+Best hidden layers
+
+
+. . .
+
+```p
+cv.best_params_
+```
+
+. . .
+
+```{python}
+cv.best_params_
+```
+
+. . .
+
+<br>
+Make a prediction
+
+. . .
+
+```p
+import numpy as np
+x = np.array([.1, .4]).reshape(1,2)
+cv.predict(x)
+```
+
+. . .
+
+```{python}
+import numpy as np
+x = np.array([.1, .4]).reshape(1,2)
+cv.predict(x)
+```

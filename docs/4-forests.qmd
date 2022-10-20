@@ -140,7 +140,7 @@ Importance of features
 . . .
 
 ```p
-model.feature_importances
+model.feature_importances_
 ```
 
 . . .

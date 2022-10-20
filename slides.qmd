@@ -1,6 +1,6 @@
 [1. Data](1-data.html)
 
-[2. Sorts](2-sorts.html)
+[2. Sorting Stocks on Predictions](2-sorts.html)
 
 [3. Trees](3-trees.html)
 
@@ -10,10 +10,14 @@
 
 [6. Transforming Data Features](6-transform.html)
 
-[7. Applying Models](6-applying.html)
+[7. Validating Hyperparameters](7-validation.html)
 
-[8. Trade Filters](7-trading.html)
+[8. Analyzing Stock Picks](8-analyzing.html)
 
-[9. Backtesting](8-backtesting.html)
+[9. Combination Forecasts](9-combinations.html)
 
-[10. Industries](9-industries.html)
+[10. Trade Filters](10-trading.html)
+
+[11. Backtesting](11-backtesting.html)
+
+[12. Industries](12-industries.html)

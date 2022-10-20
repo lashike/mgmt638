@@ -28,10 +28,12 @@ We will use python throughout the course.  Many of the things we want to discuss
 4. Random forests
 5. Neural nets
 6. Transforming data features
-7. Applying models
-8. Trade filters
-9. Backtesting strategies
-10. Industries: to trade or not to trade?
+7. Validation of hyperparameters
+8. Analyzing stock picks
+9. Combination forecasts
+10. Trade filters
+11. Backtesting
+12. Industries: to trade or not to trade?
 
 
 #### Grading
