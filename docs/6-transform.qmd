@@ -39,7 +39,7 @@ For a neuron with
 $$ y = \max(0, b + w_1x_1 + \cdots + w_n x_n)$$
 
 - to find the right $w$'s, it helps to have $x$'s of similar scales
-- multiplying an outlier by a weight $w$ can produce an outlier $y$
+- and outlier inputs can produce outlier outputs and large errors, so they may get excessive attention in fitting the model
 
 ## Quantile transformer
 
@@ -257,7 +257,7 @@ fig.show()
 #
 
 
-```{.p code-line-numbers="1-2|4|5-10|11|12"}
+```{.p code-line-numbers="1-2|4|5-10|11"}
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 
@@ -380,7 +380,7 @@ Later:
 . . .
 
 ```p
-model = load("net2.joblib")
+net = load("net2.joblib")
 ```
 
 ## Comments
