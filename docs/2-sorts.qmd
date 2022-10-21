@@ -22,12 +22,12 @@ format:
 ---
 
 
-## Decile returns
+## Quintile returns
 
-- At beginning of each time period, sort stocks into deciles based on a predictor.
-- Time periods could be days, weeks, months, ...
-- Days would be realistic.  Months is easier.
-- Each decile is a portfolio. Compute return for the period.  
+- At beginning of each time period, sort stocks into quintiles based on a predictor.
+- Could be deciles instead, or ...
+- Time periods could be days, weeks, months, ... Days would be realistic.  Months is easier.
+- Each quintile is a portfolio. Compute return for the period.  
 - Repeat next period.
 
 
@@ -103,11 +103,11 @@ data = data.dropna()
 data.head()
 ```
 
-## Sort into deciles each month
+## Sort into quintiles each month
 
 ```p
-data["decile"] = data.groupby("date").roeq.transform(
-  lambda x: pd.qcut(x, 10, labels=range(1, 11))
+data["quintile"] = data.groupby("date").roeq.transform(
+  lambda x: pd.qcut(x, 5, labels=range(1, 6))
 )
 data.head()
 ```
@@ -116,7 +116,7 @@ data.head()
 
 ```{python}
 data["decile"] = data.groupby("date").roeq.transform(
-  lambda x: pd.qcut(x, 10, labels=range(1, 11))
+  lambda x: pd.qcut(x, 5, labels=range(1, 6))
 )
 data.head()
 ```

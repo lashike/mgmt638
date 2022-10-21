@@ -22,18 +22,17 @@ We will use python throughout the course.  Many of the things we want to discuss
 
 #### Course Outline
 
-1. Types of data and sources
-2. Sorting stocks on predictors
-3. Decision trees
-4. Random forests
-5. Neural nets
-6. Transforming data features
-7. Validation of hyperparameters
-8. Analyzing stock picks
-9. Combination forecasts
-10. Trade filters
-11. Backtesting
-12. Industries: to trade or not to trade?
+1. Data and factors
+2. Decision trees
+3. Random forests
+4. Neural nets
+5. Transforming data features
+6. Validation of hyperparameters
+7. Analyzing stock picks
+8. Combination forecasts
+9. Trade filters
+10. Backtesting
+11. Industries: to trade or not to trade?
 
 
 #### Grading

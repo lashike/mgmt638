@@ -1,0 +1,108 @@
+---
+title: "Untitled"
+format: html
+---
+
+
+## Yahoo adjusted close
+
+- Yahoo's adjusted close is split and *dividend* adjusted.
+- Pct change in adjusted close $\sim$ close-to-close return
+- On ex-dividend days, pct change in adj close is
+
+. . .
+
+$$P_t / (P_{t-1}-D_t)$$
+
+. . .
+
+which is not exactly but is close enough to
+
+. . .
+
+$$(P_t + D_t)/P_{t-1}$$
+
+
+
+## Returns from Yahoo in python
+
+```{.p code-line-numbers="1|2-3|4-5"}
+from pandas_datareader import DataReader as pdr
+data = pdr('cvx', 'yahoo', start=2010)
+price = data['Adj Close']
+ret = price.pct_change()
+ret.plot()
+```
+
+. . .
+
+```{python}
+from pandas_datareader import DataReader as pdr
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.rcParams['legend.fontsize'] = 'x-large'
+mpl.rcParams['axes.titlesize'] = 'xx-large'
+mpl.rcParams['axes.labelsize'] = 'xx-large'
+mpl.rcParams['xtick.labelsize'] = 'x-large'
+mpl.rcParams['ytick.labelsize'] = 'x-large'
+
+data = pdr('cvx', 'yahoo', start=2010)
+price = data['Adj Close']
+ret = price.pct_change()
+plt.subplots(figsize=(16,4))
+_ = ret.plot()
+```
+
+## Fed funds rate from FRED in python
+
+```p
+fed = pdr('dff', 'fred', start=2010)
+fed.plot()
+```
+
+. . .
+
+```{python}
+
+mpl.rcParams['figure.figsize'] = (16,5)
+fed = pdr('dff', 'fred', start=2010)
+_ = fed.plot()
+```
+
+## VIX from FRED in python
+
+```p
+vix = pdr('vixcls', 'fred', start=2010)
+vix.plot()
+```
+
+. . .
+
+```{python}
+
+vix = pdr('vixcls', 'fred', start=2010)
+_ = vix.plot()
+```
+
+
+## CVX PE from Nasdaq Data Link
+
+```{.p code-line-numbers="1-2|3-6|7"}
+import quandl
+quandl.ApiConfig.api_key = "" # paste api key between quote marks
+data = quandl.get_table(
+  'SHARADAR/DAILY',
+  ticker="CVX", 
+  qopts={"columns":["date", "pe"]})
+data.set_index("date").plot()
+```
+
+. . .
+
+```{python}
+import quandl
+quandl.ApiConfig.api_key = "f-5zoU2G4zzHaUtkJ7BY"
+data = quandl.get_table('SHARADAR/DAILY',ticker="CVX", qopts={"columns":["date", "pe"]})
+mpl.rcParams['figure.figsize'] = (16,2.8)
+_ = data.set_index("date").plot()
+```

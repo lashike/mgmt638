@@ -1,5 +1,5 @@
 ---
-title:  "Data"
+title:  "Data and Factors"
 author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
 execute:
   echo: false
@@ -19,23 +19,15 @@ format:
     incremental: true
 ---
 
+## Basics
 
-## Price and volume data
-
-- Free sources like Yahoo usually suffer from survivorship bias
-  - Only have data on currently existing companies
-  - Will miss poor returns of companies that delisted
-- Bloomberg, FactSet, Capital IQ, ...
-
-
-## Company financials and actions
-
-- Yahoo only goes back 5 years
-- Could scrape SEC's EDGAR site
-- FactSet, Capital IQ, and others
-
+- Price and volume
+- Company financials
+- Analyst forecasts
+- Earnings surprises
+- Dividend announcements
   
-## Trade data
+## Data on positions and trades
 
 - Corporate insiders
 - Short interest
@@ -54,143 +46,59 @@ format:
 - Extract mentions of tickers
 - Use machine-learning NLP (natural language processing) to classify as positive, negative, or neutral
 
-## Image data
+## Other data
 
-- Satellite and drone imagery
-- Warehouse truck activity, cars in parking lots, ...
-- Use machine learning/AI to analyze images
-
-## Consumer data
-
+- Images
+  - Satellite and drone imagery
+  - Warehouse truck activity, cars in parking lots, ...
+  - Use machine learning/AI to analyze images
 - Search engine traffic
-- Store traffic
-- Retail sales
-
-
-## Yahoo adjusted close
-
-- Yahoo's adjusted close is split and *dividend* adjusted.
-- Pct change in adjusted close $\sim$ close-to-close return
-- On ex-dividend days, pct change in adj close is
-
-. . .
-
-$$P_t / (P_{t-1}-D_t)$$
-
-. . .
-
-which is not exactly but is close enough to
-
-. . .
-
-$$(P_t + D_t)/P_{t-1}$$
-
-
-
-## Returns from Yahoo in python
-
-```{.p code-line-numbers="1|2-3|4-5"}
-from pandas_datareader import DataReader as pdr
-data = pdr('cvx', 'yahoo', start=2010)
-price = data['Adj Close']
-ret = price.pct_change()
-ret.plot()
-```
-
-. . .
-
-```{python}
-from pandas_datareader import DataReader as pdr
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-mpl.rcParams['legend.fontsize'] = 'x-large'
-mpl.rcParams['axes.titlesize'] = 'xx-large'
-mpl.rcParams['axes.labelsize'] = 'xx-large'
-mpl.rcParams['xtick.labelsize'] = 'x-large'
-mpl.rcParams['ytick.labelsize'] = 'x-large'
-
-data = pdr('cvx', 'yahoo', start=2010)
-price = data['Adj Close']
-ret = price.pct_change()
-plt.subplots(figsize=(16,4))
-_ = ret.plot()
-```
-
-## Fed funds rate from FRED in python
-
-```p
-fed = pdr('dff', 'fred', start=2010)
-fed.plot()
-```
-
-. . .
-
-```{python}
-
-mpl.rcParams['figure.figsize'] = (16,5)
-fed = pdr('dff', 'fred', start=2010)
-_ = fed.plot()
-```
-
-## VIX from FRED in python
-
-```p
-vix = pdr('vixcls', 'fred', start=2010)
-vix.plot()
-```
-
-. . .
-
-```{python}
-
-vix = pdr('vixcls', 'fred', start=2010)
-_ = vix.plot()
-```
-
-
-## CVX PE from Nasdaq Data Link
-
-```{.p code-line-numbers="1-2|3-6|7"}
-import quandl
-quandl.ApiConfig.api_key = "" # paste api key between quote marks
-data = quandl.get_table(
-  'SHARADAR/DAILY',
-  ticker="CVX", 
-  qopts={"columns":["date", "pe"]})
-data.set_index("date").plot()
-```
-
-. . .
-
-```{python}
-import quandl
-quandl.ApiConfig.api_key = "f-5zoU2G4zzHaUtkJ7BY"
-data = quandl.get_table('SHARADAR/DAILY',ticker="CVX", qopts={"columns":["date", "pe"]})
-mpl.rcParams['figure.figsize'] = (16,2.8)
-_ = data.set_index("date").plot()
-```
+- Phone location, ...
 
 ## Monthly returns and characteristics
 
 - We'll use monthly data 2000-2021.
 - Monthly returns
-- 100+ stock characteristics known at the beginning of each month
+- 100+ stock characteristics known at the beginning of each month from
+  - past prices
+  - company financials
+  - analyst forecasts
+  - earnings announcements
+
+#
+
 - Mimic trading monthly
   - Form portfolio at beginning of month
   - Observe returns and changes in characteristics
   - Form new portfolio, ...
-
-
-#
-
 - Variable definitions are in ghz-predictors.xlsx
 - Data is on a SQL server at CloudClusters.net
 
 ## Factor investing
 
-- Factors are stock characteristics for which stocks that share the characteristic
-  - tend to move together
-  -  have had higher average returns than other stocks
-- High ROE is an ingredient in quality factors.
+- Factors are stock characteristics such that
+  - stocks that share characteristics tend to move together
+  - characteristics  predict average returns
+- Value, momentum, profitability, investment rate, volatility, accruals, ...
+
 - [Factor investing at BlackRock](https://www.blackrock.com/us/individual/investment-ideas/what-is-factor-investing){.external target="_blank"}
 - [Factor investing at AQR](https://www.aqr.com/Learning-Center/Systematic-Equities/Systematic-Equities-A-Closer-Look?gclid=Cj0KCQiA_8OPBhDtARIsAKQu0gZS3uj9A0fdCN5eB_P-uUfY0VWr2uY9MW503bgPnO7DbQeVr2_WlxkaAlwhEALw_wcB){.external target="_blank"}
+- [Gu, Kelly, and Xiu, 2021](https://www.dropbox.com/s/mmg4del1r0g18li/Gu_Kelly_Xiu_RFS_2020%20Asset%20Pricing%20via%20Machine%20Learning.pdf?dl=1)
+
+## Overview of machine learning
+
+- What do we want to predict?
+  - Return?
+  - Return minus average return?
+  - Rank of return (1, 2, 3, ...)?
+  - Whether return will be in top, middle, bottom?  Or deciles?
+- What predictors do we want to use?
+- What model do we want to use?
+
+## Some models
+
+- Forests
+  - Random forests
+  - Boosting
+- Neural networks
+- Linear regression and variants

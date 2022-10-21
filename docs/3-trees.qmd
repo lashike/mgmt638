@@ -19,23 +19,7 @@ format:
     incremental: true
 ---
 
-## Overview
 
-- What do we want to predict?
-  - Return?
-  - Return minus average return?
-  - Rank of return (1, 2, 3, ...)?
-  - Whether return will be in top, middle, bottom?  Or deciles?
-- What predictors do we want to use?
-- What model do we want to use?
-
-## Some models
-
-- Forests
-  - Random forests
-  - Boosting
-- Neural networks
-- Penalized regression
 
 ## A decision tree
 
@@ -69,13 +53,35 @@ Prediction in each cell is the plurality class (for classification) or the cell 
   - Minimize sum of absolute errors instead, or
   - Choose target variable that does not have outliers
 
+## Data
+
+- Monthly data in SQL database
+- 100+ predictors described in ghz-predictors.xlsx
 
 
-## Get some data
+## SQL 
 
-. . . 
+- select [columns or operations on columns] from [table] 
+- join [another table] on [variables to match on]
+- where [select rows based on conditions]
+- order by [columns to sort on]
 
-Create connection to SQL database as before.  Then ...
+## Connect with python
+
+```{.p}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "" # paste password between quote marks
+database = "ghz"
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+conn = create_engine(string).connect()
+```
+
+## Example: ROEQ  and mom12m in 2021-01
 
 . . .
 
