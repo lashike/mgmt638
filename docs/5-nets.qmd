@@ -194,27 +194,3 @@ Save model:
 from joblib import dump
 dump(model, "net1.joblib")
 ```
-
-## Sorts
-
-. . .
-
-Sort based on predictions and compute portfolio returns (in sample):
-
-. . .
-
-```p
-prnk = model.predict(X)
-data['quintile'] = pd.qcut(prnk, 5, labels=range(1,6))
-rets = data.groupby('quintile').ret.mean()
-rets
-```
-
-. . .
-
-```{python}
-prnk = model.predict(X)
-data['quintile'] = pd.qcut(prnk, 5, labels=range(1,6))
-rets = data.groupby('quintile').ret.mean()
-rets
-```

@@ -170,38 +170,6 @@ x = np.array([.1, .4]).reshape(1,2)
 model.predict(x)
 ```
 
-## Sorts
-
-. . .
-
-Sort based on predictions and compute portfolio returns (in sample):
-
-. . .
-
-```p
-prnk = model.predict(X)
-data['quintile'] = pd.qcut(prnk, 5, labels=range(1,6))
-rets = data.groupby('quintile').ret.mean()
-rets
-```
-
-. . .
-
-```{python}
-prnk = model.predict(X)
-data['quintile'] = pd.qcut(prnk, 5, labels=range(1,6))
-rets = data.groupby('quintile').ret.mean()
-rets
-```
-
-## Still to do
-
-- We need to evaluate performance out of sample.
-  - Include prediction as part of a portfolio strategy.
-  - Backtest the strategy.
-- Fit over multiple months (past months in backtest).
-- Include more predictors.
-- Implement a strategy for choosing max_depth and deciding whether to predict returns, ranks, classes, or ...
 
 ## Saving and loading models
 
