@@ -18,7 +18,7 @@
     "href": "assignment1.html",
     "title": "",
     "section": "",
-    "text": "The goal of this exercise is to see if high-momentum stocks beat low-momentum stocks on average.\nUsing the data from the SQL database, sort stocks each month into deciles based on 12-month momentum (mom12m), compute the return of each decile portfolio each month, and average the returns of the decile portfolios across months.\nSubmit your Jupyter notebook to Canvas."
+    "text": "Fit a decision tree regressor using the 2021-01 data for roeq, mom12m, and bm. Use rnk as the target variable. Set max_depth=2. Plot the tree.\nSubmit a jupyter notebook with your code and the plot."
   },
   {
     "objectID": "assignment5.html",
