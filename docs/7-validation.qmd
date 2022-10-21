@@ -139,3 +139,70 @@ Later:
 forest = load("forest2.net")
 ```
 
+#
+
+```{python}
+from sqlalchemy import create_engine
+import pymssql
+import pandas as pd
+
+server = "mssql-82792-0.cloudclusters.net:16272"
+username = "user"
+password = "RiceOwls1912" # paste password between quote marks
+database = "ghz"
+
+string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
+
+conn = create_engine(string).connect()
+
+data = pd.read_sql(
+    """
+    select ticker, date, ret, roeq, mom12m
+    from data
+    where date='2021-01'
+    """, 
+    conn
+)
+data = data.dropna()
+data['rnk'] = data.ret.rank(pct=True)
+```
+
+#
+
+```{python}
+from sklearn.preprocessing import QuantileTransformer
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.pipeline import make_pipeline
+
+transform = QuantileTransformer(
+    output_distribution="normal"
+)
+poly = PolynomialFeatures(degree=2)
+model = RandomForestRegressor(
+   random_state=0
+)
+pipe = make_pipeline(
+  transform, 
+  poly,
+  model
+)
+
+from sklearn.model_selection import GridSearchCV
+param_grid = {
+    "randomforestregressor__max_depth": [4, 6, 8]
+}
+
+cv = GridSearchCV(
+  pipe, 
+  param_grid=param_grid
+)
+
+X = data[["roeq", "mom12m"]]
+y = data["rnk"]
+
+cv.fit(X, y)
+
+from joblib import dump
+dump(cv, "forest2.net")
+```
