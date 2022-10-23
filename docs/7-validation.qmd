@@ -99,8 +99,9 @@ pipe = make_pipeline(
 
 
 - Example: evaluate depths of 4, 6, and 8. 
-- We have to specify what part of the pipeline that the hyperparameters belong to.
-- Name in lowercase.  Double underscore between name and parameter name.
+- Specify the part of the pipeline that the hyperparameters belong to.
+  - Name in lowercase.  
+  - Double underscore between name and parameter name.
 
 . . .
 
@@ -125,7 +126,7 @@ X = data[["roeq", "mom12m"]]
 y = data["rnk"]
 
 cv.fit(X, y)
-dump(cv, "forest2.net")
+dump(cv, "forest2.joblib")
 ```
 
 . . .
@@ -136,10 +137,8 @@ Later:
 . . .
 
 ```p
-forest = load("forest2.net")
+forest = load("forest2.joblib")
 ```
-
-#
 
 ```{python}
 from sqlalchemy import create_engine
@@ -159,7 +158,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )
@@ -167,7 +166,6 @@ data = data.dropna()
 data['rnk'] = data.ret.rank(pct=True)
 ```
 
-#
 
 ```{python}
 from sklearn.preprocessing import QuantileTransformer
@@ -185,6 +183,7 @@ model = RandomForestRegressor(
 pipe = make_pipeline(
   transform, 
   poly,
+  transform,
   model
 )
 
@@ -204,5 +203,5 @@ y = data["rnk"]
 cv.fit(X, y)
 
 from joblib import dump
-dump(cv, "forest2.net")
+_ = dump(cv, "forest2.joblib")
 ```

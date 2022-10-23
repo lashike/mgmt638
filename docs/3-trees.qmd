@@ -81,7 +81,7 @@ string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + d
 conn = create_engine(string).connect()
 ```
 
-## Example: ROEQ  and mom12m in 2021-01
+## Example: ROEQ  and mom12m in 2021-12
 
 . . .
 
@@ -90,7 +90,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )
@@ -123,7 +123,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )

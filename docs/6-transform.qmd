@@ -76,7 +76,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )
@@ -103,7 +103,7 @@ model = MLPRegressor(
 ```
 
 
-## Example: roeq in 2021-01
+## Example: roeq in 2021-12
 
 . . .
 
@@ -318,7 +318,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )

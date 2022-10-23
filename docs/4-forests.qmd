@@ -89,7 +89,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )

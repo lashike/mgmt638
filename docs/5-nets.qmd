@@ -84,7 +84,7 @@ $$z = b+w_1y_1 + \cdots + w_ny_n$$
 
 ## Example
 
-- Use roeq and mom12m for 2021-01 as before.
+- Use roeq and mom12m for 2021-12 as before.
 - Predict rnk as before.
 - Two hidden layers with 4 nodes in the first and 2 in the second.
 
@@ -124,7 +124,7 @@ data = pd.read_sql(
     """
     select ticker, date, ret, roeq, mom12m
     from data
-    where date='2021-01'
+    where date='2021-12'
     """, 
     conn
 )
