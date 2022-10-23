@@ -53,57 +53,9 @@ Prediction in each cell is the plurality class (for classification) or the cell 
   - Minimize sum of absolute errors instead, or
   - Choose target variable that does not have outliers
 
-## Data
+## Example: ROEQ and MOM12M in 2021-12
 
-- Monthly data in SQL database
-- 100+ predictors described in ghz-predictors.xlsx
-
-
-## SQL 
-
-- select [columns or operations on columns] from [table] 
-- join [another table] on [variables to match on]
-- where [select rows based on conditions]
-- order by [columns to sort on]
-
-## Connect with python
-
-```{.p}
-from sqlalchemy import create_engine
-import pymssql
-import pandas as pd
-
-server = "mssql-82792-0.cloudclusters.net:16272"
-username = "user"
-password = "" # paste password between quote marks
-database = "ghz"
-string = "mssql+pymssql://" + username + ":" + password + "@" + server + "/" + database
-conn = create_engine(string).connect()
-```
-
-## Example: ROEQ  and mom12m in 2021-12
-
-. . .
-
-```{.p code-line-numbers="3-5|1-8|9"}
-data = pd.read_sql(
-    """
-    select ticker, date, ret, roeq, mom12m
-    from data
-    where date='2021-12'
-    """, 
-    conn
-)
-data = data.dropna()
-```
-
-#
-
-```p
-data.info()
-```
-
-. . .
+<br>Get data from the SQL database as before
 
 ```{python}
 from sqlalchemy import create_engine
@@ -128,7 +80,6 @@ data = pd.read_sql(
     conn
 )
 data = data.dropna()
-data.info()
 ```
 
 ## Fit a classification tree
@@ -260,24 +211,6 @@ mpl.rcParams["figure.figsize"] = (16,5)
 
 plot_tree(model)
 plt.show()
-```
-
-## Which are the low ROE, high MOM stocks?
-
-```p
-subset = data[
-  (data.roeq<=-0.181) & (data.mom12m>1.672)
-]
-subset
-```
-
-. . .
-
-```{python}
-subset = data[
-  (data.roeq<=-0.181) & (data.mom12m>1.672)
-]
-subset
 ```
 
 ## Predicting ranks

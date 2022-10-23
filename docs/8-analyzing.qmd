@@ -138,7 +138,7 @@ data.tail(3)
 - What is the model choosing?
 - Many different ways to try to answer this.  Let's do this:
   - Standardize characteristics as percentile ranks, so min is 0, max is 1, median is 0.5, etc.
-  - Create boxplots for top stocks.
+  - Create boxplots and histograms for top and bottom stocks.
 
 . . .
 

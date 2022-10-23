@@ -1,18 +1,18 @@
 [1. Data and Factors](1-data.html)
 
-[2. Trees](3-trees.html)
+[2. Exploratory Data Analysis](2-explore.html)
 
-[3. Random Forests](4-forests.html)
+[3. Trees](3-trees.html)
 
-[4. Neural Nets](5-nets.html)
+[4. Random Forests](4-forests.html)
 
-[5. Transforming Data Features](6-transform.html)
+[5. Neural Nets](5-nets.html)
 
-[6. Validating Hyperparameters](7-validation.html)
+[6. Transforming Data Features](6-transform.html)
 
-[7. Analyzing Stock Picks](8-analyzing.html)
+[7. Validating Hyperparameters](7-validation.html)
 
-[8. Combination Forecasts](9-combinations.html)
+[8. Analyzing Stock Picks](8-analyzing.html)
 
 [9. Trade Filters](10-trading.html)
 
