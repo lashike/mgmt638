@@ -153,13 +153,13 @@ R-squared:
 . . .
 
 ```p
-model.score(X,y)
+model.score(X, y)
 ```
 
 . . .
 
 ```{python}
-model.score(X,y)
+model.score(X, y)
 ```
 
 . . .
