@@ -5,3 +5,5 @@
 [4. Forests](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/4-forests.ipynb){.external target="_blank"}
 
 [5. Nets](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/5-nets.ipynb){.external target="_blank"}
+
+[6. Transforming Features](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/6-transforming.ipynb){.external target="_blank"}
