@@ -1,0 +1,1 @@
+[2. Exploratory Data Analysis](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/2-exploring.ipynb){.external target="_blank"}

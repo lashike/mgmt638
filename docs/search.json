@@ -18,7 +18,7 @@
     "href": "assignment1.html",
     "title": "",
     "section": "",
-    "text": "Fit a decision tree regressor using the 2021-01 data for roeq, mom12m, and bm. Use rnk as the target variable. Set max_depth=2. Plot the tree.\nSubmit a jupyter notebook with your code and the plot."
+    "text": "Download book-to-market (bm) for 2021-12 from the SQL database and compute summary statistics.\nSubmit a jupyter notebook with your code that shows the summary statistics."
   },
   {
     "objectID": "assignment5.html",
@@ -54,5 +54,12 @@
     "title": "",
     "section": "",
     "text": "Assignment 2\nAssignment 3\nAssignment 4\nAssignment 5"
+  },
+  {
+    "objectID": "notebooks.html",
+    "href": "notebooks.html",
+    "title": "",
+    "section": "",
+    "text": "2. Exploratory Data Analysis"
   }
 ]
