@@ -1,1 +1,7 @@
 [2. Exploratory Data Analysis](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/2-exploring.ipynb){.external target="_blank"}
+
+[3. Trees](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/3-trees.ipynb){.external target="_blank"}
+
+[4. Forests](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/4-forests.ipynb){.external target="_blank"}
+
+[5. Nets](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/5-nets.ipynb){.external target="_blank"}

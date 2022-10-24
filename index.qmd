@@ -1,7 +1,5 @@
 ## MGMT 638<br>Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
 
-[Python Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
-
 <hr>
 
 #### Instructor
