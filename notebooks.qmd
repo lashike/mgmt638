@@ -7,3 +7,7 @@
 [5. Nets](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/5-nets.ipynb){.external target="_blank"}
 
 [6. Transforming Features](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/6-transforming.ipynb){.external target="_blank"}
+
+[7. Validating Hyperparameters](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/7-validation.ipynb){.external target="_blank"}
+
+[8. Analyzing Stock Picks](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/8-analyzing.ipynb){.external target="_blank"}
