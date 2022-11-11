@@ -1,5 +1,5 @@
 #### Assignment 3<br>MGMT 638<br>Data Driven Investments: Equity<br>Jones Graduate School of Business<br>Rice University<br>Fall 2022
 
-Get the 2021-12 data: ret, roeq, mom12m, and bm.  Define rnk from ret as usual.  Create a pipeline with transform1, poly, transform1, and model, where you define the model as MLPRegressor(random_state=0).  Define a parameter grid with hidden layer sizes of (16, 8, 4, 2) and (8, 4, 2).  Define cv = GridSearchCV, inputting the pipeline and parameter grid.  Fit cv to (X, y) where X is roeq, mom12m, and bm from the 2021-12 data and y is rnk from the 2021-12 data.  Compute cv.score(X, y) for the same X and y that you fit to.  Submit your Jupyter notebook.
+Get the 2021-12 data: ret, roeq, mom12m, and bm.  Define rnk from ret as usual.  Create a pipeline with transform1, poly, transform2, and model, where you define the model as MLPRegressor(random_state=0).  Define a parameter grid with hidden layer sizes of (16, 8, 4, 2) and (8, 4, 2).  Define cv = GridSearchCV, inputting the pipeline and parameter grid.  Fit cv to (X, y) where X is roeq, mom12m, and bm from the 2021-12 data and y is rnk from the 2021-12 data.  Compute cv.score(X, y) for the same X and y that you fit to.  Submit your Jupyter notebook.
 
 

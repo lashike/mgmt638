@@ -17,3 +17,35 @@ format:
     theme: [solarized, 721.scss]
     incremental: true
 ---
+
+## Evolution of a long portfolio
+
+- Select desired number of stocks.  Plan to equally weight (for example).
+- Initially rank stocks.  Buy appropriate number of shares of top stocks.
+- Spreadsheet 0: ranks, current prices, number of shares to buy
+- Monitor:
+  - Prices changed.  No longer equally weighted.
+  - Ranks changed.  No longer holding just top stocks.
+  - What trades to make?
+
+## Toy example
+
+- 5 stocks.  Initially invest ~20% in each.  Small cash balance.
+- Monitor:
+  - Spreadsheet 1: # shares, current price, market values of positions
+  - Plus cash balance is current portfolio value
+  - Spreadsheet 2: new ranks
+
+## First decision: what to sell
+
+- Sell all shares if new rank is too low
+- Sell some shares if new weight is too high
+- Maybe sell some shares if new rank is low but not too low?
+
+## Second decision: what to buy
+
+- Selling shares raises cash.  Plus prior cash balance.
+- Want to invest all cash.
+- Start with best stocks based on new ranking
+  - If not holding, invest to 20%
+  - If holding and weight < 20%, buy additional shares?
