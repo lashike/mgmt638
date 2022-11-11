@@ -18,34 +18,40 @@ format:
     incremental: true
 ---
 
-## Evolution of a long portfolio
+## Setting up a long portfolio
 
 - Select desired number of stocks.  Plan to equally weight (for example).
-- Initially rank stocks.  Buy appropriate number of shares of top stocks.
-- Spreadsheet 0: ranks, current prices, number of shares to buy
-- Monitor:
-  - Prices changed.  No longer equally weighted.
-  - Ranks changed.  No longer holding just top stocks.
-  - What trades to make?
 
-## Toy example
+- Spreadsheet 1: ranks of stocks (from train + predict)
+- Spreadsheet 2: up-to-date prices for stocks in universe
+- Spreadsheet 3: 
+  - current # shares (at start, = 0), 
+  - desired # shares (at start, = portfolio value $\times$ desired weight / price)
+  - trades to make (at start, = desired # shares)
+- Spreadsheet 4: shareholdings after trades
 
-- 5 stocks.  Initially invest ~20% in each.  Small cash balance.
-- Monitor:
-  - Spreadsheet 1: # shares, current price, market values of positions
-  - Plus cash balance is current portfolio value
-  - Spreadsheet 2: new ranks
+## Monitoring a long portfolio
+
+- Update cash = cash + interest
+- New spreadsheet 1: ranks changed, no longer holding just top stocks
+- New spreadsheet 2: prices changed, no longer equally weighted
+- Need new spreadsheet 3: what trades to make?
 
 ## First decision: what to sell
 
 - Sell all shares if new rank is too low
-- Sell some shares if new weight is too high
-- Maybe sell some shares if new rank is low but not too low?
+- Sell some shares if rank is still high but new weight is too high
+
 
 ## Second decision: what to buy
 
-- Selling shares raises cash.  Plus prior cash balance.
-- Want to invest all cash.
+- Cash = prior cash balance + proceeds from sales
 - Start with best stocks based on new ranking
-  - If not holding, invest to 20%
-  - If holding and weight < 20%, buy additional shares?
+  - If not holding, invest to target weight
+  - If holding and weight < target, buy additional shares?
+
+## Coding goal
+
+- Read spreadsheets 4, 1 and 2
+- Compute spreadsheet 3 (desired trades)
+- Update spreadsheet 4 (holdings after trades)
