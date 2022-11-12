@@ -1,5 +1,5 @@
----
-title:  "Trade Filters"
+-=---
+title:  "Trading"
 author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
 execute:
   echo: false
@@ -18,40 +18,40 @@ format:
     incremental: true
 ---
 
-## Setting up a long portfolio
+## Workflow
 
-- Select desired number of stocks.  Plan to equally weight (for example).
+- Positions spreadsheet (initially all zero)
+- Ranks spreadsheet (from train and predict)
+- Prices spreadsheet (most recent stock prices)
+- (Positions + Ranks + Prices) $\rightarrow$ Trades spreadsheet
+- (Positions + Trades) $\rightarrow$ updated Positions 
 
-- Spreadsheet 1: ranks of stocks (from train + predict)
-- Spreadsheet 2: up-to-date prices for stocks in universe
-- Spreadsheet 3: 
-  - current # shares (at start, = 0), 
-  - desired # shares (at start, = portfolio value $\times$ desired weight / price)
-  - trades to make (at start, = desired # shares)
-- Spreadsheet 4: shareholdings after trades
+## Initial long portfolio
 
-## Monitoring a long portfolio
+- Cash to invest
+- Select numstocks, equal weight (for example)
+- (cash/numstocks) = $ per stock
+- Ranks $\rightarrow$ top numstocks
+- Prices $\rightarrow$ shares = $ per stock / price
+- $\Rightarrow$ Trades $\Rightarrow$ Positions
+
+## Trading
 
 - Update cash = cash + interest
-- New spreadsheet 1: ranks changed, no longer holding just top stocks
-- New spreadsheet 2: prices changed, no longer equally weighted
-- Need new spreadsheet 3: what trades to make?
+- New Ranks (no longer holding just top stocks)
+- New Prices (no longer equally weighted)
+- Need to decide how (Positions + Ranks + Prices) $\rightarrow$ Trades
 
-## First decision: what to sell
+## Example
 
-- Sell all shares if new rank is too low
-- Sell some shares if rank is still high but new weight is too high
+- If new rank is below some threshold, sell all shares
+- Otherwise, if new weight is above some threshold, sell some shares
+- Invest updated cash + proceeds from sales as
+  - Start at top rank and work down, buying to get to target rank, until funds are exhausted.
 
+## Code
 
-## Second decision: what to buy
+- Read Positions, Ranks, Prices, and updated cash
+- Create Trades
+- Update Positions
 
-- Cash = prior cash balance + proceeds from sales
-- Start with best stocks based on new ranking
-  - If not holding, invest to target weight
-  - If holding and weight < target, buy additional shares?
-
-## Coding goal
-
-- Read spreadsheets 4, 1 and 2
-- Compute spreadsheet 3 (desired trades)
-- Update spreadsheet 4 (holdings after trades)
