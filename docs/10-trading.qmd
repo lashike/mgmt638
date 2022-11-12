@@ -1,4 +1,4 @@
--=---
+---
 title:  "Trading"
 author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
 execute:
@@ -47,11 +47,16 @@ format:
 - If new rank is below some threshold, sell all shares
 - Otherwise, if new weight is above some threshold, sell some shares
 - Invest updated cash + proceeds from sales as
-  - Start at top rank and work down, buying to get to target rank, until funds are exhausted.
+  - Calculate how many to buy, dividing cash equally, and not exceeding target weight
+  - Allocate funds among top stocks not currently owned
 
-## Code
+## Example
 
-- Read Positions, Ranks, Prices, and updated cash
-- Create Trades
-- Update Positions
+- 26 stocks in universe, want to hold 5, target weight = 20%
+- $100,000 initial investment
+
+```{.p code-line-numbers="1|2"}
+ranks = pd.read_excel("files/ranks0.xlsx", index_col=0)
+prices = pd.read_excel("files/prices0.xlsx", index_col=0)
+```
 
