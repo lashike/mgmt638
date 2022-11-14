@@ -1,0 +1,212 @@
+---
+title:  "Targets and Industries"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#404040;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+  cache: true
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+## Transforming the target variable
+
+- We should usually deal with outliers for the target variable.
+- We've used ranks, but there are more systematic ways.
+- For example, we could use QuantileTransformer.
+- When we predict with the model, we get "untransformed" predictions (predicting original target)
+
+## Usual example
+
+- roeq and mom12m in 2021-12
+- RandomForestRegressor
+- transform1, poly, transform2 
+- Use GridSearchCV to find max_depth
+
+## Changes
+
+- Instead of model=RandomForestRegressor, use
+model = TransformedTargetRegressor(...)
+  - input1: regressor
+  - input2: transformer
+- param_grid = {"transformedtargetregressor__regressor__max_depth": [4, 6, 8]}
+- pipe = ... (as before)
+- cv = ... (as before)
+
+#
+
+```{.p code-line-numbers="1|3-5|7-10"}
+from sklearn.compose import TransformedTargetRegressor
+
+transform3 = QuantileTransformer(
+    output_distribution="normal"
+)
+
+model = TransformedTargetRegressor(
+    regressor=RandomForestRegressor(random_state=0),
+    transformer=transform3
+)
+```
+
+#
+
+```{.p code-line-numbers="1-6|8-10"}
+pipe = make_pipeline(
+    transform1,
+    poly,
+    transform2,
+    model
+)
+
+param_grid = {
+    "transformedtargetregressor__regressor__max_depth": [4, 6, 8]
+}
+```
+
+#
+
+```{.p code-line-numbers="1-4|6-7|9"}
+cv = GridSearchCV(
+    pipe, 
+    param_grid=param_grid
+)
+
+X = data[["roeq", "mom12m"]]
+y = data["ret"]
+
+cv.fit(X, y)
+```
+
+## Exercise
+
+Run GridSearchCV with 
+
+- MLP Regressor, 
+- hidden layer sizes = (16, 8, 4, 2) and (8, 4, 2) , 
+- and a transformed target variable.
+
+## Industries
+
+- Used OneHotEncoder to create dummy variables
+- Let's also use deviations from industry means as predictors
+- E.g., maybe we want to buy stocks with high ROEs relative to their industry rather than just high ROE stocks in general
+
+## Calculating deviations from means
+
+- One industry at a time:
+. . .
+
+```{.p}
+data["roeqx"] = data.groupby("industry").roeq.transform(
+    lambda x: x - x.mean()
+)
+data["mom12mx"] = data.groupby("industry").mom12m.transform(
+    lambda x: x - x.mean()
+)
+```
+
+- Or in a loop:
+
+. . .
+
+```{.p}
+for char in ["roeq", "mom12m"]:
+    data[char+"x"] = data.groupby("industry")[char].transform(
+        lambda x: x - x.mean()
+    )
+```
+
+## Industry momentum
+
+- We could add industry means as additional features.
+- Probably most important for momentum.  Industry momentum seems to be a significant phenomenom.
+- Could compute momentum of industry returns.  But average momentum within the industry is easier and probably close.
+
+. . .
+
+```p
+data["mom12mi"] = data.groupby("industry").mom12m.mean()
+```
+
+## Adding Target Transformation
+
+- Let's do GridSearchCV with dummy variables and a transformed target variable
+- Column transformer for features
+- Target transformer for model
+- Create pipeline
+- Will use slightly different names than in 7a notebook, so regard 7a as obsolete
+
+## Numeric transform
+
+```{.p}
+transform1 = QuantileTransformer(
+    output_distribution="normal"
+)
+transform2 = QuantileTransformer(
+    output_distribution="normal"
+)
+
+poly = PolynomialFeatures(degree=2)
+
+numeric_transform = make_pipeline(
+  transform1,
+  poly,
+  transform2
+)
+```
+
+## Feature Transform
+
+```{.p}
+category_transform = OneHotEncoder()
+
+feature_transform = make_column_transformer(
+  (numeric_transform, ["roeq", "mom12m"]),
+  (category_transform, ["industry"])
+)
+```
+
+
+
+## Pipeline
+
+```{.p}
+transform3 = QuantileTransformer(
+    output_distribution="normal"
+)
+model = TransformedTargetRegressor(
+    regressor=RandomForestRegressor(random_state=0),
+    transformer=transform3
+)
+pipe = make_pipeline(
+  feature_transform,
+  model
+)
+```
+
+## Grid Search CV
+
+```{.p}
+param_grid = {
+    "transformedtargetregressor__regressor__max_depth": [3, 4, 5]
+}
+cv = GridSearchCV(
+  pipe, 
+  param_grid=param_grid
+)
+X = data[["roeq", "mom12m", "roeqx", "mom12mx", "mom12mi", "industry"]]
+y = data["rnk"]
+
+cv.fit(X, y)
+```
+
