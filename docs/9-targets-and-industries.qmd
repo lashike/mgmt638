@@ -171,7 +171,7 @@ numeric_transform = make_pipeline(
 category_transform = OneHotEncoder()
 
 feature_transform = make_column_transformer(
-  (numeric_transform, ["roeq", "mom12m"]),
+  (numeric_transform, ["roeq", "mom12m", "roeqx", "mom12mx", "mom12mi"]),
   (category_transform, ["industry"])
 )
 ```
