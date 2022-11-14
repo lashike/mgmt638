@@ -229,27 +229,19 @@ tickers = ranks[positions==0].sort_values().index.to_list()
   - tick is the first ticker in the list
   - tick is removed from the list (popped off)
 - Want to loop over tickers until cash is exhausted.
-- Use "while loop": while cash >= ...
 
 #
 
-- while loop:
+- Use a "while loop" ($500 is arbitrary):
 
 . . .
 
-```{.p code-line-numbers="1|2|3|4|5"}
-while cash >= weight*equity:
+```{.p code-line-numbers="1|2|3|4|5|7"}
+while cash >= 500:
     tick = tickers.pop(0)
-    trades[tick] = int(weight*equity/prices[tick])
+    dollars = min(cash, weight*equity)
+    trades[tick] = int(dollars/prices[tick])
     cash -= trades[tick]*prices[tick]
-```
-
-- Spend remaining cash on one more stock.
-
-```{.p code-line-numbers="1|2|3-4|6"}
-tick = tickers.pop(0)
-trades[tick] = int(cash/prices[tick])
-cash -= trades[tick]*prices[tick]
 
 positions += trades
 ```
@@ -283,15 +275,22 @@ cash -= (trades*prices).sum()
 
 tickers = ranks[positions==0].sort_values().index.to_list()
 
-while cash >= weight*equity:
+while cash >= 500:
     tick = tickers.pop(0)
-    trades[tick] = int(weight*equity/prices[tick])
+    dollars = min(cash, weight*equity)
+    trades[tick] = int(dollars/prices[tick])
     cash -= trades[tick]*prices[tick]
-
-tick = tickers.pop(0)
-trades[tick] = int(cash/prices[tick])
-cash -= trades[tick]*prices[tick]
 
 positions += trades
 trades
+```
+
+#
+
+Here are the ranks that generated the trades:
+
+. . .
+
+```{python}
+ranks
 ```
