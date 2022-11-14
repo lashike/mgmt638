@@ -14,8 +14,7 @@
 
 [8. Analyzing Stock Picks](8-analyzing.html)
 
-[9. Trade Filters](10-trading.html)
+[9. Targets and Industries](9-targets-and-industries.html)
 
-[10. Backtesting](11-backtesting.html)
+[10. Trading](10-trading.html)
 
-[11. Industries](12-industries.html)

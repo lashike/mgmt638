@@ -20,19 +20,20 @@ format:
 
 ## Workflow
 
-- Positions spreadsheet (initially all zero)
-- Ranks spreadsheet (from train and predict)
-- Prices spreadsheet (most recent stock prices)
-- (Positions + Ranks + Prices) $\rightarrow$ Trades spreadsheet
+- Spreadsheets
+  - Positions (initially all zero)
+  - Ranks (from train and predict)
+  - Prices (most recent stock prices)
+- (Positions + Ranks + Prices) $\rightarrow$ Trades 
 - (Positions + Trades) $\rightarrow$ updated Positions 
 
-## Initial long portfolio
+## Initial portfolio
 
 - Cash to invest
 - Select numstocks, equal weight (for example)
+- From Ranks, get top numstocks
 - (cash/numstocks) = $ per stock
-- Ranks $\rightarrow$ top numstocks
-- Prices $\rightarrow$ shares = $ per stock / price
+- From prices, calculate shares = $ per stock / price
 - $\Rightarrow$ Trades $\Rightarrow$ Positions
 
 ## Trading
@@ -42,21 +43,255 @@ format:
 - New Prices (no longer equally weighted)
 - Need to decide how (Positions + Ranks + Prices) $\rightarrow$ Trades
 
-## Example
+## Possible strategy
 
 - If new rank is below some threshold, sell all shares
 - Otherwise, if new weight is above some threshold, sell some shares
 - Invest updated cash + proceeds from sales as
-  - Calculate how many to buy, dividing cash equally, and not exceeding target weight
-  - Allocate funds among top stocks not currently owned
+  - Start with best stock with no current holding
+  - Buy enough shares to hit target weight
+  - Then next best stock, etc., until out of cash
+
+## Python digression
+
+- Suppose **ser** is a pandas series.  What is 
+
+ . . .
+
+ ```p
+ 2*ser
+ ```
+
+- What is
+
+. . .
+
+```p
+2 > 1
+```
+
+ - What is 
+
+. . .
+
+ ```p
+ ser > 1
+ ```
+
+- If **x** is another pandas series with the same index, what is
+
+. . .
+
+```p
+x[ser > 1]
+```
+
+#
+
+- What is
+
+. . .
+
+```p
+10 if 2 > 1 else 20
+```
+
+- If **ser** is a pandas series, what is
+
+. . .
+
+```p
+np.where(ser>1, 10, 20)
+```
 
 ## Example
 
-- 26 stocks in universe, want to hold 5, target weight = 20%
-- $100,000 initial investment
+- 26 stocks in universe.  Current ranks and prices:
 
-```{.p code-line-numbers="1|2"}
+. . .
+
+```{.p code-line-numbers="1-2|4-5"}
 ranks = pd.read_excel("files/ranks0.xlsx", index_col=0)
+ranks = ranks.squeeze()
+
 prices = pd.read_excel("files/prices0.xlsx", index_col=0)
+prices = prices.squeeze()
 ```
 
+- $100,000 to invest, want to hold 5 stocks equally weighted
+
+. . .
+
+```p
+equity = cash = 100000
+weight = 0.2
+```
+
+## Initial portfolio
+
+. . .
+
+```{.p code-line-numbers=1|2|4|5|7|8}
+buys = ranks<=5
+buyamounts = (weight*equity/prices).astype(int)
+
+trades = np.where(buys, buyamounts, 0)
+trades = pd.Series(trades, index=ranks.index)
+
+positions = trades
+cash -= (trades*prices).sum()
+```
+
+#
+
+Here are the trades:
+
+. . .
+
+```{python}
+import pandas as pd
+import numpy as np
+
+ranks = pd.read_excel("../files/ranks0.xlsx", index_col=0)
+ranks = ranks.squeeze()
+
+prices = pd.read_excel("../files/prices0.xlsx", index_col=0)
+prices = prices.squeeze()
+
+equity = cash = 100000
+weight = 0.2
+
+buys = ranks<=5
+buyamounts = (weight*equity/prices).astype(int)
+
+trades = np.where(buys, buyamounts, 0)
+trades = pd.Series(trades, index=ranks.index)
+
+positions = trades
+cash -= (trades*prices).sum()
+trades
+```
+
+
+## Update ranks, prices, and equity
+
+- Update ranks and prices (normally run model and check prices):
+
+. . .
+
+```p
+ranks = pd.read_excel("files/ranks1.xlsx", index_col=0)
+ranks = ranks.squeeze()
+
+prices = pd.read_excel("files/prices1.xlsx", index_col=0)
+prices = prices.squeeze()
+```
+
+- Update portfolio value (normally would update from broker):
+
+. . .
+
+```{.p code-line-numbers="1|2"}
+equity = cash + (positions*prices).sum()
+weights = (positions*prices) / equity
+```
+
+## Sells
+
+. . .
+
+```{.p code-line-numbers="1-2|3|5-6|7|9|10"}
+sellall = (ranks>10) & (positions !=0)
+sellallamounts = positions
+trades = - np.where(sellall, sellallamounts, 0)
+
+sellsome = (ranks<=10) & (weights>0.2)
+sellsomeamounts = (equity*(weights-0.2)/prices).astype(int)
+trades -= np.where(sellsome, sellsomeamounts, 0)
+
+trades = pd.Series(trades, index=ranks.index)
+cash -= (trades*prices).sum()
+```
+
+
+## Buys
+
+- Would like a list of the tickers not currently owned, starting with best stock.  
+- Can get it like this:
+
+. . .
+
+```p
+tickers = ranks[positions==0].sort_values().index.to_list()
+```
+
+- What does tick = tickers.pop(0) do?
+  - tick is the first ticker in the list
+  - tick is removed from the list (popped off)
+- Want to loop over tickers until cash is exhausted.
+- Use "while loop": while cash >= ...
+
+#
+
+- while loop:
+
+. . .
+
+```{.p code-line-numbers="1|2|3|4|5"}
+while cash >= weight*equity:
+    tick = tickers.pop(0)
+    trades[tick] = int(weight*equity/prices[tick])
+    cash -= trades[tick]*prices[tick]
+```
+
+- Spend remaining cash on one more stock.
+
+```{.p code-line-numbers="1|2|3-4|6"}
+tick = tickers.pop(0)
+trades[tick] = int(cash/prices[tick])
+cash -= trades[tick]*prices[tick]
+
+positions += trades
+```
+
+#
+
+Here are the trades:
+
+. . .
+
+```{python}
+ranks = pd.read_excel("../files/ranks1.xlsx", index_col=0)
+ranks = ranks.squeeze()
+
+prices = pd.read_excel("../files/prices1.xlsx", index_col=0)
+prices = prices.squeeze()
+
+equity = cash + (positions*prices).sum()
+weights = (positions*prices) / equity
+
+sellall = (ranks>10) & (positions !=0)
+sellallamounts = positions
+sellsome = (ranks<=10) & (weights>0.2)
+sellsomeamounts = (equity*(weights-0.2)/prices).astype(int)
+
+trades = - np.where(sellall, sellallamounts, 0)
+trades -= np.where(sellsome, sellsomeamounts, 0)
+trades = pd.Series(trades, index=ranks.index)
+
+cash -= (trades*prices).sum()
+
+tickers = ranks[positions==0].sort_values().index.to_list()
+
+while cash >= weight*equity:
+    tick = tickers.pop(0)
+    trades[tick] = int(weight*equity/prices[tick])
+    cash -= trades[tick]*prices[tick]
+
+tick = tickers.pop(0)
+trades[tick] = int(cash/prices[tick])
+cash -= trades[tick]*prices[tick]
+
+positions += trades
+trades
+```

@@ -11,7 +11,7 @@
     "href": "slides.html",
     "title": "",
     "section": "",
-    "text": "2. Exploratory Data Analysis\n3. Trees\n4. Random Forests\n5. Neural Nets\n6. Transforming Data Features\n7. Validating Hyperparameters\n8. Analyzing Stock Picks\n9. Trade Filters\n10. Backtesting\n11. Industries"
+    "text": "2. Exploratory Data Analysis\n3. Trees\n4. Random Forests\n5. Neural Nets\n6. Transforming Data Features\n7. Validating Hyperparameters\n8. Analyzing Stock Picks\n9. Targets and Industries\n10. Trading"
   },
   {
     "objectID": "assignment1.html",
@@ -60,6 +60,6 @@
     "href": "notebooks.html",
     "title": "",
     "section": "",
-    "text": "3. Trees\n4. Forests\n5. Nets\n6. Transforming Features\n7. Validating Hyperparameters\n8. Analyzing Stock Picks"
+    "text": "3. Trees\n4. Forests\n5. Nets\n6. Transforming Features\n7. Validating Hyperparameters\n8. Analyzing Stock Picks\n9. Targets and Industries\n10. Trading"
   }
 ]
