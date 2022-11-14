@@ -186,7 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Repeat #1–#3 for the 2022-01 data.</li>
 <li>Calculate X and y for the 2022-01 data as in #6.</li>
 <li>Calculate cv.score(X, y) for the 2022-01 X and y.</li>
+<li>The score in #10 will not look good. But run the following code for the 2022-01 data:</li>
 </ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode p code-with-copy"><code class="sourceCode pascal"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data["predict"] = cv.predict(X)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data["quintile"] = pd.qcut(data.predict, <span class="dv">5</span>, labels=range(<span class="dv">1</span>, <span class="dv">6</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data.groupby("quintile").ret.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
