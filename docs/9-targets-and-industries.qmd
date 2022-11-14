@@ -136,7 +136,7 @@ for char in ["roeq", "mom12m"]:
 . . .
 
 ```p
-data["mom12mi"] = data.groupby("industry").mom12m.mean()
+data["mom12mi"] = data.groupby("industry").mom12m.transform("mean")
 ```
 
 ## Two versions: with and without industry dummies
