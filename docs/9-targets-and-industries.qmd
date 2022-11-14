@@ -104,6 +104,7 @@ Run GridSearchCV with
 ## Calculating deviations from means
 
 - One industry at a time:
+
 . . .
 
 ```{.p}
@@ -138,49 +139,13 @@ for char in ["roeq", "mom12m"]:
 data["mom12mi"] = data.groupby("industry").mom12m.mean()
 ```
 
-## Adding Target Transformation
+## Two versions: with and without industry dummies
 
-- Let's do GridSearchCV with dummy variables and a transformed target variable
-- Column transformer for features
-- Target transformer for model
-- Create pipeline
-- Will use slightly different names than in 7a notebook, so regard 7a as obsolete
+- In both versions:
 
-## Numeric transform
+. . .
 
-```{.p}
-transform1 = QuantileTransformer(
-    output_distribution="normal"
-)
-transform2 = QuantileTransformer(
-    output_distribution="normal"
-)
-
-poly = PolynomialFeatures(degree=2)
-
-numeric_transform = make_pipeline(
-  transform1,
-  poly,
-  transform2
-)
-```
-
-## Feature Transform
-
-```{.p}
-category_transform = OneHotEncoder()
-
-feature_transform = make_column_transformer(
-  (numeric_transform, ["roeq", "mom12m", "roeqx", "mom12mx", "mom12mi"]),
-  (category_transform, ["industry"])
-)
-```
-
-
-
-## Pipeline
-
-```{.p}
+```p
 transform3 = QuantileTransformer(
     output_distribution="normal"
 )
@@ -188,25 +153,44 @@ model = TransformedTargetRegressor(
     regressor=RandomForestRegressor(random_state=0),
     transformer=transform3
 )
+```
+
+## Without dummies:
+
+. . .
+
+```p
+pipe = make_pipeline(
+    transform1,
+    poly,
+    transform2,
+    model
+)
+X = data[["roeq", "mom12m", "roeqx", "mom12mx", "mom12mi"]]
+```
+
+## With dummies
+
+. . .
+
+```p
+numeric_transform = make_pipeline(
+  transform1,
+  poly,
+  transform2
+)
+
+category_transform = OneHotEncoder()
+
+feature_transform = make_column_transformer(
+  (numeric_transform, ["roeq", "mom12m", "roeqx", "mom12mx", "mom12mi"]),
+  (category_transform, ["industry"])
+)
+
 pipe = make_pipeline(
   feature_transform,
   model
 )
-```
 
-## Grid Search CV
-
-```{.p}
-param_grid = {
-    "transformedtargetregressor__regressor__max_depth": [3, 4, 5]
-}
-cv = GridSearchCV(
-  pipe, 
-  param_grid=param_grid
-)
 X = data[["roeq", "mom12m", "roeqx", "mom12mx", "mom12mi", "industry"]]
-y = data["rnk"]
-
-cv.fit(X, y)
 ```
-

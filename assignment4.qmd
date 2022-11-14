@@ -5,7 +5,7 @@ Submit a Jupyter notebook.  Copy each question into a Markdown cell and provide 
   1.  Get the 2021-12 data for ret, roeq, mom12m, bm, and siccd.
   2.  Define "industry" using ff49.xlsx.
   3.  Define the deviations from means (roeqx, mom12mx, bmx) and industry momentum (mom12mi).
-  4.  Use TransformedTargetRegressor, OneHotEncoder, and make_column_transformer to create a pipeline as in notebook/slides "9-targets-and-industries"
+  4.  Follow the "without dummies" procedure in  9-targets-and-industries.html
   except that for the model use GradientBoostingRegressor instead of RandomForestRegressor.
   5.  For the parameter grid, use
 
@@ -32,7 +32,7 @@ X = data[[
 y = data["ret"]
 ```
 
-7.  Output cv_bestparams_
+7.  Output cv.best_params
 8.  Repeat #1--#3 for the 2022-01 data.
 9.  Calculate X and y for the 2022-01 data as in #6.
 10.  Calculate cv.score(X, y) for the 2022-01 X and y.

@@ -160,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Get the 2021-12 data for ret, roeq, mom12m, bm, and siccd.</li>
 <li>Define “industry” using ff49.xlsx.</li>
 <li>Define the deviations from means (roeqx, mom12mx, bmx) and industry momentum (mom12mi).</li>
-<li>Use TransformedTargetRegressor, OneHotEncoder, and make_column_transformer to create a pipeline as in notebook/slides “9-targets-and-industries” except that for the model use GradientBoostingRegressor instead of RandomForestRegressor.</li>
+<li>Follow the “without dummies” procedure in 9-targets-and-industries.html except that for the model use GradientBoostingRegressor instead of RandomForestRegressor.</li>
 <li>For the parameter grid, use</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode p code-with-copy"><code class="sourceCode pascal"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">{</span></span>
@@ -182,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>]]</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>y = data["ret"]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="7" type="1">
-<li>Output cv_bestparams_</li>
+<li>Output cv.best_params</li>
 <li>Repeat #1–#3 for the 2022-01 data.</li>
 <li>Calculate X and y for the 2022-01 data as in #6.</li>
 <li>Calculate cv.score(X, y) for the 2022-01 X and y.</li>
