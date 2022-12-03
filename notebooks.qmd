@@ -15,3 +15,5 @@
 [9. Targets and Industries](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/9-targets-and-industries.ipynb){.external target="_blank"}
 
 [10. Trading](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/10-trading.ipynb){.external target="_blank"}
+
+[11. Backtesting](https://githubtocolab.com/kerryback/2022-638-binder/blob/main/11-backtesting.ipynb){.external target="_blank"}
