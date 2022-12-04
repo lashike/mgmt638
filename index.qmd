@@ -1,10 +1,5 @@
-## MGMT 638<br>Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
+## Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
 
-<hr>
-
-[Code Binder](https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD)
-
-<hr>
 
 #### Instructor
 
@@ -38,9 +33,9 @@ We will use python throughout the course.  Many of the things we want to discuss
 
 #### Grading
 
-The course deliverables are five  individual assignments and a group project due the last day of class (Dec 5).  The individual assignments are small assignments intended to ensure that everyone is keeping up.  The group project is to train and evaluate a stock prediction model, deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models, and make a presentation to the class.
+The course deliverables are four individual assignments and a group project due the last day of class (Dec 5).  The individual assignments are small assignments intended to ensure that everyone is keeping up.  The group project is to train and evaluate a stock prediction model, deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models, and make a presentation to the class.
 
-Each of the individual assignments will contribute 10% of the final course grade.  The group project will contribute 40%, and group peer evaluations will contribute 10%.
+Each of the individual assignments will contribute 12.5% of the final course grade.  The group project will contribute 40%, and group peer evaluations will contribute 10%.
 
 The assignment due dates are
 
@@ -48,7 +43,6 @@ The assignment due dates are
 - Monday, Nov. 7
 - Monday, Nov 14
 - Monday, Nov 21
-- Wednesday, Nov 30
 
 
 #### Data-Driven Investments Sequence

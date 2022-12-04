@@ -10,32 +10,32 @@ project:
     - assignment2.qmd
     - assignment3.qmd
     - assignment4.qmd
-    - assignment5.qmd
-
+   
     
 website:
   title: ""
   search: false  
   navbar:
-    background: "#00205B"
     search: false
-    left:
-       
-      - text: "Home"
-        file: index.qmd
+    title: MGMT 638
 
-      - text: "Slide Decks"
+    right:
+       
+      - text: Code Binder
+        href: https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD
+
+      - text: Slide Decks
         file: slides.qmd
 
-      - text: "Notebooks"
-        file: notebooks.qmd
-
-      - text: "Assignments"
+      - text: Assignments
         file: assignments.qmd
+
+      - text: Home
+        file: index.qmd
     
 format: 
   html:
-    theme: cyborg
+    theme: cosmo
     scss: styles.css
     
 
