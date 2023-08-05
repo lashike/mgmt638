@@ -1,4 +1,4 @@
-## Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2023
+## Data-Driven Investments: Equity<br>Rice University JGSB<br>Fall 2023
 
 
 #### Instructor
@@ -14,15 +14,15 @@ Room 317, 2:15 -- 3:45, 10/23/2023 -- 12/4/2023
 
 #### Course Description   
 
-This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  The basic elements are: return prediction, correlation prediction, portfolio optimization, and backtesting.  One form of quantitative investing is called factor investing or smart beta investing.  This has become increasingly popular.  For example, momentum is one factor, and the ETF Database recently listed more than 30 equity ETFs based on momentum.  In recent years, machine learning methods have been used extensively to find the best combination of factors.  Also, many factors have been developed recently from alternative data sources using quantitative methods, including machine-learning based sentiment analysis and image analysis.
+This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  The basic elements are: return prediction, correlation prediction, portfolio optimization, and backtesting.  One form of quantitative investing is called factor investing or smart beta investing.  This has become increasingly popular.  For example, momentum is one factor, and etfdb.com recently listed more than 30 equity ETFs based on momentum.  In recent years, machine learning methods have been used extensively to find the best combination of factors.  Also, many factors have been developed recently from alternative data sources using quantitative methods, including machine-learning based sentiment analysis and image analysis.
 
 In the past, many students in this course have not been planning on careers in investment management but instead were mainly interested in gaining more experience in quantitative methods.  The course is designed with that in mind.  We will spend time discussing machine learning methods and other data analysis topics and learn how to apply the concepts in python.  I do not expect you to be proficient in python.  The only real requirement is that you know how to open a Jupyter notebook and execute cells.
 
-ChatGPT makes it much easier to use python. Throughout the course, we will generate python code by using ChatGPT either at the OpenAI website or via an extension to VS Code.  One skill you should develop in the course is to become a good "prompt engineer."
+ChatGPT makes it much easier to use python. Throughout the course, we will generate python code by using ChatGPT either at the OpenAI website or via an extension to VS Code.  One skill you will develop in the course is to become a good "prompt engineer."
 
 
 
-#### Course Schedule
+#### Course Schedule (by day)
 
 1. Overview of quant investing and software tools
 2. Time series models and return predictability
@@ -49,7 +49,7 @@ The individual assignments will account for half of the course grade.  The group
 
 #### Data-Driven Investments Sequence
 
-This course is a prerequisite for a full-semester spring course called *Data Driven Investments Lab.*  It will be co-taught by Kevin Crotty and myself.  The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies.  Strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.  
+This course is a prerequisite for a full-semester spring course called *Data Driven Investments Lab.*  It will be co-taught by Kevin Crotty and myself.  The lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies.  Strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.  
 
 #### CQA Competition
 
