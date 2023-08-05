@@ -1,4 +1,4 @@
-## Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2022
+## Data-Driven Investments: Equity<br>JGSB, Rice University<br>Fall 2023
 
 
 #### Instructor
@@ -8,51 +8,49 @@
 J. Howard Creekmore Professor of Finance and Professor of Economics<br>
 <a href="mailto:kerryback@gmail.com">kerryback@gmail.com</a>
 
-   
+#### Class Meeting
+
+Room 317, 2:15 -- 3:45, 10/23/2023 -- 12/4/2023
+
 #### Course Description   
 
-This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  Many different data sources are used to generate trading signals.  In this course, we will illustrate concepts using predictors formed from corporate fundamentals, past prices, analyst forecasts, and earnings surprises.  We will discuss the full process of quantitative management, from preliminary analysis of signals to training models to backtesting and strategy assessment.  
+This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  The basic elements are: return prediction, correlation prediction, portfolio optimization, and backtesting.  In the past, many students in this course have not been planning on a career in investment management but instead were mainly interested in gaining more experience in quantitative methods.  The course is designed with that in mind.  We will spend time discussing machine learning methods and other data analysis topics and learn how to apply the concepts in python.  I do not expect you to be proficient in python.  The main requirement is that you know how to open a Jupyter notebook and execute cells.
 
-We will use python throughout the course.  Many of the things we want to discuss simply can't be implemented in Excel.  Proficiency in programming is not at all expected.  Code snippets will be provided that can be modified and used for assignments.  An important part of the course is exploring different machine learning models for return prediction.  In python, this is almost "point and click" -- three short lines of code will define a model, train a model, and predict using a model.
+ChatGPT makes it much easier to use python. Throughout the course, we will generate python code by using ChatGPT either at the OpenAI website or via an extension to VS Code.  So, one skill you should develop in the course is to become a good "prompt engineer."
+
 
 
 #### Course Outline
 
-1. Data and factors
-2. Exploratory data analysis
-3. Decision trees
-4. Random forests
-5. Neural nets
-6. Transforming data features
-7. Validation of hyperparameters
-8. Analyzing stock picks
-9. Trade filters
-10. Backtesting
-11. Industries: to trade or not to trade?
+1. Overview of quant investing and software tools
+2. Time series models and return predictability
+3. Time series models for pairs trading
+4. Machine learning for classification
+5. Machine learning for regression and data pipelines
+6. Neural networks
+7. Cross validation of hyperparameters
+8. Factor models for return prediction
+9. Factor models for risk prediction
+10. Portfolio optimization
+11. Backtesting
+12. Return attribution
+
 
 
 #### Grading
 
-The course deliverables are four individual assignments and a group project due the last day of class (Dec 5).  The individual assignments are small assignments intended to ensure that everyone is keeping up.  The group project is to train and evaluate a stock prediction model, deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models, and make a presentation to the class.
-
-Each of the individual assignments will contribute 12.5% of the final course grade.  The group project will contribute 40%, and group peer evaluations will contribute 10%.
-
-The assignment due dates are
-
-- Monday, Oct. 31
-- Monday, Nov. 7
-- Monday, Nov 14
-- Monday, Nov 21
-
+The course deliverables are weekly individual assignments and a take-home exam.  The individual assignments involve submission of Jupyter notebooks.  They are primarily intended to ensure that everyone keeps up.  The exam will involve analyzing a specific data set of signals and returns and testing a quantitative investment strategy using the methods developed in the course.  It will require putting things together, but it will not require significant new code development.  For the assignments and for the exam, googling and using ChatGPT are allowed.
 
 #### Data-Driven Investments Sequence
 
 This course is part of a new JGSB sequence: *Data-Driven Investments: Credit* will be offered in Spring Term 1, and *Data Driven Investments Lab* will be offered as a full-semester spring course.  This course (Equity) and the Credit course are self-contained, but there are obvious synergies.  The Lab course requires
-either the Equity course or the Credit course as a pre/co-requisite.  The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies.  The plan is that, in the second half of the course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.
+either the Equity course or the Credit course as a pre/co-requisite.  The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies.  In the second half of the lab course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.  
 
 #### CQA Competition
 
-Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the [CQA Challenge](https://www.cqa.org/investment_challenge).  In 2021-2022, a team of [JGSB MBA students won it](https://www.cqa.org/past_challenges), finishing first among 40 or so teams.  The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach.  Paper trading is done using the StockTrak platform.  Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.  
+Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the [CQA Challenge](https://www.cqa.org/investment_challenge).  The JGSB MBA program has a two-year winning streak in the competition, placing first in 2022 and again in 2023.  The winning JGSB teams have used machine learning methods for return prediction developed in this course and have generated higher returns than any of the other 30 or so schools in the competition.
+
+The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach.  Paper trading is done using the StockTrak platform.  Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.  
 
 If a group participates in the CQA competition, then they can work as a group in the *Data-Driven Investments Lab* course, and the project in that course can be configured to support participation in the competition.  A team in the CQA competition is limited to five persons, but Rice can enter up to three teams.  The competition begins in the first part of November.  The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested.  The contest lasts until the first of April, and participation entails a commitment until then.  
 

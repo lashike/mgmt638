@@ -19,19 +19,6 @@ website:
     search: false
     title: MGMT 638
 
-    right:
-       
-      - text: Code Binder
-        href: https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD
-
-      - text: Slide Decks
-        file: slides.qmd
-
-      - text: Assignments
-        file: assignments.qmd
-
-      - text: Home
-        file: index.qmd
     
 format: 
   html:
