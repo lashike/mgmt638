@@ -15,9 +15,7 @@ project:
 website:
   title: ""
   search: false  
-  navbar:
-    search: false
-    title: MGMT 638
+  
 
     
 format: 

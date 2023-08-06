@@ -1,4 +1,4 @@
-## Data-Driven Investments: Equity<br>Rice University JGSB<br>Fall 2023
+## MGMT 638<br>Data-Driven Investments: Equity<br>Rice University JGSB<br>Fall 2023
 
 
 #### Instructor
@@ -43,7 +43,7 @@ ChatGPT makes it much easier to use python. Throughout the course, we will gener
 
 The course deliverables are weekly individual assignments and a group project.  The individual assignments involve submission of Jupyter notebooks.  They are primarily intended to ensure that everyone keeps up.  For the assignments and for the group project, googling and using ChatGPT are allowed.
 
-The group project will involve analyzing a specific data set of signals and returns and testing a quantitative investment strategy using the methods developed in the course.  It will require putting things together, but it will not require significant new code development.  The project will be assigned the last day of class and will be due a week later.  Groups **must** consist of three or fewer students.
+The group project will be to analyze a specific data set of signals and returns and to test a quantitative investment strategy using the methods developed in the course.  It will require putting things together, but it will not require significant new code development.  The project is due on December 11.  Groups **must** consist of three or fewer students.
 
 The individual assignments will account for half of the course grade.  The group project will account for 40%.  The remaining 10% will be based on within-group peer evaluations.
 
@@ -69,7 +69,7 @@ The Rice University honor code applies to all work in this course.  Each student
 
 Any student with a documented disability requiring accommodations in this course is encouraged to
 contact me outside of class. All discussions will remain confidential. Any adjustments or accommodations
-regarding assignments or the final exam must be made in advance. Students with disabilities
+regarding assignments must be made in advance. Students with disabilities
 should also contact Disability Support Services in the Allen Center.
 
 
