@@ -43,7 +43,7 @@ ChatGPT makes it much easier to use python. Throughout the course, we will gener
 
 The course deliverables are weekly individual assignments and a group project.  The individual assignments involve submission of Jupyter notebooks.  They are primarily intended to ensure that everyone keeps up.  For the assignments and for the group project, googling and using ChatGPT are allowed.
 
-The group project will be to analyze a specific data set of signals and returns and to test a quantitative investment strategy using the methods developed in the course.  It will require putting things together, but it will not require significant new code development.  The project is due on December 11.  Groups **must** consist of three or fewer students.
+The group project will be to analyze a specific data set of signals and returns and to test a quantitative investment strategy using the methods developed in the course.  It will require putting things together, but it will not require significant new code development.  The project is due on **December 11**.  Groups **must consist of three or fewer students**.
 
 The individual assignments will account for half of the course grade.  The group project will account for 40%.  The remaining 10% will be based on within-group peer evaluations.
 
