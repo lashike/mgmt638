@@ -4,62 +4,6 @@
     "href": "index.html",
     "title": "",
     "section": "",
-    "text": "Kerry Back  J. Howard Creekmore Professor of Finance and Professor of Economics kerryback@gmail.com\n\n\n\nThis course provides an introduction to quantitative equity management. Quantitative management means trading on signals that can be constructed and tested on large panels of stocks. Many different data sources are used to generate trading signals. In this course, we will illustrate concepts using predictors formed from corporate fundamentals, past prices, analyst forecasts, and earnings surprises. We will discuss the full process of quantitative management, from preliminary analysis of signals to training models to backtesting and strategy assessment.\nWe will use python throughout the course. Many of the things we want to discuss simply can’t be implemented in Excel. Proficiency in programming is not at all expected. Code snippets will be provided that can be modified and used for assignments. An important part of the course is exploring different machine learning models for return prediction. In python, this is almost “point and click” – three short lines of code will define a model, train a model, and predict using a model.\n\n\n\n\nData and factors\nExploratory data analysis\nDecision trees\nRandom forests\nNeural nets\nTransforming data features\nValidation of hyperparameters\nAnalyzing stock picks\nTrade filters\nBacktesting\nIndustries: to trade or not to trade?\n\n\n\n\nThe course deliverables are four individual assignments and a group project due the last day of class (Dec 5). The individual assignments are small assignments intended to ensure that everyone is keeping up. The group project is to train and evaluate a stock prediction model, deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models, and make a presentation to the class.\nEach of the individual assignments will contribute 12.5% of the final course grade. The group project will contribute 40%, and group peer evaluations will contribute 10%.\nThe assignment due dates are\n\nMonday, Oct. 31\nMonday, Nov. 7\nMonday, Nov 14\nMonday, Nov 21\n\n\n\n\nThis course is part of a new JGSB sequence: Data-Driven Investments: Credit will be offered in Spring Term 1, and Data Driven Investments Lab will be offered as a full-semester spring course. This course (Equity) and the Credit course are self-contained, but there are obvious synergies. The Lab course requires either the Equity course or the Credit course as a pre/co-requisite. The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies. The plan is that, in the second half of the course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.\n\n\n\nEach year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the CQA Challenge. In 2021-2022, a team of JGSB MBA students won it, finishing first among 40 or so teams. The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.\nIf a group participates in the CQA competition, then they can work as a group in the Data-Driven Investments Lab course, and the project in that course can be configured to support participation in the competition. A team in the CQA competition is limited to five persons, but Rice can enter up to three teams. The competition begins in the first part of November. The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested. The contest lasts until the first of April, and participation entails a commitment until then.\n\n\n\nThe Rice University honor code applies to all work in this course. Each student must do his or her own assignments, but it is allowed and in fact encouraged for students to seek advice from each other. Likewise, groups must do their projects, but they can seek advice from students in other groups. Also, searching for advice on the internet is allowed.\n\n\n\nAny student with a documented disability requiring accommodations in this course is encouraged to contact me outside of class. All discussions will remain confidential. Any adjustments or accommodations regarding assignments or the final exam must be made in advance. Students with disabilities should also contact Disability Support Services in the Allen Center."
-  },
-  {
-    "objectID": "slides.html",
-    "href": "slides.html",
-    "title": "",
-    "section": "",
-    "text": "2. Exploratory Data Analysis\n3. Trees\n4. Random Forests\n5. Neural Nets\n6. Transforming Data Features\n7. Validating Hyperparameters\n8. Analyzing Stock Picks\n9. Targets and Industries\n10. Trading"
-  },
-  {
-    "objectID": "assignment1.html",
-    "href": "assignment1.html",
-    "title": "",
-    "section": "",
-    "text": "Download book-to-market (bm) for 2021-12 from the SQL database and compute summary statistics.\nSubmit a jupyter notebook with your code that shows the summary statistics."
-  },
-  {
-    "objectID": "assignment5.html",
-    "href": "assignment5.html",
-    "title": "",
-    "section": "",
-    "text": "Submit a Jupyter notebook. Copy each question into a Markdown cell and provide your answer in the cell or cells below it.\n\n…"
-  },
-  {
-    "objectID": "assignment2.html",
-    "href": "assignment2.html",
-    "title": "",
-    "section": "",
-    "text": "Fit a random forest to the 2021-01 data using roeq, mom12m, and bm (book-to-market) as the predictors. Use ret as the target variable (rather than rnk). Set max_depth=4. Compute the in-sample \\(R^2\\) as model.score(X,y).\nSubmit a Jupyter notebook to Ccanvas that contains your code and shows the \\(R^2\\)."
-  },
-  {
-    "objectID": "assignment3.html",
-    "href": "assignment3.html",
-    "title": "",
-    "section": "",
-    "text": "Get the 2021-12 data: ret, roeq, mom12m, and bm. Define rnk from ret as usual. Create a pipeline with transform1, poly, transform2, and model, where you define the model as MLPRegressor(random_state=0). Define a parameter grid with hidden layer sizes of (16, 8, 4, 2) and (8, 4, 2). Define cv = GridSearchCV, inputting the pipeline and parameter grid. Fit cv to (X, y) where X is roeq, mom12m, and bm from the 2021-12 data and y is rnk from the 2021-12 data. Compute cv.score(X, y) for the same X and y that you fit to. Submit your Jupyter notebook."
-  },
-  {
-    "objectID": "assignment4.html",
-    "href": "assignment4.html",
-    "title": "",
-    "section": "",
-    "text": "Submit a Jupyter notebook. Copy each question into a Markdown cell and provide your answer in the cell or cells below it.\n\nGet the 2021-12 data for ret, roeq, mom12m, bm, and siccd.\nDefine “industry” using ff49.xlsx.\nDefine the deviations from means (roeqx, mom12mx, bmx) and industry momentum (mom12mi).\nFollow the “without dummies” procedure in 9-targets-and-industries.html except that for the model use GradientBoostingRegressor instead of RandomForestRegressor.\nFor the parameter grid, use\n\n{\n  \"transformedtargetregressor__regressor__max_depth\": [3, 4],\n  \"transformedtargetregressor__regressor__n_estimators\": [500, 1000],\n  \"transformedtargetregressor__regressor__learning_rate\": [0.01, 0.05],\n}\n\nFit the GridSearchCV to\n\nX = data[[\n  \"roeq\",\n  \"mom12m\",\n  \"bm\",\n  \"roeqx\",\n  \"mom12mx\",\n  \"bmx\",\n  \"mom12mi\"\n]]\ny = data[\"ret\"]\n\nOutput cv.best_params_\nRepeat #1–#3 for the 2022-01 data.\nCalculate X and y for the 2022-01 data as in #6.\nCalculate cv.score(X, y) for the 2022-01 X and y.\nThe score in #10 will not look good. But run the following code for the 2022-01 data:\n\ndata[\"predict\"] = cv.predict(X)\ndata[\"quintile\"] = pd.qcut(data.predict, 5, labels=range(1, 6))\ndata.groupby(\"quintile\").ret.mean()"
-  },
-  {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "",
-    "section": "",
-    "text": "Assignment 2\nAssignment 3\nAssignment 4"
-  },
-  {
-    "objectID": "notebooks.html",
-    "href": "notebooks.html",
-    "title": "",
-    "section": "",
-    "text": "3. Trees\n4. Forests\n5. Nets\n6. Transforming Features\n7. Validating Hyperparameters\n8. Analyzing Stock Picks\n9. Targets and Industries\n10. Trading\n11. Backtesting"
+    "text": "Kerry Back  J. Howard Creekmore Professor of Finance and Professor of Economics kerryback@gmail.com\n\n\n\nThis course provides an introduction to quantitative equity management. Quantitative management means trading on signals that can be constructed and tested on large panels of stocks. Many different data sources are used to generate trading signals. We will use ChatGPT and python throughout the course. Students are not expected to be python experts. A side benefit of the course is the opportunity to learn and practice python. The course schedule by week is as follows:\n\nTime series models for return forecasting\nFactors and factor models\nPortfolios formed from sorts\nMachine learning models\nBacktesting portfolio strategies\nRisk analysis of portfolio strategies\n\n\n\n\nGrades will be based on weekly assignments (60%) and a take-home final exam (40%).\n\n\n\nA follow-on to this course, Data Driven Investments Lab, will be offered as a full-semester spring course. The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies. Equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.\n\n\n\nEach year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the CQA Challenge. In each of the past two years (2021-2022; and 2022-2023), a team of JGSB MBA students won it, finishing first among 40 or so teams. The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.\nIf a group participates in the CQA competition, then they can work as a group in the Data-Driven Investments Lab course, and the project in that course can be configured to support participation in the competition. A team in the CQA competition is limited to five persons, but Rice can enter up to three teams. The competition begins in the first part of November. The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested. The contest lasts until the first of April, and participation entails a commitment until then.\n\n\n\nThe Rice University honor code applies to all work in this course. Each student must do his or her own assignments, but it is allowed and in fact encouraged for students to seek advice from each other. Likewise, groups must do their projects, but they can seek advice from students in other groups. Also, searching for advice on the internet is allowed.\n\n\n\nAny student with a documented disability requiring accommodations in this course is encouraged to contact me outside of class. All discussions will remain confidential. Any adjustments or accommodations regarding assignments or the final exam must be made in advance. Students with disabilities should also contact Disability Support Services in the Allen Center."
   }
 ]

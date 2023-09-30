@@ -63,25 +63,6 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">MGMT 638</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://mybinder.org/v2/gh/kerryback/2022-638-binder.git/HEAD">Code Binder</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./slides.html">Slide Decks</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./assignments.html">Assignments</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">Home</a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -103,44 +84,27 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="course-description" class="level4">
 <h4 class="anchored" data-anchor-id="course-description">Course Description</h4>
-<p>This course provides an introduction to quantitative equity management. Quantitative management means trading on signals that can be constructed and tested on large panels of stocks. Many different data sources are used to generate trading signals. In this course, we will illustrate concepts using predictors formed from corporate fundamentals, past prices, analyst forecasts, and earnings surprises. We will discuss the full process of quantitative management, from preliminary analysis of signals to training models to backtesting and strategy assessment.</p>
-<p>We will use python throughout the course. Many of the things we want to discuss simply can’t be implemented in Excel. Proficiency in programming is not at all expected. Code snippets will be provided that can be modified and used for assignments. An important part of the course is exploring different machine learning models for return prediction. In python, this is almost “point and click” – three short lines of code will define a model, train a model, and predict using a model.</p>
-</section>
-<section id="course-outline" class="level4">
-<h4 class="anchored" data-anchor-id="course-outline">Course Outline</h4>
+<p>This course provides an introduction to quantitative equity management. Quantitative management means trading on signals that can be constructed and tested on large panels of stocks. Many different data sources are used to generate trading signals. We will use ChatGPT and python throughout the course. Students are not expected to be python experts. A side benefit of the course is the opportunity to learn and practice python. The course schedule by week is as follows:</p>
 <ol type="1">
-<li>Data and factors</li>
-<li>Exploratory data analysis</li>
-<li>Decision trees</li>
-<li>Random forests</li>
-<li>Neural nets</li>
-<li>Transforming data features</li>
-<li>Validation of hyperparameters</li>
-<li>Analyzing stock picks</li>
-<li>Trade filters</li>
-<li>Backtesting</li>
-<li>Industries: to trade or not to trade?</li>
+<li>Time series models for return forecasting</li>
+<li>Factors and factor models</li>
+<li>Portfolios formed from sorts</li>
+<li>Machine learning models</li>
+<li>Backtesting portfolio strategies</li>
+<li>Risk analysis of portfolio strategies</li>
 </ol>
 </section>
 <section id="grading" class="level4">
 <h4 class="anchored" data-anchor-id="grading">Grading</h4>
-<p>The course deliverables are four individual assignments and a group project due the last day of class (Dec 5). The individual assignments are small assignments intended to ensure that everyone is keeping up. The group project is to train and evaluate a stock prediction model, deliver a write-up of the steps that were taken to evaluate and test the chosen model and alternate models, and make a presentation to the class.</p>
-<p>Each of the individual assignments will contribute 12.5% of the final course grade. The group project will contribute 40%, and group peer evaluations will contribute 10%.</p>
-<p>The assignment due dates are</p>
-<ul>
-<li>Monday, Oct.&nbsp;31</li>
-<li>Monday, Nov.&nbsp;7</li>
-<li>Monday, Nov 14</li>
-<li>Monday, Nov 21</li>
-</ul>
+<p>Grades will be based on weekly assignments (60%) and a take-home final exam (40%).</p>
 </section>
-<section id="data-driven-investments-sequence" class="level4">
-<h4 class="anchored" data-anchor-id="data-driven-investments-sequence">Data-Driven Investments Sequence</h4>
-<p>This course is part of a new JGSB sequence: <em>Data-Driven Investments: Credit</em> will be offered in Spring Term 1, and <em>Data Driven Investments Lab</em> will be offered as a full-semester spring course. This course (Equity) and the Credit course are self-contained, but there are obvious synergies. The Lab course requires either the Equity course or the Credit course as a pre/co-requisite. The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies. The plan is that, in the second half of the course, equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.</p>
+<section id="data-driven-investments-lab" class="level4">
+<h4 class="anchored" data-anchor-id="data-driven-investments-lab">Data-Driven Investments Lab</h4>
+<p>A follow-on to this course, <em>Data Driven Investments Lab</em>, will be offered as a full-semester spring course. The Lab course will involve students working in groups to explore other data sources and to further elaborate and test strategies. Equity strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.</p>
 </section>
 <section id="cqa-competition" class="level4">
 <h4 class="anchored" data-anchor-id="cqa-competition">CQA Competition</h4>
-<p>Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the <a href="https://www.cqa.org/investment_challenge">CQA Challenge</a>. In 2021-2022, a team of <a href="https://www.cqa.org/past_challenges">JGSB MBA students won it</a>, finishing first among 40 or so teams. The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.</p>
+<p>Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the <a href="https://www.cqa.org/investment_challenge">CQA Challenge</a>. In each of the past two years (2021-2022; and 2022-2023), a team of JGSB MBA students won it, finishing first among 40 or so teams. The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach. Paper trading is done using the StockTrak platform. Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.</p>
 <p>If a group participates in the CQA competition, then they can work as a group in the <em>Data-Driven Investments Lab</em> course, and the project in that course can be configured to support participation in the competition. A team in the CQA competition is limited to five persons, but Rice can enter up to three teams. The competition begins in the first part of November. The start date is a little early relative to the timing of our courses, but you could use a generic strategy initially and then later trade into a strategy that you have optimized and tested. The contest lasts until the first of April, and participation entails a commitment until then.</p>
 </section>
 <section id="honor-code" class="level4">
