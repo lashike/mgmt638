@@ -11,7 +11,7 @@ J. Howard Creekmore Professor of Finance and Professor of Economics<br>
    
 #### Course Description   
 
-This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  Many different data sources are used to generate trading signals.  We will use ChatGPT and python throughout the course.  Students are not expected to be python experts.  A side benefit of the course is the opportunity to learn and practice python.  The course schedule by week is as follows:
+This course provides an introduction to quantitative equity management.  Quantitative management means trading on signals that can be constructed and tested on large panels of stocks.  We will use ChatGPT and python throughout the course.  Students are not expected to be python experts.  A side benefit of the course is the opportunity to learn and practice python.  The course schedule by week is as follows:
 
 1.  Time series models for return forecasting
 2.  Factors and factor models
