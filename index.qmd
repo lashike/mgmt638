@@ -31,11 +31,11 @@ Grades will be based on weekly assignments.
 
 #### Data-Driven Investments Lab
 
-A follow-on to this course,  *Data Driven Investments Lab*,  will be offered as a full-semester spring course.  The Lab course will involve  working in groups to explore other data sources and to further elaborate and test strategies.  Strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.
+A follow-on to this course,  *Data Driven Investments Lab*,  will be offered as a full-semester spring course.  The Lab course will involve  working in groups to explore other data sources and to further elaborate and test strategies.  Strategies will be implemented with paper trading at Alpaca, which is a brokerage with a free python API.  I will co-teach the course with Kevin Crotty.
 
 #### CQA Competition
 
-Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the [CQA Challenge](https://www.cqa.org/investment_challenge).  In each of the past two years (2021-2022; and 2022-2023), a team of JGSB MBA students won it, finishing first among 30 or so teams.  he winning JGSB teams have used machine learning methods for return prediction developed in this course.  The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach.  Paper trading is done using the StockTrak platform.  Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.  
+Each year, the Chicago Quantitative Alliance (CQA) hosts a competition for universities on quantitative investing - the [CQA Challenge](https://www.cqa.org/investment_challenge).  In each of the past two years (2021-2022; and 2022-2023), a team of JGSB MBA students won it, finishing first among 30 or so teams.  The winning JGSB teams have used machine learning methods developed in this course.  The competition is to run a diversified long-short market-neutral portfolio with a quantitative approach.  Paper trading is done using the StockTrak platform.  Teams are judged on compliance, returns, and a video presentation of their strategy in three stages: teams that perform well on compliance proceed to the second stage, the top ten teams on compliance and portfolio returns proceed to the third stage, and teams in the third stage prepare video presentations.  
 
 #### Honor Code
 
