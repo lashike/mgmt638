@@ -1,8 +1,0 @@
-[Assignment 1](assignment1.qmd)
-
-[Assignment 2](assignment2.qmd)
-
-[Assignment 3](assignment3.qmd)
-
-[Assignment 4](assignment4.qmd)
-
