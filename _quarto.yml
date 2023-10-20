@@ -3,6 +3,8 @@ project:
   output-dir: docs
   render:
     - index.qmd
+    - slides.qmd
+    - assignments.qmd
       
 website:
   title: ""
@@ -11,6 +13,14 @@ website:
     search: false
     title: MGMT 638
     file: index.qmd
+    right:
+      - text: Slides
+        file: slides.qmd
+      - text: Assignments
+        file: assignments.qmd
+      - text: Notebooks
+        href: https://github.com/kerryback/mgmt638/tree/main/notebooks
+      
     
 format: 
   html:

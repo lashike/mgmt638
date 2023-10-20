@@ -1,0 +1,4 @@
+## Slide Decks<br>Data-Driven Investments: Equity<br>Rice University<br>
+
+
+[1. Introduction](01-introduction.html){target="_blank"} [(pdf)](pdfs/01-introduction.slides.pdf){target="_blank"}
