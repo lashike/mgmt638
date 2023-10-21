@@ -1,4 +1,6 @@
 ## Slide Decks<br>Data-Driven Investments: Equity<br>Rice University<br>
 
 
-[1. Introduction](01-introduction.html){target="_blank"} [(pdf)](pdfs/01-introduction.slides.pdf){target="_blank"}
+[1. Moving Averages](01-moving_averages.html){target="_blank"} [(pdf)](pdfs/01-moving_averages.slides.pdf){target="_blank"}
+
+[2. Pairs Trading](02-pairs.html){target="_blank"} [(pdf)](pdfs/02-pairs.slides.pdf){target="_blank"}
