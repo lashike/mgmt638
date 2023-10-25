@@ -14652,21 +14652,21 @@ div.jp-OutputPrompt {
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
 <div class="reveal">
-<div class="slides"><section ><section >
+<div class="slides"><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<a target="_blank" href="https://colab.research.google.com/github/kerryback/mgmt638/blob/main/notebooks/02-pairs.ipynb">
+<p><a target="_blank" href="https://colab.research.google.com/github/kerryback/mgmt638/blob/main/notebooks/02-pairs.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+</a></p>
 
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14677,7 +14677,7 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14697,7 +14697,7 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14707,19 +14707,20 @@ div.jp-OutputPrompt {
 <h3 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h3><ul>
 <li>$P_1/P_2 \approx \text{constant}$</li>
 <li>When the ratio goes above the constant, it tends to come down.</li>
-<li>When the ratio goes below the constant, it tends to come up.</li>
-</ul>
+<li>When the ratio goes below the constant, it tends to come up.
 $$ \Delta P_1/P_2 = \begin{cases}  &amp; + \;\text{when $P_1/P_2 &lt;$ constant}\\
- &amp; - \;\text{when $P_1/P_2 &gt;$ constant}
+&amp; - \;\text{when $P_1/P_2 &gt;$ constant}
 \end{cases}
-$$<p>-Assume the change is larger when the ratio is further from the constant as
+$$
+-Assume the change is larger when the ratio is further from the constant as
 $$\Delta P_1/P_2 = k(\text{constant} - P_1/P_2)$$
-for a constant $k&gt;0$.</p>
+for a constant $k&gt;0$.</li>
+</ul>
 
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14727,10 +14728,9 @@ for a constant $k&gt;0$.</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>The model is equivalent to</li>
-</ul>
-$$\Delta P_1/P_2 = a + bP_1/P_2$$<p>where $a=k \times \text{constant}$, $b=-k$.</p>
-<ul>
+<li>The model is equivalent to 
+$$\Delta P_1/P_2 = a + bP_1/P_2$$
+where $a=k \times \text{constant}$, $b=-k$.</li>
 <li>Estimate $a$ and $b$ by linear regression.</li>
 <li>Should get $a&gt;0$, $b&lt;0$.</li>
 <li>If so, $\text{constant} =-a/b$.</li>
@@ -14741,7 +14741,7 @@ $$\Delta P_1/P_2 = a + bP_1/P_2$$<p>where $a=k \times \text{constant}$, $b=-k$.<
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14757,7 +14757,7 @@ $$\Delta P_1/P_2 = a + bP_1/P_2$$<p>where $a=k \times \text{constant}$, $b=-k$.<
 </div>
 </div>
 </div>
-</div></section></section><section ><section ><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14765,15 +14765,15 @@ $$\Delta P_1/P_2 = a + bP_1/P_2$$<p>where $a=k \times \text{constant}$, $b=-k$.<
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">ratio</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;CVX/COP&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">ratio</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"CVX/COP"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
     <span class="n">y</span><span class="o">=-</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">,</span> 
     <span class="n">xmin</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
     <span class="n">xmax</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"constant"</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -14788,7 +14788,9 @@ $$\Delta P_1/P_2 = a + bP_1/P_2$$<p>where $a=k \times \text{constant}$, $b=-k$.<
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14808,7 +14810,7 @@ class="
 
 </div>
 
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14825,7 +14827,7 @@ class="
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14836,16 +14838,15 @@ class="
 <li>The pairs strategy is an example of a market neutral strategy, meaning its market beta should be approximately zero.</li>
 <li>If it has a return above the risk-free rate, then adding some of it to the market portfolio can improve performance relative to holding the market.</li>
 <li>This is the same as saying that the strategy has a positive alpha.</li>
-<li>It is also the same as saying</li>
-</ul>
-$$ \text{Sharpe ratio of strategy} &gt; \text{Sharpe ratio of market} \times \text{correlation with market}$$<ul>
+<li>It is also the same as saying
+$$ \text{Sharpe ratio of strategy} &gt; \text{Sharpe ratio of market} \times \text{correlation with market}$$</li>
 <li>Get the market return from Ken French's data library.</li>
 </ul>
 
 </div>
 </div>
 </div>
-</div></section></section><section ><section ><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14853,8 +14854,8 @@ $$ \text{Sharpe ratio of strategy} &gt; \text{Sharpe ratio of market} \times \te
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean return of pairs strategy = </span><span class="si">{</span><span class="mi">252</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> annualized&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;correlation of pairs strategy with market = </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">mkt</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mean return of pairs strategy = </span><span class="si">{</span><span class="mi">252</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> annualized"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"correlation of pairs strategy with market = </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">mkt</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14868,7 +14869,9 @@ $$ \text{Sharpe ratio of strategy} &gt; \text{Sharpe ratio of market} \times \te
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14884,7 +14887,7 @@ correlation of pairs strategy with market = 4.48%
 
 </div>
 
-</div></section></section><section ><section >
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14899,7 +14902,7 @@ correlation of pairs strategy with market = 4.48%
 </div>
 </div>
 </div>
-</div></section></section><section ><section ><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14907,8 +14910,8 @@ correlation of pairs strategy with market = 4.48%
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean return of pairs strategy = </span><span class="si">{</span><span class="mi">252</span><span class="o">*</span><span class="n">future</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> annualized&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;correlation of pairs strategy with market = </span><span class="si">{</span><span class="n">future</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">future</span><span class="o">.</span><span class="n">mkt</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mean return of pairs strategy = </span><span class="si">{</span><span class="mi">252</span><span class="o">*</span><span class="n">future</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> annualized"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"correlation of pairs strategy with market = </span><span class="si">{</span><span class="n">future</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">future</span><span class="o">.</span><span class="n">mkt</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14922,7 +14925,9 @@ correlation of pairs strategy with market = 4.48%
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
