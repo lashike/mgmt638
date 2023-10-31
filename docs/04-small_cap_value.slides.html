@@ -7595,20 +7595,6 @@ main {
 </div>
 </div>
 </div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7625,7 +7611,7 @@ main {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [199]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="o">==</span><span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
@@ -7640,7 +7626,7 @@ main {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[199]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -7718,7 +7704,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Shift-predictors-and-filtering-variables-to-backtest">Shift predictors and filtering variables to backtest<a class="anchor-link" href="#Shift-predictors-and-filtering-variables-to-backtest">¶</a></h3>
+<h3 id="Shift-predictors-and-shift-filtering-variables-to-backtest">Shift predictors and shift filtering variables to backtest<a class="anchor-link" href="#Shift-predictors-and-shift-filtering-variables-to-backtest">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7727,11 +7713,12 @@ main {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [200]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">"ticker"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[[</span><span class="s2">"mom"</span><span class="p">,</span> <span class="s2">"pb"</span><span class="p">,</span> <span class="s2">"marketcap"</span><span class="p">,</span> <span class="s2">"closeunadj"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)[[</span><span class="s2">"mom"</span><span class="p">,</span> <span class="s2">"pb"</span><span class="p">,</span> <span class="s2">"marketcap"</span><span class="p">,</span> <span class="s2">"closeunadj"</span><span class="p">]]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+<span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"mom"</span><span class="p">,</span> <span class="s2">"pb"</span><span class="p">,</span> <span class="s2">"marketcap"</span><span class="p">,</span> <span class="s2">"closeunadj"</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">variables</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">variables</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -7744,7 +7731,7 @@ main {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[200]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -7819,45 +7806,6 @@ main {
 </div>
 </div>
 </div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [201]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;class 'pandas.core.frame.DataFrame'&gt;
-MultiIndex: 2640984 entries, ('A', datetime.date(2011, 1, 14)) to ('ZYXI', datetime.date(2023, 10, 27))
-Data columns (total 6 columns):
- #   Column      Dtype  
----  ------      -----  
- 0   ret         float64
- 1   mom         float64
- 2   closeunadj  float64
- 3   marketcap   float64
- 4   pb          float64
- 5   sector      object 
-dtypes: float64(5), object(1)
-memory usage: 131.3+ MB
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7874,53 +7822,16 @@ memory usage: 131.3+ MB
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [202]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">closeunadj</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">marketcap</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">marketcap</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span>
+    <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+    <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span>
+<span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">rnk</span><span class="o">&gt;</span><span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">rnk</span><span class="o">&lt;=</span><span class="mi">3000</span><span class="p">)]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;class 'pandas.core.frame.DataFrame'&gt;
-MultiIndex: 1324775 entries, ('AA', datetime.date(2019, 9, 6)) to ('ZYXI', datetime.date(2023, 10, 27))
-Data columns (total 7 columns):
- #   Column      Non-Null Count    Dtype  
----  ------      --------------    -----  
- 0   ret         1324775 non-null  float64
- 1   mom         1324775 non-null  float64
- 2   closeunadj  1324775 non-null  float64
- 3   marketcap   1324775 non-null  float64
- 4   pb          1324775 non-null  float64
- 5   sector      1324775 non-null  object 
- 6   rnk         1324775 non-null  float64
-dtypes: float64(6), object(1)
-memory usage: 76.1+ MB
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [203]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7931,7 +7842,7 @@ memory usage: 76.1+ MB
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[203]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>date
 2011-01-14    2000
@@ -7946,105 +7857,6 @@ memory usage: 76.1+ MB
 2023-10-20    1829
 2023-10-27    1802
 Name: ticker, Length: 668, dtype: int64</pre>
-</div>
-</div>
-</div>
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [204]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[204]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th></th>
-<th>ret</th>
-<th>mom</th>
-<th>closeunadj</th>
-<th>marketcap</th>
-<th>pb</th>
-<th>sector</th>
-<th>rnk</th>
-</tr>
-<tr>
-<th>ticker</th>
-<th>date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th rowspan="3" valign="top">AA</th>
-<th>2019-09-06</th>
-<td>0.025653</td>
-<td>-0.477529</td>
-<td>17.17</td>
-<td>3186.0</td>
-<td>0.7</td>
-<td>Basic Materials</td>
-<td>1006.0</td>
-</tr>
-<tr>
-<th>2020-01-31</th>
-<td>-0.153060</td>
-<td>-0.231754</td>
-<td>17.12</td>
-<td>3177.0</td>
-<td>0.7</td>
-<td>Basic Materials</td>
-<td>1076.0</td>
-</tr>
-<tr>
-<th>2020-02-07</th>
-<td>-0.017890</td>
-<td>-0.237294</td>
-<td>14.50</td>
-<td>2759.5</td>
-<td>0.6</td>
-<td>Basic Materials</td>
-<td>1162.0</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
@@ -8065,7 +7877,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [205]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"value_group"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">pb</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
@@ -8087,7 +7899,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[205]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8252,7 +8064,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [206]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">52</span><span class="o">*</span><span class="n">rets</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -8266,7 +8078,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[206]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8365,7 +8177,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [207]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">"value_group"</span><span class="p">,</span> <span class="s2">"mom_group"</span><span class="p">])</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -8381,7 +8193,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[207]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8574,11 +8386,17 @@ Name: ticker, Length: 668, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [208]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"mom_rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mom</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"pb_rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">pb</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"mom_rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mom</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span>
+    <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+    <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"pb_rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">pb</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span>
+    <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span>
+<span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">"combined_rnk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mom_rnk</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">pb_rnk</span>
 </pre></div>
 </div>
@@ -8601,7 +8419,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [209]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"decile"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
@@ -8620,7 +8438,7 @@ Name: ticker, Length: 668, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[209]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>decile
 1     0.140782
@@ -8645,7 +8463,13 @@ dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Test-B:-Top-50-and-Bottom-50">Test B: Top 50 and Bottom 50<a class="anchor-link" href="#Test-B:-Top-50-and-Bottom-50">¶</a></h3>
+<h3 id="Test-B:-Top-50-and-Bottom-50">Test B: Top 50 and Bottom 50<a class="anchor-link" href="#Test-B:-Top-50-and-Bottom-50">¶</a></h3><ul>
+<li>rank at each date on combined_rnk</li>
+<li>put best 50 in long portfolio at each date</li>
+<li>put worst 50 in short portfolio at each date</li>
+<li>compute equally weighted returns in each portfolio</li>
+<li>calculate long minus short return</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8654,16 +8478,10 @@ dtype: float64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [210]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"rnk_long"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"rnk_short"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">longs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">rnk_long</span><span class="o">&lt;=</span><span class="mi">50</span><span class="p">]</span>
-<span class="n">shorts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">rnk_short</span><span class="o">&lt;=</span><span class="mi">50</span><span class="p">]</span>
-<span class="n">long_rets</span> <span class="o">=</span> <span class="n">longs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">short_rets</span> <span class="o">=</span> <span class="n">shorts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"annualized mean long return is </span><span class="si">{</span><span class="mi">52</span><span class="o">*</span><span class="n">long_rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"annualized mean long return is </span><span class="si">{</span><span class="mi">52</span><span class="o">*</span><span class="n">long_rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"annualized mean short return is </span><span class="si">{</span><span class="mi">52</span><span class="o">*</span><span class="n">short_rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8689,7 +8507,7 @@ annualized mean short return is 0.23%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [211]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">long_rets</span><span class="o">-</span><span class="n">short_rets</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -8703,7 +8521,7 @@ annualized mean short return is 0.23%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[211]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>&lt;Axes: xlabel='date'&gt;</pre>
 </div>
@@ -8723,7 +8541,13 @@ annualized mean short return is 0.23%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-are-the-top-50-and-bottom-50-today?">What are the top 50 and bottom 50 today?<a class="anchor-link" href="#What-are-the-top-50-and-bottom-50-today?">¶</a></h3>
+<h3 id="What-are-the-top-50-and-bottom-50-today?">What are the top 50 and bottom 50 today?<a class="anchor-link" href="#What-are-the-top-50-and-bottom-50-today?">¶</a></h3><ul>
+<li>Apply penny stock and size filters to today dataframe</li>
+<li>Rank on momentum (low rank = high momentum = best)</li>
+<li>Rank on value (low rank = low pb = best)</li>
+<li>Add ranks</li>
+<li>Find best 50 and worst 50 stocks today</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8732,10 +8556,10 @@ annualized mean short return is 0.23%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [213]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top50</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"combined_rnk"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">long</span>
 </pre></div>
 </div>
 </div>
@@ -8746,7 +8570,7 @@ annualized mean short return is 0.23%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[213]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8767,871 +8591,463 @@ annualized mean short return is 0.23%
 <tr style="text-align: right;">
 <th></th>
 <th>ticker</th>
-<th>date</th>
-<th>ret</th>
-<th>mom</th>
-<th>closeunadj</th>
-<th>marketcap</th>
-<th>pb</th>
 <th>sector</th>
-<th>rnk</th>
 <th>mom_rnk</th>
 <th>pb_rnk</th>
 <th>combined_rnk</th>
-<th>rnk_long</th>
-<th>rnk_short</th>
+<th>closeunadj</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>772871</th>
 <td>EHTH</td>
-<td>2023-10-27</td>
-<td>-0.040293</td>
-<td>1.587413</td>
-<td>7.860</td>
-<td>220.8</td>
-<td>0.4</td>
 <td>Financial Services</td>
-<td>2419.0</td>
-<td>26.0</td>
-<td>32.0</td>
+<td>26</td>
+<td>32</td>
 <td>58</td>
-<td>1.0</td>
-<td>1779.0</td>
+<td>7.860</td>
 </tr>
 <tr>
 <th>427948</th>
 <td>CBUS</td>
-<td>2023-10-27</td>
-<td>-0.453433</td>
-<td>1.501030</td>
-<td>10.270</td>
-<td>218.6</td>
-<td>0.5</td>
 <td>Healthcare</td>
-<td>2424.0</td>
-<td>30.0</td>
-<td>69.0</td>
+<td>30</td>
+<td>69</td>
 <td>99</td>
-<td>2.0</td>
-<td>1778.0</td>
+<td>10.270</td>
 </tr>
 <tr>
 <th>2367118</th>
 <td>TRML</td>
-<td>2023-10-27</td>
-<td>0.284404</td>
-<td>0.906040</td>
-<td>14.000</td>
-<td>59.9</td>
-<td>0.4</td>
 <td>Healthcare</td>
-<td>2698.0</td>
-<td>78.0</td>
-<td>53.0</td>
+<td>78</td>
+<td>53</td>
 <td>131</td>
-<td>3.0</td>
-<td>1777.0</td>
+<td>14.000</td>
 </tr>
 <tr>
 <th>1429651</th>
 <td>LSEA</td>
-<td>2023-10-27</td>
-<td>-0.001379</td>
-<td>0.798000</td>
-<td>7.240</td>
-<td>279.4</td>
-<td>0.4</td>
 <td>Real Estate</td>
-<td>2325.0</td>
-<td>97.0</td>
-<td>39.0</td>
+<td>97</td>
+<td>39</td>
 <td>136</td>
-<td>4.0</td>
-<td>1776.0</td>
+<td>7.240</td>
 </tr>
 <tr>
 <th>2197648</th>
 <td>SPHR</td>
-<td>2023-10-27</td>
-<td>-0.009177</td>
-<td>0.784908</td>
-<td>33.470</td>
-<td>1160.7</td>
-<td>0.4</td>
 <td>Communication Services</td>
-<td>1652.0</td>
-<td>100.0</td>
-<td>51.0</td>
+<td>100</td>
+<td>51</td>
 <td>151</td>
-<td>5.0</td>
-<td>1775.0</td>
+<td>33.470</td>
 </tr>
 <tr>
 <th>387833</th>
 <td>BZH</td>
-<td>2023-10-27</td>
-<td>0.045982</td>
-<td>1.177448</td>
-<td>23.430</td>
-<td>734.3</td>
-<td>0.7</td>
 <td>Consumer Cyclical</td>
-<td>1899.0</td>
-<td>48.0</td>
-<td>221.0</td>
+<td>48</td>
+<td>221</td>
 <td>269</td>
-<td>6.0</td>
-<td>1774.0</td>
+<td>23.430</td>
 </tr>
 <tr>
 <th>2449388</th>
 <td>USAP</td>
-<td>2023-10-27</td>
-<td>0.158678</td>
-<td>0.771622</td>
-<td>14.020</td>
-<td>127.4</td>
-<td>0.6</td>
 <td>Basic Materials</td>
-<td>2577.0</td>
-<td>102.0</td>
-<td>197.0</td>
+<td>102</td>
+<td>197</td>
 <td>299</td>
-<td>7.0</td>
-<td>1773.0</td>
+<td>14.020</td>
 </tr>
 <tr>
 <th>1761051</th>
 <td>OPRT</td>
-<td>2023-10-27</td>
-<td>-0.066102</td>
-<td>0.377863</td>
-<td>5.510</td>
-<td>187.6</td>
-<td>0.4</td>
 <td>Financial Services</td>
-<td>2483.0</td>
-<td>272.0</td>
-<td>44.0</td>
+<td>272</td>
+<td>44</td>
 <td>316</td>
-<td>8.0</td>
-<td>1772.0</td>
+<td>5.510</td>
 </tr>
 <tr>
 <th>1597522</th>
 <td>MUX</td>
-<td>2023-10-27</td>
-<td>-0.083979</td>
-<td>0.785714</td>
-<td>7.090</td>
-<td>336.6</td>
-<td>0.7</td>
 <td>Basic Materials</td>
-<td>2266.0</td>
-<td>99.0</td>
-<td>267.0</td>
+<td>99</td>
+<td>267</td>
 <td>366</td>
-<td>9.0</td>
-<td>1771.0</td>
+<td>7.090</td>
 </tr>
 <tr>
 <th>1488461</th>
 <td>MDV</td>
-<td>2023-10-27</td>
-<td>0.017391</td>
-<td>0.669000</td>
-<td>15.210</td>
-<td>114.8</td>
-<td>0.7</td>
 <td>Real Estate</td>
-<td>2601.0</td>
-<td>125.0</td>
-<td>260.0</td>
+<td>125</td>
+<td>260</td>
 <td>385</td>
-<td>10.0</td>
-<td>1770.0</td>
+<td>15.210</td>
 </tr>
 <tr>
 <th>1139786</th>
 <td>HOV</td>
-<td>2023-10-27</td>
-<td>-0.041594</td>
-<td>1.516337</td>
-<td>66.360</td>
-<td>404.4</td>
-<td>0.8</td>
 <td>Consumer Cyclical</td>
-<td>2189.0</td>
-<td>29.0</td>
-<td>362.0</td>
+<td>29</td>
+<td>362</td>
 <td>391</td>
-<td>11.0</td>
-<td>1769.0</td>
+<td>66.360</td>
 </tr>
 <tr>
 <th>1593141</th>
 <td>MTW</td>
-<td>2023-10-27</td>
-<td>-0.060976</td>
-<td>0.661148</td>
-<td>12.320</td>
-<td>431.8</td>
-<td>0.7</td>
 <td>Industrials</td>
-<td>2164.0</td>
-<td>128.0</td>
-<td>266.0</td>
+<td>128</td>
+<td>266</td>
 <td>394</td>
-<td>12.0</td>
-<td>1768.0</td>
+<td>12.320</td>
 </tr>
 <tr>
 <th>950535</th>
 <td>FRD</td>
-<td>2023-10-27</td>
-<td>-0.133036</td>
-<td>0.375810</td>
-<td>9.710</td>
-<td>71.6</td>
-<td>0.6</td>
 <td>Basic Materials</td>
-<td>2681.0</td>
-<td>276.0</td>
-<td>147.0</td>
+<td>276</td>
+<td>147</td>
 <td>423</td>
-<td>13.0</td>
-<td>1766.0</td>
+<td>9.710</td>
 </tr>
 <tr>
 <th>2200559</th>
 <td>SPNT</td>
-<td>2023-10-27</td>
-<td>-0.040918</td>
-<td>0.653659</td>
-<td>9.610</td>
-<td>1580.9</td>
-<td>0.7</td>
 <td>Financial Services</td>
-<td>1482.0</td>
-<td>129.0</td>
-<td>294.0</td>
+<td>129</td>
+<td>294</td>
 <td>423</td>
-<td>14.0</td>
-<td>1767.0</td>
+<td>9.610</td>
 </tr>
 <tr>
 <th>1041933</th>
 <td>GNW</td>
-<td>2023-10-27</td>
-<td>0.003454</td>
-<td>0.244161</td>
-<td>5.810</td>
-<td>2690.5</td>
-<td>0.4</td>
 <td>Financial Services</td>
-<td>1176.0</td>
-<td>392.0</td>
-<td>33.0</td>
+<td>392</td>
+<td>33</td>
 <td>425</td>
-<td>15.0</td>
-<td>1765.0</td>
+<td>5.810</td>
 </tr>
 <tr>
 <th>2178802</th>
 <td>SNFCA</td>
-<td>2023-10-27</td>
-<td>-0.008439</td>
-<td>0.310818</td>
-<td>7.050</td>
-<td>161.6</td>
-<td>0.5</td>
 <td>Financial Services</td>
-<td>2530.0</td>
-<td>325.0</td>
-<td>103.0</td>
+<td>325</td>
+<td>103</td>
 <td>428</td>
-<td>16.0</td>
-<td>1764.0</td>
+<td>7.050</td>
 </tr>
 <tr>
 <th>1706041</th>
 <td>NWLI</td>
-<td>2023-10-27</td>
-<td>0.000209</td>
-<td>1.208464</td>
-<td>478.460</td>
-<td>1739.7</td>
-<td>0.8</td>
 <td>Financial Services</td>
-<td>1431.0</td>
-<td>46.0</td>
-<td>390.0</td>
+<td>46</td>
+<td>390</td>
 <td>436</td>
-<td>17.0</td>
-<td>1763.0</td>
+<td>478.460</td>
 </tr>
 <tr>
 <th>488571</th>
 <td>CION</td>
-<td>2023-10-27</td>
-<td>-0.023162</td>
-<td>0.312880</td>
-<td>9.700</td>
-<td>529.4</td>
-<td>0.6</td>
 <td>Financial Services</td>
-<td>2060.0</td>
-<td>322.0</td>
-<td>126.0</td>
+<td>322</td>
+<td>126</td>
 <td>448</td>
-<td>18.0</td>
-<td>1762.0</td>
+<td>9.700</td>
 </tr>
 <tr>
 <th>2149533</th>
 <td>SKYW</td>
-<td>2023-10-27</td>
-<td>0.135070</td>
-<td>1.370831</td>
-<td>42.270</td>
-<td>1730.7</td>
-<td>0.8</td>
 <td>Industrials</td>
-<td>1435.0</td>
-<td>36.0</td>
-<td>413.0</td>
+<td>36</td>
+<td>413</td>
 <td>449</td>
-<td>19.0</td>
-<td>1761.0</td>
+<td>42.270</td>
 </tr>
 <tr>
 <th>925188</th>
 <td>FLXS</td>
-<td>2023-10-27</td>
-<td>-0.009529</td>
-<td>0.429358</td>
-<td>19.750</td>
-<td>102.0</td>
-<td>0.7</td>
 <td>Consumer Cyclical</td>
-<td>2622.0</td>
-<td>239.0</td>
-<td>241.0</td>
+<td>239</td>
+<td>241</td>
 <td>480</td>
-<td>20.0</td>
-<td>1760.0</td>
+<td>19.750</td>
 </tr>
 <tr>
 <th>1013867</th>
 <td>GHLD</td>
-<td>2023-10-27</td>
-<td>-0.049955</td>
-<td>0.233693</td>
-<td>10.650</td>
-<td>649.2</td>
-<td>0.5</td>
 <td>Financial Services</td>
-<td>1955.0</td>
-<td>406.0</td>
-<td>80.0</td>
+<td>406</td>
+<td>80</td>
 <td>486</td>
-<td>21.0</td>
-<td>1759.0</td>
+<td>10.650</td>
 </tr>
 <tr>
 <th>1148943</th>
 <td>HRTG</td>
-<td>2023-10-27</td>
-<td>0.071429</td>
-<td>3.445205</td>
-<td>5.850</td>
-<td>149.5</td>
-<td>0.9</td>
 <td>Financial Services</td>
-<td>2543.0</td>
-<td>6.0</td>
-<td>490.0</td>
+<td>6</td>
+<td>490</td>
 <td>496</td>
-<td>22.0</td>
-<td>1758.0</td>
+<td>5.850</td>
 </tr>
 <tr>
 <th>1763361</th>
 <td>OPY</td>
-<td>2023-10-27</td>
-<td>-0.040421</td>
-<td>0.185995</td>
-<td>33.710</td>
-<td>349.7</td>
-<td>0.4</td>
 <td>Financial Services</td>
-<td>2251.0</td>
-<td>457.0</td>
-<td>45.0</td>
+<td>457</td>
+<td>45</td>
 <td>502</td>
-<td>23.0</td>
-<td>1757.0</td>
+<td>33.710</td>
 </tr>
 <tr>
 <th>1738882</th>
 <td>OIS</td>
-<td>2023-10-27</td>
-<td>0.048556</td>
-<td>0.440620</td>
-<td>7.990</td>
-<td>510.5</td>
-<td>0.7</td>
 <td>Energy</td>
-<td>2076.0</td>
-<td>232.0</td>
-<td>272.0</td>
+<td>232</td>
+<td>272</td>
 <td>504</td>
-<td>24.0</td>
-<td>1756.0</td>
+<td>7.990</td>
 </tr>
 <tr>
 <th>306996</th>
 <td>BH</td>
-<td>2023-10-27</td>
-<td>-0.023887</td>
-<td>0.202811</td>
-<td>144.660</td>
-<td>329.2</td>
-<td>0.5</td>
 <td>Consumer Cyclical</td>
-<td>2274.0</td>
-<td>442.0</td>
-<td>65.0</td>
+<td>442</td>
+<td>65</td>
 <td>507</td>
-<td>25.0</td>
-<td>1755.0</td>
+<td>144.660</td>
 </tr>
 <tr>
 <th>32796</th>
 <td>ACOR</td>
-<td>2023-10-27</td>
-<td>-0.058128</td>
-<td>0.144275</td>
-<td>9.560</td>
-<td>11.9</td>
-<td>0.2</td>
 <td>Healthcare</td>
-<td>2770.0</td>
-<td>513.0</td>
-<td>3.0</td>
+<td>513</td>
+<td>3</td>
 <td>516</td>
-<td>26.0</td>
-<td>1754.0</td>
+<td>9.560</td>
 </tr>
 <tr>
 <th>941111</th>
 <td>FOR</td>
-<td>2023-10-27</td>
-<td>0.008624</td>
-<td>1.318417</td>
-<td>23.390</td>
-<td>1167.2</td>
-<td>0.9</td>
 <td>Real Estate</td>
-<td>1647.0</td>
-<td>41.0</td>
-<td>480.0</td>
+<td>41</td>
+<td>480</td>
 <td>521</td>
-<td>27.0</td>
-<td>1753.0</td>
+<td>23.390</td>
 </tr>
 <tr>
 <th>438831</th>
 <td>CCS</td>
-<td>2023-10-27</td>
-<td>0.037157</td>
-<td>0.500472</td>
-<td>60.850</td>
-<td>1933.5</td>
-<td>0.8</td>
 <td>Consumer Cyclical</td>
-<td>1369.0</td>
-<td>195.0</td>
-<td>328.0</td>
+<td>195</td>
+<td>328</td>
 <td>523</td>
-<td>28.0</td>
-<td>1752.0</td>
+<td>60.850</td>
 </tr>
 <tr>
 <th>2300744</th>
 <td>TDS</td>
-<td>2023-10-27</td>
-<td>-0.009460</td>
-<td>0.150559</td>
-<td>17.800</td>
-<td>2007.1</td>
-<td>0.3</td>
 <td>Communication Services</td>
-<td>1353.0</td>
-<td>504.0</td>
-<td>24.0</td>
+<td>504</td>
+<td>24</td>
 <td>528</td>
-<td>29.0</td>
-<td>1751.0</td>
+<td>17.800</td>
 </tr>
 <tr>
 <th>1309749</th>
 <td>KELYA</td>
-<td>2023-10-27</td>
-<td>-0.024958</td>
-<td>0.200660</td>
-<td>17.580</td>
-<td>622.2</td>
-<td>0.5</td>
 <td>Industrials</td>
-<td>1977.0</td>
-<td>445.0</td>
-<td>86.0</td>
+<td>445</td>
+<td>86</td>
 <td>531</td>
-<td>30.0</td>
-<td>1750.0</td>
+<td>17.580</td>
 </tr>
 <tr>
 <th>2639665</th>
 <td>ZIMV</td>
-<td>2023-10-27</td>
-<td>-0.075099</td>
-<td>0.147561</td>
-<td>7.020</td>
-<td>186.2</td>
-<td>0.3</td>
 <td>Healthcare</td>
-<td>2488.0</td>
-<td>508.0</td>
-<td>27.0</td>
+<td>508</td>
+<td>27</td>
 <td>535</td>
-<td>31.0</td>
-<td>1749.0</td>
+<td>7.020</td>
 </tr>
 <tr>
 <th>2097818</th>
 <td>SCX</td>
-<td>2023-10-27</td>
-<td>-0.016098</td>
-<td>0.273697</td>
-<td>10.390</td>
-<td>77.2</td>
-<td>0.6</td>
 <td>Industrials</td>
-<td>2671.0</td>
-<td>356.0</td>
-<td>194.0</td>
+<td>356</td>
+<td>194</td>
 <td>550</td>
-<td>32.0</td>
-<td>1748.0</td>
+<td>10.390</td>
 </tr>
 <tr>
 <th>1700409</th>
 <td>NVRI</td>
-<td>2023-10-27</td>
-<td>-0.104687</td>
-<td>0.576419</td>
-<td>5.730</td>
-<td>457.0</td>
-<td>0.8</td>
 <td>Industrials</td>
-<td>2130.0</td>
-<td>162.0</td>
-<td>389.0</td>
+<td>162</td>
+<td>389</td>
 <td>551</td>
-<td>33.0</td>
-<td>1747.0</td>
+<td>5.730</td>
 </tr>
 <tr>
 <th>429145</th>
 <td>CCAP</td>
-<td>2023-10-27</td>
-<td>-0.037695</td>
-<td>0.451736</td>
-<td>15.445</td>
-<td>572.4</td>
-<td>0.8</td>
 <td>Financial Services</td>
-<td>2022.0</td>
-<td>227.0</td>
-<td>327.0</td>
+<td>227</td>
+<td>327</td>
 <td>554</td>
-<td>34.0</td>
-<td>1746.0</td>
+<td>15.445</td>
 </tr>
 <tr>
 <th>1026237</th>
 <td>GLRE</td>
-<td>2023-10-27</td>
-<td>-0.011040</td>
-<td>0.324291</td>
-<td>10.750</td>
-<td>379.2</td>
-<td>0.7</td>
 <td>Financial Services</td>
-<td>2221.0</td>
-<td>308.0</td>
-<td>247.0</td>
+<td>308</td>
+<td>247</td>
 <td>555</td>
-<td>35.0</td>
-<td>1745.0</td>
+<td>10.750</td>
 </tr>
 <tr>
 <th>256238</th>
 <td>AXR</td>
-<td>2023-10-27</td>
-<td>0.005418</td>
-<td>0.424471</td>
-<td>16.700</td>
-<td>88.0</td>
-<td>0.8</td>
 <td>Real Estate</td>
-<td>2651.0</td>
-<td>243.0</td>
-<td>313.0</td>
+<td>243</td>
+<td>313</td>
 <td>556</td>
-<td>36.0</td>
-<td>1744.0</td>
+<td>16.700</td>
 </tr>
 <tr>
 <th>574003</th>
 <td>CPSS</td>
-<td>2023-10-27</td>
-<td>0.104706</td>
-<td>0.453526</td>
-<td>9.390</td>
-<td>198.7</td>
-<td>0.8</td>
 <td>Financial Services</td>
-<td>2463.0</td>
-<td>225.0</td>
-<td>332.0</td>
+<td>225</td>
+<td>332</td>
 <td>557</td>
-<td>37.0</td>
-<td>1743.0</td>
+<td>9.390</td>
 </tr>
 <tr>
 <th>1297858</th>
 <td>JXN</td>
-<td>2023-10-27</td>
-<td>-0.057527</td>
-<td>0.138245</td>
-<td>37.190</td>
-<td>3046.3</td>
-<td>0.4</td>
 <td>Financial Services</td>
-<td>1100.0</td>
-<td>525.0</td>
-<td>38.0</td>
+<td>525</td>
+<td>38</td>
 <td>563</td>
-<td>38.0</td>
-<td>1742.0</td>
+<td>37.190</td>
 </tr>
 <tr>
 <th>1515142</th>
 <td>MHO</td>
-<td>2023-10-27</td>
-<td>0.083978</td>
-<td>0.955783</td>
-<td>81.320</td>
-<td>2264.6</td>
-<td>0.9</td>
 <td>Consumer Cyclical</td>
-<td>1285.0</td>
-<td>68.0</td>
-<td>502.0</td>
+<td>68</td>
+<td>502</td>
 <td>570</td>
-<td>39.0</td>
-<td>1741.0</td>
+<td>81.320</td>
 </tr>
 <tr>
 <th>988986</th>
 <td>GBLI</td>
-<td>2023-10-27</td>
-<td>0.042286</td>
-<td>0.456434</td>
-<td>36.480</td>
-<td>493.3</td>
-<td>0.8</td>
 <td>Financial Services</td>
-<td>2096.0</td>
-<td>220.0</td>
-<td>353.0</td>
+<td>220</td>
+<td>353</td>
 <td>573</td>
-<td>40.0</td>
-<td>1740.0</td>
+<td>36.480</td>
 </tr>
 <tr>
 <th>2354021</th>
 <td>TPH</td>
-<td>2023-10-27</td>
-<td>-0.009323</td>
-<td>0.594752</td>
-<td>24.440</td>
-<td>2372.0</td>
-<td>0.8</td>
 <td>Consumer Cyclical</td>
-<td>1256.0</td>
-<td>152.0</td>
-<td>423.0</td>
+<td>152</td>
+<td>423</td>
 <td>575</td>
-<td>41.0</td>
-<td>1739.0</td>
+<td>24.440</td>
 </tr>
 <tr>
 <th>1157233</th>
 <td>HT</td>
-<td>2023-10-27</td>
-<td>0.001012</td>
-<td>0.215184</td>
-<td>9.890</td>
-<td>396.6</td>
-<td>0.6</td>
 <td>Real Estate</td>
-<td>2199.0</td>
-<td>426.0</td>
-<td>157.0</td>
+<td>426</td>
+<td>157</td>
 <td>583</td>
-<td>42.0</td>
-<td>1738.0</td>
+<td>9.890</td>
 </tr>
 <tr>
 <th>2503950</th>
 <td>VRA</td>
-<td>2023-10-27</td>
-<td>0.048105</td>
-<td>1.072100</td>
-<td>7.190</td>
-<td>221.6</td>
-<td>0.9</td>
 <td>Consumer Cyclical</td>
-<td>2418.0</td>
-<td>57.0</td>
-<td>536.0</td>
+<td>57</td>
+<td>536</td>
 <td>593</td>
-<td>43.0</td>
-<td>1737.0</td>
+<td>7.190</td>
 </tr>
 <tr>
 <th>286492</th>
 <td>BCSF</td>
-<td>2023-10-27</td>
-<td>-0.024568</td>
-<td>0.354388</td>
-<td>14.690</td>
-<td>948.4</td>
-<td>0.8</td>
 <td>Financial Services</td>
-<td>1763.0</td>
-<td>286.0</td>
-<td>317.0</td>
+<td>286</td>
+<td>317</td>
 <td>603</td>
-<td>44.0</td>
-<td>1736.0</td>
+<td>14.690</td>
 </tr>
 <tr>
 <th>2034078</th>
 <td>ROOT</td>
-<td>2023-10-27</td>
-<td>-0.062907</td>
-<td>0.222365</td>
-<td>8.640</td>
-<td>125.3</td>
-<td>0.6</td>
 <td>Financial Services</td>
-<td>2583.0</td>
-<td>420.0</td>
-<td>192.0</td>
+<td>420</td>
+<td>192</td>
 <td>612</td>
-<td>45.0</td>
-<td>1735.0</td>
+<td>8.640</td>
 </tr>
 <tr>
 <th>1133044</th>
 <td>HOFT</td>
-<td>2023-10-27</td>
-<td>-0.081415</td>
-<td>0.388591</td>
-<td>16.360</td>
-<td>175.7</td>
-<td>0.8</td>
 <td>Consumer Cyclical</td>
-<td>2506.0</td>
-<td>260.0</td>
-<td>360.0</td>
+<td>260</td>
+<td>360</td>
 <td>620</td>
-<td>46.0</td>
-<td>1734.0</td>
+<td>16.360</td>
 </tr>
 <tr>
 <th>1502696</th>
 <td>MFIC</td>
-<td>2023-10-27</td>
-<td>-0.025621</td>
-<td>0.425314</td>
-<td>12.550</td>
-<td>818.9</td>
-<td>0.8</td>
 <td>Financial Services</td>
-<td>1842.0</td>
-<td>242.0</td>
-<td>380.0</td>
+<td>242</td>
+<td>380</td>
 <td>622</td>
-<td>47.0</td>
-<td>1733.0</td>
+<td>12.550</td>
 </tr>
 <tr>
 <th>1482023</th>
 <td>MDC</td>
-<td>2023-10-27</td>
-<td>-0.006198</td>
-<td>0.399002</td>
-<td>36.880</td>
-<td>2753.5</td>
-<td>0.8</td>
 <td>Consumer Cyclical</td>
-<td>1165.0</td>
-<td>254.0</td>
-<td>378.0</td>
+<td>254</td>
+<td>378</td>
 <td>632</td>
-<td>48.0</td>
-<td>1732.0</td>
+<td>36.880</td>
 </tr>
 <tr>
 <th>1425589</th>
 <td>LRFC</td>
-<td>2023-10-27</td>
-<td>0.005911</td>
-<td>0.177238</td>
-<td>20.420</td>
-<td>55.0</td>
-<td>0.6</td>
 <td>Financial Services</td>
-<td>2707.0</td>
-<td>473.0</td>
-<td>167.0</td>
+<td>473</td>
+<td>167</td>
 <td>640</td>
-<td>49.0</td>
-<td>1731.0</td>
+<td>20.420</td>
 </tr>
 <tr>
 <th>586502</th>
 <td>CRMT</td>
-<td>2023-10-27</td>
-<td>-0.142477</td>
-<td>0.323876</td>
-<td>64.400</td>
-<td>411.0</td>
-<td>0.8</td>
 <td>Consumer Cyclical</td>
-<td>2180.0</td>
-<td>309.0</td>
-<td>333.0</td>
+<td>309</td>
+<td>333</td>
 <td>642</td>
-<td>50.0</td>
-<td>1730.0</td>
+<td>64.400</td>
 </tr>
 </tbody>
 </table>
@@ -9645,10 +9061,10 @@ annualized mean short return is 0.23%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [214]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bottom50</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"combined_rnk"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">short</span>
 </pre></div>
 </div>
 </div>
@@ -9659,7 +9075,7 @@ annualized mean short return is 0.23%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[214]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9680,871 +9096,463 @@ annualized mean short return is 0.23%
 <tr style="text-align: right;">
 <th></th>
 <th>ticker</th>
-<th>date</th>
-<th>ret</th>
-<th>mom</th>
-<th>closeunadj</th>
-<th>marketcap</th>
-<th>pb</th>
 <th>sector</th>
-<th>rnk</th>
 <th>mom_rnk</th>
 <th>pb_rnk</th>
 <th>combined_rnk</th>
-<th>rnk_long</th>
-<th>rnk_short</th>
+<th>closeunadj</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>2425203</th>
 <td>UG</td>
-<td>2023-10-27</td>
-<td>-0.054757</td>
-<td>-0.436757</td>
-<td>6.180</td>
-<td>28.4</td>
-<td>2.7</td>
 <td>Consumer Defensive</td>
-<td>2751.0</td>
-<td>1664.0</td>
-<td>1382.0</td>
+<td>1664</td>
+<td>1382</td>
 <td>3046</td>
-<td>1730.0</td>
-<td>50.0</td>
+<td>6.180</td>
 </tr>
 <tr>
 <th>1121494</th>
 <td>HLIT</td>
-<td>2023-10-27</td>
-<td>-0.045367</td>
-<td>-0.384665</td>
-<td>9.890</td>
-<td>1106.8</td>
-<td>3.2</td>
 <td>Technology</td>
-<td>1678.0</td>
-<td>1596.0</td>
-<td>1456.0</td>
+<td>1596</td>
+<td>1456</td>
 <td>3052</td>
-<td>1731.0</td>
-<td>49.0</td>
+<td>9.890</td>
 </tr>
 <tr>
 <th>1570573</th>
 <td>MRVI</td>
-<td>2023-10-27</td>
-<td>-0.099855</td>
-<td>-0.401914</td>
-<td>6.220</td>
-<td>1561.3</td>
-<td>3.0</td>
 <td>Healthcare</td>
-<td>1490.0</td>
-<td>1623.0</td>
-<td>1431.0</td>
+<td>1623</td>
+<td>1431</td>
 <td>3054</td>
-<td>1732.0</td>
-<td>48.0</td>
+<td>6.220</td>
 </tr>
 <tr>
 <th>124978</th>
 <td>AMLX</td>
-<td>2023-10-27</td>
-<td>-0.065321</td>
-<td>-0.496425</td>
-<td>15.740</td>
-<td>1060.5</td>
-<td>2.7</td>
 <td>Healthcare</td>
-<td>1703.0</td>
-<td>1701.0</td>
-<td>1354.0</td>
+<td>1701</td>
+<td>1354</td>
 <td>3055</td>
-<td>1733.0</td>
-<td>47.0</td>
+<td>15.740</td>
 </tr>
 <tr>
 <th>1869626</th>
 <td>PLMR</td>
-<td>2023-10-27</td>
-<td>0.000203</td>
-<td>-0.404552</td>
-<td>49.360</td>
-<td>1221.3</td>
-<td>3.0</td>
 <td>Financial Services</td>
-<td>1613.0</td>
-<td>1625.0</td>
-<td>1433.0</td>
+<td>1625</td>
+<td>1433</td>
 <td>3058</td>
-<td>1734.0</td>
-<td>46.0</td>
+<td>49.360</td>
 </tr>
 <tr>
 <th>229881</th>
 <td>AUID</td>
-<td>2023-10-27</td>
-<td>-0.200000</td>
-<td>-0.308036</td>
-<td>6.000</td>
-<td>47.2</td>
-<td>4.9</td>
 <td>Technology</td>
-<td>2723.0</td>
-<td>1460.0</td>
-<td>1599.0</td>
+<td>1460</td>
+<td>1599</td>
 <td>3059</td>
-<td>1735.0</td>
-<td>45.0</td>
+<td>6.000</td>
 </tr>
 <tr>
 <th>291701</th>
 <td>BE</td>
-<td>2023-10-27</td>
-<td>-0.135279</td>
-<td>-0.284017</td>
-<td>9.780</td>
-<td>2048.1</td>
-<td>6.7</td>
 <td>Industrials</td>
-<td>1341.0</td>
-<td>1409.0</td>
-<td>1654.0</td>
+<td>1409</td>
+<td>1654</td>
 <td>3063</td>
-<td>1736.0</td>
-<td>44.0</td>
+<td>9.780</td>
 </tr>
 <tr>
 <th>1903132</th>
 <td>PRCT</td>
-<td>2023-10-27</td>
-<td>-0.056761</td>
-<td>-0.276356</td>
-<td>26.090</td>
-<td>1181.3</td>
-<td>7.6</td>
 <td>Healthcare</td>
-<td>1640.0</td>
-<td>1393.0</td>
-<td>1678.0</td>
+<td>1393</td>
+<td>1678</td>
 <td>3071</td>
-<td>1738.0</td>
-<td>43.0</td>
+<td>26.090</td>
 </tr>
 <tr>
 <th>260770</th>
 <td>AYX</td>
-<td>2023-10-27</td>
-<td>-0.099599</td>
-<td>-0.233787</td>
-<td>31.460</td>
-<td>2235.3</td>
-<td>43.0</td>
 <td>Technology</td>
-<td>1293.0</td>
-<td>1304.0</td>
-<td>1767.0</td>
+<td>1304</td>
+<td>1767</td>
 <td>3071</td>
-<td>1737.0</td>
-<td>42.0</td>
+<td>31.460</td>
 </tr>
 <tr>
 <th>244448</th>
 <td>AVXL</td>
-<td>2023-10-27</td>
-<td>0.000000</td>
-<td>-0.465742</td>
-<td>5.200</td>
-<td>426.1</td>
-<td>2.9</td>
 <td>Healthcare</td>
-<td>2169.0</td>
-<td>1685.0</td>
-<td>1399.0</td>
+<td>1685</td>
+<td>1399</td>
 <td>3084</td>
-<td>1739.0</td>
-<td>41.0</td>
+<td>5.200</td>
 </tr>
 <tr>
 <th>1447625</th>
 <td>LYFT</td>
-<td>2023-10-27</td>
-<td>-0.083168</td>
-<td>-0.274105</td>
-<td>9.260</td>
-<td>3576.6</td>
-<td>9.2</td>
 <td>Technology</td>
-<td>1012.0</td>
-<td>1387.0</td>
-<td>1701.0</td>
+<td>1387</td>
+<td>1701</td>
 <td>3088</td>
-<td>1740.0</td>
-<td>40.0</td>
+<td>9.260</td>
 </tr>
 <tr>
 <th>1217100</th>
 <td>IMXI</td>
-<td>2023-10-27</td>
-<td>-0.007961</td>
-<td>-0.364012</td>
-<td>16.200</td>
-<td>573.8</td>
-<td>3.8</td>
 <td>Technology</td>
-<td>2021.0</td>
-<td>1566.0</td>
-<td>1524.0</td>
+<td>1566</td>
+<td>1524</td>
 <td>3090</td>
-<td>1741.0</td>
-<td>39.0</td>
+<td>16.200</td>
 </tr>
 <tr>
 <th>1253736</th>
 <td>IRTC</td>
-<td>2023-10-27</td>
-<td>-0.048436</td>
-<td>-0.267713</td>
-<td>78.190</td>
-<td>2390.9</td>
-<td>10.7</td>
 <td>Healthcare</td>
-<td>1252.0</td>
-<td>1378.0</td>
-<td>1716.0</td>
+<td>1378</td>
+<td>1716</td>
 <td>3094</td>
-<td>1742.0</td>
-<td>38.0</td>
+<td>78.190</td>
 </tr>
 <tr>
 <th>2107199</th>
 <td>SEMR</td>
-<td>2023-10-27</td>
-<td>-0.031288</td>
-<td>-0.308943</td>
-<td>8.050</td>
-<td>1149.1</td>
-<td>5.9</td>
 <td>Technology</td>
-<td>1659.0</td>
-<td>1463.0</td>
-<td>1635.0</td>
+<td>1463</td>
+<td>1635</td>
 <td>3098</td>
-<td>1743.0</td>
-<td>37.0</td>
+<td>8.050</td>
 </tr>
 <tr>
 <th>2418352</th>
 <td>UDMY</td>
-<td>2023-10-27</td>
-<td>-0.047774</td>
-<td>-0.355058</td>
-<td>8.770</td>
-<td>1318.9</td>
-<td>4.0</td>
 <td>Consumer Defensive</td>
-<td>1580.0</td>
-<td>1551.0</td>
-<td>1551.0</td>
+<td>1551</td>
+<td>1551</td>
 <td>3102</td>
-<td>1744.0</td>
-<td>36.0</td>
+<td>8.770</td>
 </tr>
 <tr>
 <th>2375532</th>
 <td>TRUP</td>
-<td>2023-10-27</td>
-<td>-0.088948</td>
-<td>-0.437126</td>
-<td>20.690</td>
-<td>856.0</td>
-<td>3.0</td>
 <td>Financial Services</td>
-<td>1817.0</td>
-<td>1665.0</td>
-<td>1438.0</td>
+<td>1665</td>
+<td>1438</td>
 <td>3103</td>
-<td>1745.0</td>
-<td>35.0</td>
+<td>20.690</td>
 </tr>
 <tr>
 <th>804166</th>
 <td>ENVX</td>
-<td>2023-10-27</td>
-<td>-0.112348</td>
-<td>-0.321622</td>
-<td>8.770</td>
-<td>1404.3</td>
-<td>5.7</td>
 <td>Industrials</td>
-<td>1542.0</td>
-<td>1494.0</td>
-<td>1628.0</td>
+<td>1494</td>
+<td>1628</td>
 <td>3122</td>
-<td>1746.0</td>
-<td>34.0</td>
+<td>8.770</td>
 </tr>
 <tr>
 <th>1569788</th>
 <td>MRTX</td>
-<td>2023-10-27</td>
-<td>-0.005568</td>
-<td>-0.358563</td>
-<td>55.370</td>
-<td>3244.9</td>
-<td>4.5</td>
 <td>Healthcare</td>
-<td>1064.0</td>
-<td>1557.0</td>
-<td>1579.0</td>
+<td>1557</td>
+<td>1579</td>
 <td>3136</td>
-<td>1747.0</td>
-<td>33.0</td>
+<td>55.370</td>
 </tr>
 <tr>
 <th>2630788</th>
 <td>YOU</td>
-<td>2023-10-27</td>
-<td>-0.017252</td>
-<td>-0.298090</td>
-<td>16.520</td>
-<td>2507.4</td>
-<td>9.4</td>
 <td>Technology</td>
-<td>1220.0</td>
-<td>1433.0</td>
-<td>1704.0</td>
+<td>1433</td>
+<td>1704</td>
 <td>3137</td>
-<td>1748.0</td>
-<td>32.0</td>
+<td>16.520</td>
 </tr>
 <tr>
 <th>1298662</th>
 <td>JYNT</td>
-<td>2023-10-27</td>
-<td>-0.040146</td>
-<td>-0.474576</td>
-<td>7.890</td>
-<td>116.4</td>
-<td>3.3</td>
 <td>Healthcare</td>
-<td>2597.0</td>
-<td>1690.0</td>
-<td>1471.0</td>
+<td>1690</td>
+<td>1471</td>
 <td>3161</td>
-<td>1749.0</td>
-<td>31.0</td>
+<td>7.890</td>
 </tr>
 <tr>
 <th>2227119</th>
 <td>SSTI</td>
-<td>2023-10-27</td>
-<td>-0.023118</td>
-<td>-0.522921</td>
-<td>14.790</td>
-<td>180.9</td>
-<td>3.1</td>
 <td>Technology</td>
-<td>2496.0</td>
-<td>1722.0</td>
-<td>1449.0</td>
+<td>1722</td>
+<td>1449</td>
 <td>3171</td>
-<td>1750.0</td>
-<td>30.0</td>
+<td>14.790</td>
 </tr>
 <tr>
 <th>2339832</th>
 <td>TMCI</td>
-<td>2023-10-27</td>
-<td>-0.041372</td>
-<td>-0.454432</td>
-<td>9.500</td>
-<td>584.7</td>
-<td>3.9</td>
 <td>Healthcare</td>
-<td>2011.0</td>
-<td>1678.0</td>
-<td>1539.0</td>
+<td>1678</td>
+<td>1539</td>
 <td>3217</td>
-<td>1751.0</td>
-<td>29.0</td>
+<td>9.500</td>
 </tr>
 <tr>
 <th>220283</th>
 <td>ATOM</td>
-<td>2023-10-27</td>
-<td>-0.021672</td>
-<td>-0.359918</td>
-<td>6.320</td>
-<td>163.0</td>
-<td>7.0</td>
 <td>Technology</td>
-<td>2526.0</td>
-<td>1560.0</td>
-<td>1665.0</td>
+<td>1560</td>
+<td>1665</td>
 <td>3225</td>
-<td>1752.0</td>
-<td>28.0</td>
+<td>6.320</td>
 </tr>
 <tr>
 <th>2388282</th>
 <td>TTGT</td>
-<td>2023-10-27</td>
-<td>-0.047870</td>
-<td>-0.541736</td>
-<td>25.260</td>
-<td>702.8</td>
-<td>3.5</td>
 <td>Communication Services</td>
-<td>1926.0</td>
-<td>1732.0</td>
-<td>1497.0</td>
+<td>1732</td>
+<td>1497</td>
 <td>3229</td>
-<td>1753.0</td>
-<td>27.0</td>
+<td>25.260</td>
 </tr>
 <tr>
 <th>2298608</th>
 <td>TCX</td>
-<td>2023-10-27</td>
-<td>-0.123424</td>
-<td>-0.545940</td>
-<td>16.690</td>
-<td>181.3</td>
-<td>3.5</td>
 <td>Technology</td>
-<td>2495.0</td>
-<td>1734.0</td>
-<td>1496.0</td>
+<td>1734</td>
+<td>1496</td>
 <td>3230</td>
-<td>1754.0</td>
-<td>26.0</td>
+<td>16.690</td>
 </tr>
 <tr>
 <th>1374556</th>
 <td>LEE</td>
-<td>2023-10-27</td>
-<td>-0.081967</td>
-<td>-0.432131</td>
-<td>8.960</td>
-<td>54.4</td>
-<td>4.5</td>
 <td>Consumer Cyclical</td>
-<td>2709.0</td>
-<td>1658.0</td>
-<td>1578.0</td>
+<td>1658</td>
+<td>1578</td>
 <td>3236</td>
-<td>1756.0</td>
-<td>25.0</td>
+<td>8.960</td>
 </tr>
 <tr>
 <th>350200</th>
 <td>BOWL</td>
-<td>2023-10-27</td>
-<td>-0.075961</td>
-<td>-0.335635</td>
-<td>10.340</td>
-<td>1672.7</td>
-<td>10.8</td>
 <td>Consumer Cyclical</td>
-<td>1452.0</td>
-<td>1518.0</td>
-<td>1718.0</td>
+<td>1518</td>
+<td>1718</td>
 <td>3236</td>
-<td>1755.0</td>
-<td>24.0</td>
+<td>10.340</td>
 </tr>
 <tr>
 <th>2524170</th>
 <td>VVI</td>
-<td>2023-10-27</td>
-<td>-0.067557</td>
-<td>-0.318418</td>
-<td>23.050</td>
-<td>481.3</td>
-<td>29.2</td>
 <td>Industrials</td>
-<td>2114.0</td>
-<td>1484.0</td>
-<td>1759.0</td>
+<td>1484</td>
+<td>1759</td>
 <td>3243</td>
-<td>1757.0</td>
-<td>23.0</td>
+<td>23.050</td>
 </tr>
 <tr>
 <th>1549618</th>
 <td>MODN</td>
-<td>2023-10-27</td>
-<td>0.028114</td>
-<td>-0.355426</td>
-<td>23.770</td>
-<td>913.7</td>
-<td>8.8</td>
 <td>Technology</td>
-<td>1784.0</td>
-<td>1552.0</td>
-<td>1692.0</td>
+<td>1552</td>
+<td>1692</td>
 <td>3244</td>
-<td>1758.0</td>
-<td>22.0</td>
+<td>23.770</td>
 </tr>
 <tr>
 <th>1550287</th>
 <td>MODV</td>
-<td>2023-10-27</td>
-<td>-0.041099</td>
-<td>-0.675155</td>
-<td>40.130</td>
-<td>569.1</td>
-<td>3.5</td>
 <td>Healthcare</td>
-<td>2027.0</td>
-<td>1769.0</td>
-<td>1493.0</td>
+<td>1769</td>
+<td>1493</td>
 <td>3262</td>
-<td>1759.0</td>
-<td>21.0</td>
+<td>40.130</td>
 </tr>
 <tr>
 <th>1694815</th>
 <td>NVCR</td>
-<td>2023-10-27</td>
-<td>-0.131868</td>
-<td>-0.769483</td>
-<td>12.640</td>
-<td>1350.7</td>
-<td>3.4</td>
 <td>Healthcare</td>
-<td>1568.0</td>
-<td>1777.0</td>
-<td>1487.0</td>
+<td>1777</td>
+<td>1487</td>
 <td>3264</td>
-<td>1760.0</td>
-<td>20.0</td>
+<td>12.640</td>
 </tr>
 <tr>
 <th>312569</th>
 <td>BIGC</td>
-<td>2023-10-27</td>
-<td>-0.055556</td>
-<td>-0.333558</td>
-<td>8.925</td>
-<td>669.9</td>
-<td>24.9</td>
 <td>Technology</td>
-<td>1947.0</td>
-<td>1513.0</td>
-<td>1754.0</td>
+<td>1513</td>
+<td>1754</td>
 <td>3267</td>
-<td>1761.0</td>
-<td>18.0</td>
+<td>8.925</td>
 </tr>
 <tr>
 <th>2345995</th>
 <td>TNDM</td>
-<td>2023-10-27</td>
-<td>-0.068841</td>
-<td>-0.629768</td>
-<td>17.990</td>
-<td>1170.7</td>
-<td>3.6</td>
 <td>Healthcare</td>
-<td>1645.0</td>
-<td>1759.0</td>
-<td>1508.0</td>
+<td>1759</td>
+<td>1508</td>
 <td>3267</td>
-<td>1762.0</td>
-<td>19.0</td>
+<td>17.990</td>
 </tr>
 <tr>
 <th>356528</th>
 <td>BRDG</td>
-<td>2023-10-27</td>
-<td>-0.060686</td>
-<td>-0.362748</td>
-<td>7.120</td>
-<td>843.1</td>
-<td>9.9</td>
 <td>Financial Services</td>
-<td>1827.0</td>
-<td>1565.0</td>
-<td>1706.0</td>
+<td>1565</td>
+<td>1706</td>
 <td>3271</td>
-<td>1763.0</td>
-<td>17.0</td>
+<td>7.120</td>
 </tr>
 <tr>
 <th>794073</th>
 <td>ENFN</td>
-<td>2023-10-27</td>
-<td>-0.058219</td>
-<td>-0.341410</td>
-<td>8.250</td>
-<td>1018.3</td>
-<td>21.2</td>
 <td>Technology</td>
-<td>1727.0</td>
-<td>1524.0</td>
-<td>1750.0</td>
+<td>1524</td>
+<td>1750</td>
 <td>3274</td>
-<td>1764.0</td>
-<td>16.0</td>
+<td>8.250</td>
 </tr>
 <tr>
 <th>2229642</th>
 <td>STAA</td>
-<td>2023-10-27</td>
-<td>-0.075983</td>
-<td>-0.435436</td>
-<td>38.550</td>
-<td>1869.7</td>
-<td>5.3</td>
 <td>Healthcare</td>
-<td>1389.0</td>
-<td>1660.0</td>
-<td>1619.0</td>
+<td>1660</td>
+<td>1619</td>
 <td>3279</td>
-<td>1765.0</td>
-<td>15.0</td>
+<td>38.550</td>
 </tr>
 <tr>
 <th>1544665</th>
 <td>MNTK</td>
-<td>2023-10-27</td>
-<td>0.001027</td>
-<td>-0.429198</td>
-<td>9.750</td>
-<td>1400.7</td>
-<td>6.1</td>
 <td>Utilities</td>
-<td>1544.0</td>
-<td>1657.0</td>
-<td>1644.0</td>
+<td>1657</td>
+<td>1644</td>
 <td>3301</td>
-<td>1766.0</td>
-<td>14.0</td>
+<td>9.750</td>
 </tr>
 <tr>
 <th>1011292</th>
 <td>GH</td>
-<td>2023-10-27</td>
-<td>-0.026141</td>
-<td>-0.380694</td>
-<td>24.960</td>
-<td>2937.6</td>
-<td>10.0</td>
 <td>Healthcare</td>
-<td>1121.0</td>
-<td>1592.0</td>
-<td>1710.0</td>
+<td>1592</td>
+<td>1710</td>
 <td>3302</td>
-<td>1767.0</td>
-<td>13.0</td>
+<td>24.960</td>
 </tr>
 <tr>
 <th>507828</th>
 <td>CLPT</td>
-<td>2023-10-27</td>
-<td>0.068041</td>
-<td>-0.512646</td>
-<td>5.180</td>
-<td>127.6</td>
-<td>4.7</td>
 <td>Healthcare</td>
-<td>2575.0</td>
-<td>1715.0</td>
-<td>1589.0</td>
+<td>1715</td>
+<td>1589</td>
 <td>3304</td>
-<td>1768.0</td>
-<td>12.0</td>
+<td>5.180</td>
 </tr>
 <tr>
 <th>806691</th>
 <td>EP</td>
-<td>2023-10-27</td>
-<td>-0.044100</td>
-<td>-0.398876</td>
-<td>8.020</td>
-<td>182.2</td>
-<td>9.9</td>
 <td>Energy</td>
-<td>2491.0</td>
-<td>1618.0</td>
-<td>1707.0</td>
+<td>1618</td>
+<td>1707</td>
 <td>3325</td>
-<td>1769.0</td>
-<td>11.0</td>
+<td>8.020</td>
 </tr>
 <tr>
 <th>97708</th>
 <td>ALHC</td>
-<td>2023-10-27</td>
-<td>-0.036620</td>
-<td>-0.466154</td>
-<td>6.840</td>
-<td>1288.7</td>
-<td>6.1</td>
 <td>Healthcare</td>
-<td>1586.0</td>
-<td>1686.0</td>
-<td>1640.0</td>
+<td>1686</td>
+<td>1640</td>
 <td>3326</td>
-<td>1770.0</td>
-<td>10.0</td>
+<td>6.840</td>
 </tr>
 <tr>
 <th>2395412</th>
 <td>TVTX</td>
-<td>2023-10-27</td>
-<td>-0.059474</td>
-<td>-0.610288</td>
-<td>6.800</td>
-<td>510.1</td>
-<td>4.4</td>
 <td>Healthcare</td>
-<td>2077.0</td>
-<td>1750.0</td>
-<td>1577.0</td>
+<td>1750</td>
+<td>1577</td>
 <td>3327</td>
-<td>1771.0</td>
-<td>9.0</td>
+<td>6.800</td>
 </tr>
 <tr>
 <th>2077665</th>
 <td>SAVA</td>
-<td>2023-10-27</td>
-<td>0.418688</td>
-<td>-0.547334</td>
-<td>19.890</td>
-<td>834.8</td>
-<td>4.7</td>
 <td>Healthcare</td>
-<td>1830.0</td>
-<td>1736.0</td>
-<td>1593.0</td>
+<td>1736</td>
+<td>1593</td>
 <td>3329</td>
-<td>1772.0</td>
-<td>8.0</td>
+<td>19.890</td>
 </tr>
 <tr>
 <th>2514031</th>
 <td>VSCO</td>
-<td>2023-10-27</td>
-<td>-0.047815</td>
-<td>-0.567652</td>
-<td>18.520</td>
-<td>1431.1</td>
-<td>5.1</td>
 <td>Consumer Cyclical</td>
-<td>1531.0</td>
-<td>1741.0</td>
-<td>1611.0</td>
+<td>1741</td>
+<td>1611</td>
 <td>3352</td>
-<td>1773.0</td>
-<td>7.0</td>
+<td>18.520</td>
 </tr>
 <tr>
 <th>1458847</th>
 <td>MARPS</td>
-<td>2023-10-27</td>
-<td>-0.041905</td>
-<td>-0.436111</td>
-<td>5.030</td>
-<td>10.1</td>
-<td>10.3</td>
 <td>Energy</td>
-<td>2775.0</td>
-<td>1662.0</td>
-<td>1713.0</td>
+<td>1662</td>
+<td>1713</td>
 <td>3375</td>
-<td>1774.0</td>
-<td>6.0</td>
+<td>5.030</td>
 </tr>
 <tr>
 <th>1056027</th>
 <td>GRND</td>
-<td>2023-10-27</td>
-<td>0.003419</td>
-<td>-0.448706</td>
-<td>5.870</td>
-<td>1021.8</td>
-<td>49.1</td>
 <td>Technology</td>
-<td>1723.0</td>
-<td>1674.0</td>
-<td>1769.0</td>
+<td>1674</td>
+<td>1769</td>
 <td>3443</td>
-<td>1775.0</td>
-<td>4.0</td>
+<td>5.870</td>
 </tr>
 <tr>
 <th>2379344</th>
 <td>TSE</td>
-<td>2023-10-27</td>
-<td>0.020443</td>
-<td>-0.546010</td>
-<td>5.990</td>
-<td>210.8</td>
-<td>9.9</td>
 <td>Basic Materials</td>
-<td>2438.0</td>
-<td>1735.0</td>
-<td>1708.0</td>
+<td>1735</td>
+<td>1708</td>
 <td>3443</td>
-<td>1776.0</td>
-<td>5.0</td>
+<td>5.990</td>
 </tr>
 <tr>
 <th>38102</th>
 <td>ACXP</td>
-<td>2023-10-27</td>
-<td>0.038610</td>
-<td>-0.544073</td>
-<td>5.380</td>
-<td>70.0</td>
-<td>11.3</td>
 <td>Healthcare</td>
-<td>2683.0</td>
-<td>1733.0</td>
-<td>1719.0</td>
+<td>1733</td>
+<td>1719</td>
 <td>3452</td>
-<td>1777.0</td>
-<td>3.0</td>
+<td>5.380</td>
 </tr>
 <tr>
 <th>2056469</th>
 <td>RVNC</td>
-<td>2023-10-27</td>
-<td>-0.056738</td>
-<td>-0.488859</td>
-<td>7.980</td>
-<td>701.9</td>
-<td>26.2</td>
 <td>Healthcare</td>
-<td>1928.0</td>
-<td>1697.0</td>
-<td>1756.0</td>
+<td>1697</td>
+<td>1756</td>
 <td>3453</td>
-<td>1778.0</td>
-<td>2.0</td>
+<td>7.980</td>
 </tr>
 <tr>
 <th>1856242</th>
 <td>PI</td>
-<td>2023-10-27</td>
-<td>0.216174</td>
-<td>-0.526542</td>
-<td>61.660</td>
-<td>1668.3</td>
-<td>47.9</td>
 <td>Technology</td>
-<td>1455.0</td>
-<td>1724.0</td>
-<td>1768.0</td>
+<td>1724</td>
+<td>1768</td>
 <td>3492</td>
-<td>1779.0</td>
-<td>1.0</td>
+<td>61.660</td>
 </tr>
 </tbody>
 </table>
@@ -10569,10 +9577,10 @@ annualized mean short return is 0.23%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [215]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top50</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">rnk</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">long</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -10583,7 +9591,7 @@ annualized mean short return is 0.23%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[215]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>sector
 Basic Materials            3
@@ -10594,7 +9602,7 @@ Financial Services        19
 Healthcare                 4
 Industrials                5
 Real Estate                5
-Name: rnk, dtype: int64</pre>
+Name: ticker, dtype: int64</pre>
 </div>
 </div>
 </div>
@@ -10604,10 +9612,10 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [216]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bottom50</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">rnk</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">short</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -10618,7 +9626,7 @@ Name: rnk, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[216]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>sector
 Basic Materials            1
@@ -10631,7 +9639,7 @@ Healthcare                19
 Industrials                3
 Technology                15
 Utilities                  1
-Name: rnk, dtype: int64</pre>
+Name: ticker, dtype: int64</pre>
 </div>
 </div>
 </div>
@@ -10646,7 +9654,9 @@ Name: rnk, dtype: int64</pre>
 <h3 id="Value-and-Momentum-Portfolios-III">Value and Momentum Portfolios III<a class="anchor-link" href="#Value-and-Momentum-Portfolios-III">¶</a></h3><ul>
 <li>Rank on combined rank separately in each sector</li>
 <li>Do that by grouping by date and sector instead of just date</li>
-<li>Choose top 5 and bottom 5 in each sector to get sector neutrality</li>
+<li>Go long best 5 and short worst 5 in each sector to get sector neutrality</li>
+<li>Compute equally weighted returns for long and short portfolios</li>
+<li>Compute long minus short return</li>
 </ul>
 </div>
 </div>
@@ -10656,16 +9666,10 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [217]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"rnk_long"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">"sector"</span><span class="p">],</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"rnk_short"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">"sector"</span><span class="p">],</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">longs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">rnk_long</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">shorts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">rnk_short</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">long_rets</span> <span class="o">=</span> <span class="n">longs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">short_rets</span> <span class="o">=</span> <span class="n">shorts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"annualized mean long return is </span><span class="si">{</span><span class="mi">52</span><span class="o">*</span><span class="n">long_rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"annualized mean long return is </span><span class="si">{</span><span class="mi">52</span><span class="o">*</span><span class="n">long_rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"annualized mean short return is </span><span class="si">{</span><span class="mi">52</span><span class="o">*</span><span class="n">short_rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -10691,7 +9695,7 @@ annualized mean short return is 1.82%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [218]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">long_rets</span><span class="o">-</span><span class="n">short_rets</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -10705,7 +9709,7 @@ annualized mean short return is 1.82%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[218]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>&lt;Axes: xlabel='date'&gt;</pre>
 </div>
@@ -10732,32 +9736,15 @@ annualized mean short return is 1.82%
 </div>
 </div>
 </div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [226]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">today</span><span class="p">[</span><span class="s2">"rnk_long"</span><span class="p">]</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">today</span><span class="p">[</span><span class="s2">"rnk_short"</span><span class="p">]</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">combined_rnk</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
-<span class="n">top</span> <span class="o">=</span> <span class="n">today</span><span class="p">[</span><span class="n">today</span><span class="o">.</span><span class="n">rnk_long</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">bottom</span> <span class="o">=</span> <span class="n">today</span><span class="p">[</span><span class="n">today</span><span class="o">.</span><span class="n">rnk_short</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [227]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"combined_rnk"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">long_neutral</span>
 </pre></div>
 </div>
 </div>
@@ -10768,7 +9755,7 @@ annualized mean short return is 1.82%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[227]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10789,956 +9776,508 @@ annualized mean short return is 1.82%
 <tr style="text-align: right;">
 <th></th>
 <th>ticker</th>
-<th>date</th>
-<th>ret</th>
-<th>mom</th>
-<th>closeunadj</th>
-<th>marketcap</th>
-<th>pb</th>
 <th>sector</th>
-<th>rnk</th>
 <th>mom_rnk</th>
 <th>pb_rnk</th>
 <th>combined_rnk</th>
-<th>rnk_long</th>
-<th>rnk_short</th>
+<th>closeunadj</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>772871</th>
-<td>EHTH</td>
-<td>2023-10-27</td>
-<td>-0.040293</td>
-<td>1.587413</td>
-<td>7.860</td>
-<td>220.8</td>
-<td>0.4</td>
-<td>Financial Services</td>
-<td>2419.0</td>
-<td>26.0</td>
-<td>32.0</td>
-<td>58</td>
-<td>1.0</td>
-<td>433.0</td>
-</tr>
-<tr>
-<th>427948</th>
-<td>CBUS</td>
-<td>2023-10-27</td>
-<td>-0.453433</td>
-<td>1.501030</td>
-<td>10.270</td>
-<td>218.6</td>
-<td>0.5</td>
-<td>Healthcare</td>
-<td>2424.0</td>
-<td>30.0</td>
-<td>69.0</td>
-<td>99</td>
-<td>1.0</td>
-<td>289.0</td>
-</tr>
-<tr>
-<th>2367118</th>
-<td>TRML</td>
-<td>2023-10-27</td>
-<td>0.284404</td>
-<td>0.906040</td>
-<td>14.000</td>
-<td>59.9</td>
-<td>0.4</td>
-<td>Healthcare</td>
-<td>2698.0</td>
-<td>78.0</td>
-<td>53.0</td>
-<td>131</td>
-<td>2.0</td>
-<td>288.0</td>
-</tr>
-<tr>
-<th>1429651</th>
-<td>LSEA</td>
-<td>2023-10-27</td>
-<td>-0.001379</td>
-<td>0.798000</td>
-<td>7.240</td>
-<td>279.4</td>
-<td>0.4</td>
-<td>Real Estate</td>
-<td>2325.0</td>
-<td>97.0</td>
-<td>39.0</td>
-<td>136</td>
-<td>1.0</td>
-<td>131.0</td>
-</tr>
-<tr>
-<th>2197648</th>
-<td>SPHR</td>
-<td>2023-10-27</td>
-<td>-0.009177</td>
-<td>0.784908</td>
-<td>33.470</td>
-<td>1160.7</td>
-<td>0.4</td>
-<td>Communication Services</td>
-<td>1652.0</td>
-<td>100.0</td>
-<td>51.0</td>
-<td>151</td>
-<td>1.0</td>
-<td>45.0</td>
-</tr>
-<tr>
-<th>387833</th>
-<td>BZH</td>
-<td>2023-10-27</td>
-<td>0.045982</td>
-<td>1.177448</td>
-<td>23.430</td>
-<td>734.3</td>
-<td>0.7</td>
-<td>Consumer Cyclical</td>
-<td>1899.0</td>
-<td>48.0</td>
-<td>221.0</td>
-<td>269</td>
-<td>1.0</td>
-<td>191.0</td>
-</tr>
-<tr>
 <th>2449388</th>
 <td>USAP</td>
-<td>2023-10-27</td>
-<td>0.158678</td>
-<td>0.771622</td>
-<td>14.020</td>
-<td>127.4</td>
-<td>0.6</td>
 <td>Basic Materials</td>
-<td>2577.0</td>
-<td>102.0</td>
-<td>197.0</td>
+<td>102</td>
+<td>197</td>
 <td>299</td>
-<td>1.0</td>
-<td>86.0</td>
-</tr>
-<tr>
-<th>1761051</th>
-<td>OPRT</td>
-<td>2023-10-27</td>
-<td>-0.066102</td>
-<td>0.377863</td>
-<td>5.510</td>
-<td>187.6</td>
-<td>0.4</td>
-<td>Financial Services</td>
-<td>2483.0</td>
-<td>272.0</td>
-<td>44.0</td>
-<td>316</td>
-<td>2.0</td>
-<td>432.0</td>
+<td>14.020</td>
 </tr>
 <tr>
 <th>1597522</th>
 <td>MUX</td>
-<td>2023-10-27</td>
-<td>-0.083979</td>
-<td>0.785714</td>
-<td>7.090</td>
-<td>336.6</td>
-<td>0.7</td>
 <td>Basic Materials</td>
-<td>2266.0</td>
-<td>99.0</td>
-<td>267.0</td>
+<td>99</td>
+<td>267</td>
 <td>366</td>
-<td>2.0</td>
-<td>85.0</td>
-</tr>
-<tr>
-<th>1488461</th>
-<td>MDV</td>
-<td>2023-10-27</td>
-<td>0.017391</td>
-<td>0.669000</td>
-<td>15.210</td>
-<td>114.8</td>
-<td>0.7</td>
-<td>Real Estate</td>
-<td>2601.0</td>
-<td>125.0</td>
-<td>260.0</td>
-<td>385</td>
-<td>2.0</td>
-<td>130.0</td>
-</tr>
-<tr>
-<th>1139786</th>
-<td>HOV</td>
-<td>2023-10-27</td>
-<td>-0.041594</td>
-<td>1.516337</td>
-<td>66.360</td>
-<td>404.4</td>
-<td>0.8</td>
-<td>Consumer Cyclical</td>
-<td>2189.0</td>
-<td>29.0</td>
-<td>362.0</td>
-<td>391</td>
-<td>2.0</td>
-<td>190.0</td>
-</tr>
-<tr>
-<th>1593141</th>
-<td>MTW</td>
-<td>2023-10-27</td>
-<td>-0.060976</td>
-<td>0.661148</td>
-<td>12.320</td>
-<td>431.8</td>
-<td>0.7</td>
-<td>Industrials</td>
-<td>2164.0</td>
-<td>128.0</td>
-<td>266.0</td>
-<td>394</td>
-<td>1.0</td>
-<td>221.0</td>
-</tr>
-<tr>
-<th>2200559</th>
-<td>SPNT</td>
-<td>2023-10-27</td>
-<td>-0.040918</td>
-<td>0.653659</td>
-<td>9.610</td>
-<td>1580.9</td>
-<td>0.7</td>
-<td>Financial Services</td>
-<td>1482.0</td>
-<td>129.0</td>
-<td>294.0</td>
-<td>423</td>
-<td>3.0</td>
-<td>431.0</td>
+<td>7.090</td>
 </tr>
 <tr>
 <th>950535</th>
 <td>FRD</td>
-<td>2023-10-27</td>
-<td>-0.133036</td>
-<td>0.375810</td>
-<td>9.710</td>
-<td>71.6</td>
-<td>0.6</td>
 <td>Basic Materials</td>
-<td>2681.0</td>
-<td>276.0</td>
-<td>147.0</td>
+<td>276</td>
+<td>147</td>
 <td>423</td>
-<td>3.0</td>
-<td>84.0</td>
-</tr>
-<tr>
-<th>1041933</th>
-<td>GNW</td>
-<td>2023-10-27</td>
-<td>0.003454</td>
-<td>0.244161</td>
-<td>5.810</td>
-<td>2690.5</td>
-<td>0.4</td>
-<td>Financial Services</td>
-<td>1176.0</td>
-<td>392.0</td>
-<td>33.0</td>
-<td>425</td>
-<td>4.0</td>
-<td>430.0</td>
-</tr>
-<tr>
-<th>2178802</th>
-<td>SNFCA</td>
-<td>2023-10-27</td>
-<td>-0.008439</td>
-<td>0.310818</td>
-<td>7.050</td>
-<td>161.6</td>
-<td>0.5</td>
-<td>Financial Services</td>
-<td>2530.0</td>
-<td>325.0</td>
-<td>103.0</td>
-<td>428</td>
-<td>5.0</td>
-<td>429.0</td>
-</tr>
-<tr>
-<th>2149533</th>
-<td>SKYW</td>
-<td>2023-10-27</td>
-<td>0.135070</td>
-<td>1.370831</td>
-<td>42.270</td>
-<td>1730.7</td>
-<td>0.8</td>
-<td>Industrials</td>
-<td>1435.0</td>
-<td>36.0</td>
-<td>413.0</td>
-<td>449</td>
-<td>2.0</td>
-<td>220.0</td>
-</tr>
-<tr>
-<th>925188</th>
-<td>FLXS</td>
-<td>2023-10-27</td>
-<td>-0.009529</td>
-<td>0.429358</td>
-<td>19.750</td>
-<td>102.0</td>
-<td>0.7</td>
-<td>Consumer Cyclical</td>
-<td>2622.0</td>
-<td>239.0</td>
-<td>241.0</td>
-<td>480</td>
-<td>3.0</td>
-<td>189.0</td>
-</tr>
-<tr>
-<th>1738882</th>
-<td>OIS</td>
-<td>2023-10-27</td>
-<td>0.048556</td>
-<td>0.440620</td>
-<td>7.990</td>
-<td>510.5</td>
-<td>0.7</td>
-<td>Energy</td>
-<td>2076.0</td>
-<td>232.0</td>
-<td>272.0</td>
-<td>504</td>
-<td>1.0</td>
-<td>76.0</td>
-</tr>
-<tr>
-<th>306996</th>
-<td>BH</td>
-<td>2023-10-27</td>
-<td>-0.023887</td>
-<td>0.202811</td>
-<td>144.660</td>
-<td>329.2</td>
-<td>0.5</td>
-<td>Consumer Cyclical</td>
-<td>2274.0</td>
-<td>442.0</td>
-<td>65.0</td>
-<td>507</td>
-<td>4.0</td>
-<td>188.0</td>
-</tr>
-<tr>
-<th>32796</th>
-<td>ACOR</td>
-<td>2023-10-27</td>
-<td>-0.058128</td>
-<td>0.144275</td>
-<td>9.560</td>
-<td>11.9</td>
-<td>0.2</td>
-<td>Healthcare</td>
-<td>2770.0</td>
-<td>513.0</td>
-<td>3.0</td>
-<td>516</td>
-<td>3.0</td>
-<td>287.0</td>
-</tr>
-<tr>
-<th>941111</th>
-<td>FOR</td>
-<td>2023-10-27</td>
-<td>0.008624</td>
-<td>1.318417</td>
-<td>23.390</td>
-<td>1167.2</td>
-<td>0.9</td>
-<td>Real Estate</td>
-<td>1647.0</td>
-<td>41.0</td>
-<td>480.0</td>
-<td>521</td>
-<td>3.0</td>
-<td>129.0</td>
-</tr>
-<tr>
-<th>438831</th>
-<td>CCS</td>
-<td>2023-10-27</td>
-<td>0.037157</td>
-<td>0.500472</td>
-<td>60.850</td>
-<td>1933.5</td>
-<td>0.8</td>
-<td>Consumer Cyclical</td>
-<td>1369.0</td>
-<td>195.0</td>
-<td>328.0</td>
-<td>523</td>
-<td>5.0</td>
-<td>187.0</td>
-</tr>
-<tr>
-<th>2300744</th>
-<td>TDS</td>
-<td>2023-10-27</td>
-<td>-0.009460</td>
-<td>0.150559</td>
-<td>17.800</td>
-<td>2007.1</td>
-<td>0.3</td>
-<td>Communication Services</td>
-<td>1353.0</td>
-<td>504.0</td>
-<td>24.0</td>
-<td>528</td>
-<td>2.0</td>
-<td>44.0</td>
-</tr>
-<tr>
-<th>1309749</th>
-<td>KELYA</td>
-<td>2023-10-27</td>
-<td>-0.024958</td>
-<td>0.200660</td>
-<td>17.580</td>
-<td>622.2</td>
-<td>0.5</td>
-<td>Industrials</td>
-<td>1977.0</td>
-<td>445.0</td>
-<td>86.0</td>
-<td>531</td>
-<td>3.0</td>
-<td>219.0</td>
-</tr>
-<tr>
-<th>2639665</th>
-<td>ZIMV</td>
-<td>2023-10-27</td>
-<td>-0.075099</td>
-<td>0.147561</td>
-<td>7.020</td>
-<td>186.2</td>
-<td>0.3</td>
-<td>Healthcare</td>
-<td>2488.0</td>
-<td>508.0</td>
-<td>27.0</td>
-<td>535</td>
-<td>4.0</td>
-<td>286.0</td>
-</tr>
-<tr>
-<th>2097818</th>
-<td>SCX</td>
-<td>2023-10-27</td>
-<td>-0.016098</td>
-<td>0.273697</td>
-<td>10.390</td>
-<td>77.2</td>
-<td>0.6</td>
-<td>Industrials</td>
-<td>2671.0</td>
-<td>356.0</td>
-<td>194.0</td>
-<td>550</td>
-<td>4.0</td>
-<td>218.0</td>
-</tr>
-<tr>
-<th>1700409</th>
-<td>NVRI</td>
-<td>2023-10-27</td>
-<td>-0.104687</td>
-<td>0.576419</td>
-<td>5.730</td>
-<td>457.0</td>
-<td>0.8</td>
-<td>Industrials</td>
-<td>2130.0</td>
-<td>162.0</td>
-<td>389.0</td>
-<td>551</td>
-<td>5.0</td>
-<td>217.0</td>
-</tr>
-<tr>
-<th>256238</th>
-<td>AXR</td>
-<td>2023-10-27</td>
-<td>0.005418</td>
-<td>0.424471</td>
-<td>16.700</td>
-<td>88.0</td>
-<td>0.8</td>
-<td>Real Estate</td>
-<td>2651.0</td>
-<td>243.0</td>
-<td>313.0</td>
-<td>556</td>
-<td>4.0</td>
-<td>128.0</td>
-</tr>
-<tr>
-<th>1157233</th>
-<td>HT</td>
-<td>2023-10-27</td>
-<td>0.001012</td>
-<td>0.215184</td>
-<td>9.890</td>
-<td>396.6</td>
-<td>0.6</td>
-<td>Real Estate</td>
-<td>2199.0</td>
-<td>426.0</td>
-<td>157.0</td>
-<td>583</td>
-<td>5.0</td>
-<td>127.0</td>
+<td>9.710</td>
 </tr>
 <tr>
 <th>2638060</th>
 <td>ZEUS</td>
-<td>2023-10-27</td>
-<td>0.039100</td>
-<td>1.181726</td>
-<td>49.430</td>
-<td>550.3</td>
-<td>1.0</td>
 <td>Basic Materials</td>
-<td>2040.0</td>
-<td>47.0</td>
-<td>636.0</td>
+<td>47</td>
+<td>636</td>
 <td>683</td>
-<td>4.0</td>
-<td>83.0</td>
-</tr>
-<tr>
-<th>2038182</th>
-<td>RPAY</td>
-<td>2023-10-27</td>
-<td>-0.045381</td>
-<td>0.228155</td>
-<td>5.890</td>
-<td>592.3</td>
-<td>0.7</td>
-<td>Technology</td>
-<td>2009.0</td>
-<td>413.0</td>
-<td>286.0</td>
-<td>699</td>
-<td>1.0</td>
-<td>209.0</td>
-</tr>
-<tr>
-<th>1123116</th>
-<td>HLX</td>
-<td>2023-10-27</td>
-<td>-0.049133</td>
-<td>0.718462</td>
-<td>9.870</td>
-<td>1487.5</td>
-<td>1.0</td>
-<td>Energy</td>
-<td>1514.0</td>
-<td>116.0</td>
-<td>584.0</td>
-<td>700</td>
-<td>2.0</td>
-<td>74.0</td>
-</tr>
-<tr>
-<th>1641108</th>
-<td>NGS</td>
-<td>2023-10-27</td>
-<td>-0.026694</td>
-<td>0.317647</td>
-<td>14.220</td>
-<td>176.9</td>
-<td>0.8</td>
-<td>Energy</td>
-<td>2503.0</td>
-<td>315.0</td>
-<td>385.0</td>
-<td>700</td>
-<td>3.0</td>
-<td>75.0</td>
-</tr>
-<tr>
-<th>2455127</th>
-<td>USM</td>
-<td>2023-10-27</td>
-<td>-0.007196</td>
-<td>0.376361</td>
-<td>41.390</td>
-<td>3529.4</td>
-<td>0.8</td>
-<td>Communication Services</td>
-<td>1020.0</td>
-<td>274.0</td>
-<td>430.0</td>
-<td>704</td>
-<td>3.0</td>
-<td>43.0</td>
-</tr>
-<tr>
-<th>2193812</th>
-<td>SPB</td>
-<td>2023-10-27</td>
-<td>-0.009868</td>
-<td>0.767147</td>
-<td>75.250</td>
-<td>2684.5</td>
-<td>1.0</td>
-<td>Consumer Defensive</td>
-<td>1177.0</td>
-<td>106.0</td>
-<td>620.0</td>
-<td>726</td>
-<td>1.0</td>
-<td>68.0</td>
-</tr>
-<tr>
-<th>538462</th>
-<td>CNX</td>
-<td>2023-10-27</td>
-<td>-0.069359</td>
-<td>0.381885</td>
-<td>21.200</td>
-<td>3367.7</td>
-<td>0.9</td>
-<td>Energy</td>
-<td>1044.0</td>
-<td>268.0</td>
-<td>458.0</td>
-<td>726</td>
-<td>4.0</td>
-<td>73.0</td>
-</tr>
-<tr>
-<th>29775</th>
-<td>ACMR</td>
-<td>2023-10-27</td>
-<td>-0.232363</td>
-<td>1.654692</td>
-<td>13.710</td>
-<td>822.9</td>
-<td>1.2</td>
-<td>Technology</td>
-<td>1838.0</td>
-<td>21.0</td>
-<td>724.0</td>
-<td>745</td>
-<td>2.0</td>
-<td>208.0</td>
+<td>49.430</td>
 </tr>
 <tr>
 <th>986128</th>
 <td>GATO</td>
-<td>2023-10-27</td>
-<td>-0.011834</td>
-<td>0.537092</td>
-<td>5.010</td>
-<td>346.5</td>
-<td>1.0</td>
 <td>Basic Materials</td>
-<td>2258.0</td>
-<td>182.0</td>
-<td>579.0</td>
+<td>182</td>
+<td>579</td>
 <td>761</td>
-<td>5.0</td>
-<td>82.0</td>
+<td>5.010</td>
 </tr>
 <tr>
-<th>839021</th>
-<td>ETNB</td>
-<td>2023-10-27</td>
-<td>-0.020468</td>
-<td>0.662002</td>
-<td>6.700</td>
-<td>505.7</td>
-<td>1.1</td>
-<td>Healthcare</td>
-<td>2083.0</td>
-<td>126.0</td>
-<td>656.0</td>
-<td>782</td>
-<td>5.0</td>
-<td>285.0</td>
+<th>2197648</th>
+<td>SPHR</td>
+<td>Communication Services</td>
+<td>100</td>
+<td>51</td>
+<td>151</td>
+<td>33.470</td>
 </tr>
 <tr>
-<th>1004675</th>
-<td>GEOS</td>
-<td>2023-10-27</td>
-<td>0.002392</td>
-<td>1.943182</td>
-<td>12.570</td>
-<td>165.8</td>
-<td>1.3</td>
-<td>Energy</td>
-<td>2522.0</td>
-<td>16.0</td>
-<td>806.0</td>
-<td>822</td>
-<td>5.0</td>
-<td>72.0</td>
+<th>2300744</th>
+<td>TDS</td>
+<td>Communication Services</td>
+<td>504</td>
+<td>24</td>
+<td>528</td>
+<td>17.800</td>
 </tr>
 <tr>
-<th>3791</th>
-<td>AAOI</td>
-<td>2023-10-27</td>
-<td>0.018813</td>
-<td>2.917857</td>
-<td>7.040</td>
-<td>226.2</td>
-<td>1.4</td>
-<td>Technology</td>
-<td>2407.0</td>
-<td>10.0</td>
-<td>850.0</td>
-<td>860</td>
-<td>3.0</td>
-<td>207.0</td>
+<th>2455127</th>
+<td>USM</td>
+<td>Communication Services</td>
+<td>274</td>
+<td>430</td>
+<td>704</td>
+<td>41.390</td>
 </tr>
 <tr>
 <th>1177442</th>
 <td>IAC</td>
-<td>2023-10-27</td>
-<td>-0.080440</td>
-<td>0.034702</td>
-<td>41.840</td>
-<td>3591.8</td>
-<td>0.6</td>
 <td>Communication Services</td>
-<td>1008.0</td>
-<td>704.0</td>
-<td>159.0</td>
+<td>704</td>
+<td>159</td>
 <td>863</td>
-<td>4.0</td>
-<td>42.0</td>
-</tr>
-<tr>
-<th>889276</th>
-<td>FDP</td>
-<td>2023-10-27</td>
-<td>-0.016129</td>
-<td>0.023975</td>
-<td>25.010</td>
-<td>1203.5</td>
-<td>0.6</td>
-<td>Consumer Defensive</td>
-<td>1624.0</td>
-<td>727.0</td>
-<td>140.0</td>
-<td>867</td>
-<td>2.0</td>
-<td>67.0</td>
-</tr>
-<tr>
-<th>2373620</th>
-<td>TRT</td>
-<td>2023-10-27</td>
-<td>0.066770</td>
-<td>0.408451</td>
-<td>6.870</td>
-<td>28.1</td>
-<td>1.0</td>
-<td>Technology</td>
-<td>2752.0</td>
-<td>250.0</td>
-<td>630.0</td>
-<td>880</td>
-<td>4.0</td>
-<td>206.0</td>
-</tr>
-<tr>
-<th>586665</th>
-<td>CRNC</td>
-<td>2023-10-27</td>
-<td>-0.098273</td>
-<td>0.202479</td>
-<td>15.140</td>
-<td>610.6</td>
-<td>0.9</td>
-<td>Technology</td>
-<td>1984.0</td>
-<td>443.0</td>
-<td>461.0</td>
-<td>904</td>
-<td>5.0</td>
-<td>204.0</td>
-</tr>
-<tr>
-<th>2601835</th>
-<td>WVVI</td>
-<td>2023-10-27</td>
-<td>-0.046909</td>
-<td>-0.038715</td>
-<td>5.242</td>
-<td>26.0</td>
-<td>0.4</td>
-<td>Consumer Defensive</td>
-<td>2755.0</td>
-<td>856.0</td>
-<td>59.0</td>
-<td>915</td>
-<td>3.0</td>
-<td>66.0</td>
+<td>41.840</td>
 </tr>
 <tr>
 <th>2116089</th>
 <td>SGA</td>
-<td>2023-10-27</td>
-<td>-0.042500</td>
-<td>0.013286</td>
-<td>19.150</td>
-<td>117.3</td>
-<td>0.6</td>
 <td>Communication Services</td>
-<td>2591.0</td>
-<td>751.0</td>
-<td>195.0</td>
+<td>751</td>
+<td>195</td>
 <td>946</td>
-<td>5.0</td>
-<td>41.0</td>
+<td>19.150</td>
+</tr>
+<tr>
+<th>387833</th>
+<td>BZH</td>
+<td>Consumer Cyclical</td>
+<td>48</td>
+<td>221</td>
+<td>269</td>
+<td>23.430</td>
+</tr>
+<tr>
+<th>1139786</th>
+<td>HOV</td>
+<td>Consumer Cyclical</td>
+<td>29</td>
+<td>362</td>
+<td>391</td>
+<td>66.360</td>
+</tr>
+<tr>
+<th>925188</th>
+<td>FLXS</td>
+<td>Consumer Cyclical</td>
+<td>239</td>
+<td>241</td>
+<td>480</td>
+<td>19.750</td>
+</tr>
+<tr>
+<th>306996</th>
+<td>BH</td>
+<td>Consumer Cyclical</td>
+<td>442</td>
+<td>65</td>
+<td>507</td>
+<td>144.660</td>
+</tr>
+<tr>
+<th>438831</th>
+<td>CCS</td>
+<td>Consumer Cyclical</td>
+<td>195</td>
+<td>328</td>
+<td>523</td>
+<td>60.850</td>
+</tr>
+<tr>
+<th>2193812</th>
+<td>SPB</td>
+<td>Consumer Defensive</td>
+<td>106</td>
+<td>620</td>
+<td>726</td>
+<td>75.250</td>
+</tr>
+<tr>
+<th>889276</th>
+<td>FDP</td>
+<td>Consumer Defensive</td>
+<td>727</td>
+<td>140</td>
+<td>867</td>
+<td>25.010</td>
+</tr>
+<tr>
+<th>2601835</th>
+<td>WVVI</td>
+<td>Consumer Defensive</td>
+<td>856</td>
+<td>59</td>
+<td>915</td>
+<td>5.242</td>
 </tr>
 <tr>
 <th>142373</th>
 <td>ANDE</td>
-<td>2023-10-27</td>
-<td>0.001015</td>
-<td>0.498298</td>
-<td>49.310</td>
-<td>1664.3</td>
-<td>1.4</td>
 <td>Consumer Defensive</td>
-<td>1459.0</td>
-<td>197.0</td>
-<td>854.0</td>
+<td>197</td>
+<td>854</td>
 <td>1051</td>
-<td>4.0</td>
-<td>65.0</td>
+<td>49.310</td>
 </tr>
 <tr>
 <th>37223</th>
 <td>ACU</td>
-<td>2023-10-27</td>
-<td>0.068917</td>
-<td>0.310248</td>
-<td>30.400</td>
-<td>108.5</td>
-<td>1.3</td>
 <td>Consumer Defensive</td>
-<td>2611.0</td>
-<td>327.0</td>
-<td>786.0</td>
+<td>327</td>
+<td>786</td>
 <td>1113</td>
-<td>5.0</td>
-<td>64.0</td>
+<td>30.400</td>
+</tr>
+<tr>
+<th>1738882</th>
+<td>OIS</td>
+<td>Energy</td>
+<td>232</td>
+<td>272</td>
+<td>504</td>
+<td>7.990</td>
+</tr>
+<tr>
+<th>1123116</th>
+<td>HLX</td>
+<td>Energy</td>
+<td>116</td>
+<td>584</td>
+<td>700</td>
+<td>9.870</td>
+</tr>
+<tr>
+<th>1641108</th>
+<td>NGS</td>
+<td>Energy</td>
+<td>315</td>
+<td>385</td>
+<td>700</td>
+<td>14.220</td>
+</tr>
+<tr>
+<th>538462</th>
+<td>CNX</td>
+<td>Energy</td>
+<td>268</td>
+<td>458</td>
+<td>726</td>
+<td>21.200</td>
+</tr>
+<tr>
+<th>1004675</th>
+<td>GEOS</td>
+<td>Energy</td>
+<td>16</td>
+<td>806</td>
+<td>822</td>
+<td>12.570</td>
+</tr>
+<tr>
+<th>772871</th>
+<td>EHTH</td>
+<td>Financial Services</td>
+<td>26</td>
+<td>32</td>
+<td>58</td>
+<td>7.860</td>
+</tr>
+<tr>
+<th>1761051</th>
+<td>OPRT</td>
+<td>Financial Services</td>
+<td>272</td>
+<td>44</td>
+<td>316</td>
+<td>5.510</td>
+</tr>
+<tr>
+<th>2200559</th>
+<td>SPNT</td>
+<td>Financial Services</td>
+<td>129</td>
+<td>294</td>
+<td>423</td>
+<td>9.610</td>
+</tr>
+<tr>
+<th>1041933</th>
+<td>GNW</td>
+<td>Financial Services</td>
+<td>392</td>
+<td>33</td>
+<td>425</td>
+<td>5.810</td>
+</tr>
+<tr>
+<th>2178802</th>
+<td>SNFCA</td>
+<td>Financial Services</td>
+<td>325</td>
+<td>103</td>
+<td>428</td>
+<td>7.050</td>
+</tr>
+<tr>
+<th>427948</th>
+<td>CBUS</td>
+<td>Healthcare</td>
+<td>30</td>
+<td>69</td>
+<td>99</td>
+<td>10.270</td>
+</tr>
+<tr>
+<th>2367118</th>
+<td>TRML</td>
+<td>Healthcare</td>
+<td>78</td>
+<td>53</td>
+<td>131</td>
+<td>14.000</td>
+</tr>
+<tr>
+<th>32796</th>
+<td>ACOR</td>
+<td>Healthcare</td>
+<td>513</td>
+<td>3</td>
+<td>516</td>
+<td>9.560</td>
+</tr>
+<tr>
+<th>2639665</th>
+<td>ZIMV</td>
+<td>Healthcare</td>
+<td>508</td>
+<td>27</td>
+<td>535</td>
+<td>7.020</td>
+</tr>
+<tr>
+<th>839021</th>
+<td>ETNB</td>
+<td>Healthcare</td>
+<td>126</td>
+<td>656</td>
+<td>782</td>
+<td>6.700</td>
+</tr>
+<tr>
+<th>1593141</th>
+<td>MTW</td>
+<td>Industrials</td>
+<td>128</td>
+<td>266</td>
+<td>394</td>
+<td>12.320</td>
+</tr>
+<tr>
+<th>2149533</th>
+<td>SKYW</td>
+<td>Industrials</td>
+<td>36</td>
+<td>413</td>
+<td>449</td>
+<td>42.270</td>
+</tr>
+<tr>
+<th>1309749</th>
+<td>KELYA</td>
+<td>Industrials</td>
+<td>445</td>
+<td>86</td>
+<td>531</td>
+<td>17.580</td>
+</tr>
+<tr>
+<th>2097818</th>
+<td>SCX</td>
+<td>Industrials</td>
+<td>356</td>
+<td>194</td>
+<td>550</td>
+<td>10.390</td>
+</tr>
+<tr>
+<th>1700409</th>
+<td>NVRI</td>
+<td>Industrials</td>
+<td>162</td>
+<td>389</td>
+<td>551</td>
+<td>5.730</td>
+</tr>
+<tr>
+<th>1429651</th>
+<td>LSEA</td>
+<td>Real Estate</td>
+<td>97</td>
+<td>39</td>
+<td>136</td>
+<td>7.240</td>
+</tr>
+<tr>
+<th>1488461</th>
+<td>MDV</td>
+<td>Real Estate</td>
+<td>125</td>
+<td>260</td>
+<td>385</td>
+<td>15.210</td>
+</tr>
+<tr>
+<th>941111</th>
+<td>FOR</td>
+<td>Real Estate</td>
+<td>41</td>
+<td>480</td>
+<td>521</td>
+<td>23.390</td>
+</tr>
+<tr>
+<th>256238</th>
+<td>AXR</td>
+<td>Real Estate</td>
+<td>243</td>
+<td>313</td>
+<td>556</td>
+<td>16.700</td>
+</tr>
+<tr>
+<th>1157233</th>
+<td>HT</td>
+<td>Real Estate</td>
+<td>426</td>
+<td>157</td>
+<td>583</td>
+<td>9.890</td>
+</tr>
+<tr>
+<th>2038182</th>
+<td>RPAY</td>
+<td>Technology</td>
+<td>413</td>
+<td>286</td>
+<td>699</td>
+<td>5.890</td>
+</tr>
+<tr>
+<th>29775</th>
+<td>ACMR</td>
+<td>Technology</td>
+<td>21</td>
+<td>724</td>
+<td>745</td>
+<td>13.710</td>
+</tr>
+<tr>
+<th>3791</th>
+<td>AAOI</td>
+<td>Technology</td>
+<td>10</td>
+<td>850</td>
+<td>860</td>
+<td>7.040</td>
+</tr>
+<tr>
+<th>2373620</th>
+<td>TRT</td>
+<td>Technology</td>
+<td>250</td>
+<td>630</td>
+<td>880</td>
+<td>6.870</td>
+</tr>
+<tr>
+<th>586665</th>
+<td>CRNC</td>
+<td>Technology</td>
+<td>443</td>
+<td>461</td>
+<td>904</td>
+<td>15.140</td>
 </tr>
 <tr>
 <th>1035432</th>
 <td>GNE</td>
-<td>2023-10-27</td>
-<td>0.018047</td>
-<td>0.566355</td>
-<td>19.180</td>
-<td>526.7</td>
-<td>2.5</td>
 <td>Utilities</td>
-<td>2062.0</td>
-<td>167.0</td>
-<td>1310.0</td>
+<td>167</td>
+<td>1310</td>
 <td>1477</td>
-<td>1.0</td>
-<td>30.0</td>
+<td>19.180</td>
 </tr>
 <tr>
 <th>94400</th>
 <td>ALE</td>
-<td>2023-10-27</td>
-<td>-0.004354</td>
-<td>-0.033144</td>
-<td>52.590</td>
-<td>3018.6</td>
-<td>1.1</td>
 <td>Utilities</td>
-<td>1104.0</td>
-<td>838.0</td>
-<td>642.0</td>
+<td>838</td>
+<td>642</td>
 <td>1480</td>
-<td>2.0</td>
-<td>29.0</td>
+<td>52.590</td>
 </tr>
 <tr>
 <th>644205</th>
 <td>CWCO</td>
-<td>2023-10-27</td>
-<td>0.018596</td>
-<td>0.669504</td>
-<td>29.030</td>
-<td>457.0</td>
-<td>2.7</td>
 <td>Utilities</td>
-<td>2129.0</td>
-<td>124.0</td>
-<td>1359.0</td>
+<td>124</td>
+<td>1359</td>
 <td>1483</td>
-<td>3.0</td>
-<td>28.0</td>
+<td>29.030</td>
 </tr>
 <tr>
 <th>1703602</th>
 <td>NWE</td>
-<td>2023-10-27</td>
-<td>-0.011467</td>
-<td>-0.058718</td>
-<td>46.550</td>
-<td>2850.8</td>
-<td>1.0</td>
 <td>Utilities</td>
-<td>1149.0</td>
-<td>903.0</td>
-<td>604.0</td>
+<td>903</td>
+<td>604</td>
 <td>1507</td>
-<td>4.0</td>
-<td>27.0</td>
+<td>46.550</td>
 </tr>
 <tr>
 <th>1820539</th>
 <td>PCYO</td>
-<td>2023-10-27</td>
-<td>-0.025131</td>
-<td>0.129412</td>
-<td>9.310</td>
-<td>224.0</td>
-<td>1.9</td>
 <td>Utilities</td>
-<td>2411.0</td>
-<td>537.0</td>
-<td>1122.0</td>
+<td>537</td>
+<td>1122</td>
 <td>1659</td>
-<td>5.0</td>
-<td>26.0</td>
+<td>9.310</td>
 </tr>
 </tbody>
 </table>
@@ -11752,10 +10291,10 @@ annualized mean short return is 1.82%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [228]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bottom</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"combined_rnk"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">short_neutral</span>
 </pre></div>
 </div>
 </div>
@@ -11766,7 +10305,7 @@ annualized mean short return is 1.82%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[228]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -11787,956 +10326,508 @@ annualized mean short return is 1.82%
 <tr style="text-align: right;">
 <th></th>
 <th>ticker</th>
-<th>date</th>
-<th>ret</th>
-<th>mom</th>
-<th>closeunadj</th>
-<th>marketcap</th>
-<th>pb</th>
 <th>sector</th>
-<th>rnk</th>
 <th>mom_rnk</th>
 <th>pb_rnk</th>
 <th>combined_rnk</th>
-<th>rnk_long</th>
-<th>rnk_short</th>
+<th>closeunadj</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>1756063</th>
-<td>OPAD</td>
-<td>2023-10-27</td>
-<td>-0.078363</td>
-<td>-0.253366</td>
-<td>7.880</td>
-<td>214.5</td>
-<td>1.6</td>
-<td>Real Estate</td>
-<td>2433.0</td>
-<td>1353.0</td>
-<td>992.0</td>
-<td>2345</td>
-<td>127.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>2428020</th>
-<td>UHT</td>
-<td>2023-10-27</td>
-<td>0.013589</td>
-<td>-0.116303</td>
-<td>38.040</td>
-<td>525.8</td>
-<td>2.4</td>
-<td>Real Estate</td>
-<td>2063.0</td>
-<td>1050.0</td>
-<td>1297.0</td>
-<td>2347</td>
-<td>128.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>248602</th>
-<td>AWR</td>
-<td>2023-10-27</td>
-<td>0.002974</td>
-<td>-0.106610</td>
-<td>77.560</td>
-<td>2867.9</td>
-<td>3.8</td>
-<td>Utilities</td>
-<td>1143.0</td>
-<td>1025.0</td>
-<td>1518.0</td>
-<td>2543</td>
-<td>26.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>113290</th>
-<td>ALX</td>
-<td>2023-10-27</td>
-<td>0.015523</td>
-<td>-0.137932</td>
-<td>179.250</td>
-<td>915.5</td>
-<td>3.4</td>
-<td>Real Estate</td>
-<td>1782.0</td>
-<td>1102.0</td>
-<td>1477.0</td>
-<td>2579</td>
-<td>129.0</td>
-<td>3.0</td>
-</tr>
-<tr>
 <th>1433593</th>
 <td>LTHM</td>
-<td>2023-10-27</td>
-<td>-0.045483</td>
-<td>-0.411257</td>
-<td>15.110</td>
-<td>2715.5</td>
-<td>1.6</td>
 <td>Basic Materials</td>
-<td>1171.0</td>
-<td>1633.0</td>
-<td>986.0</td>
+<td>1633</td>
+<td>986</td>
 <td>2619</td>
-<td>82.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>1575731</th>
-<td>MSEX</td>
-<td>2023-10-27</td>
-<td>0.023203</td>
-<td>-0.215540</td>
-<td>63.500</td>
-<td>1127.0</td>
-<td>2.7</td>
-<td>Utilities</td>
-<td>1673.0</td>
-<td>1264.0</td>
-<td>1371.0</td>
-<td>2635</td>
-<td>27.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>1043620</th>
-<td>GOOD</td>
-<td>2023-10-27</td>
-<td>-0.030808</td>
-<td>-0.242557</td>
-<td>11.640</td>
-<td>464.6</td>
-<td>2.5</td>
-<td>Real Estate</td>
-<td>2124.0</td>
-<td>1328.0</td>
-<td>1311.0</td>
-<td>2639</td>
-<td>130.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>1195703</th>
-<td>IDT</td>
-<td>2023-10-27</td>
-<td>-0.038408</td>
-<td>-0.164139</td>
-<td>27.790</td>
-<td>699.2</td>
-<td>3.6</td>
-<td>Communication Services</td>
-<td>1929.0</td>
-<td>1159.0</td>
-<td>1501.0</td>
-<td>2660</td>
-<td>41.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>474829</th>
-<td>CHEF</td>
-<td>2023-10-27</td>
-<td>-0.063641</td>
-<td>-0.419726</td>
-<td>17.950</td>
-<td>712.0</td>
-<td>1.7</td>
-<td>Consumer Defensive</td>
-<td>1913.0</td>
-<td>1649.0</td>
-<td>1018.0</td>
-<td>2667</td>
-<td>64.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>2359074</th>
-<td>TR</td>
-<td>2023-10-27</td>
-<td>0.013039</td>
-<td>-0.228893</td>
-<td>30.300</td>
-<td>2119.3</td>
-<td>2.7</td>
-<td>Consumer Defensive</td>
-<td>1322.0</td>
-<td>1293.0</td>
-<td>1381.0</td>
-<td>2674</td>
-<td>65.0</td>
-<td>4.0</td>
+<td>15.110</td>
 </tr>
 <tr>
 <th>1573351</th>
 <td>MSB</td>
-<td>2023-10-27</td>
-<td>-0.034374</td>
-<td>-0.078088</td>
-<td>20.170</td>
-<td>264.6</td>
-<td>12.2</td>
 <td>Basic Materials</td>
-<td>2359.0</td>
-<td>950.0</td>
-<td>1725.0</td>
+<td>950</td>
+<td>1725</td>
 <td>2675</td>
-<td>83.0</td>
-<td>4.0</td>
+<td>20.170</td>
 </tr>
 <tr>
 <th>2165284</th>
 <td>SMID</td>
-<td>2023-10-27</td>
-<td>-0.035221</td>
-<td>-0.206230</td>
-<td>19.366</td>
-<td>101.8</td>
-<td>3.1</td>
 <td>Basic Materials</td>
-<td>2624.0</td>
-<td>1242.0</td>
-<td>1447.0</td>
+<td>1242</td>
+<td>1447</td>
 <td>2689</td>
-<td>84.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>1324126</th>
-<td>KLXE</td>
-<td>2023-10-27</td>
-<td>-0.034972</td>
-<td>-0.163726</td>
-<td>10.210</td>
-<td>167.5</td>
-<td>4.2</td>
-<td>Energy</td>
-<td>2518.0</td>
-<td>1155.0</td>
-<td>1567.0</td>
-<td>2722</td>
-<td>72.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>1076808</th>
-<td>GWRS</td>
-<td>2023-10-27</td>
-<td>0.046170</td>
-<td>-0.150285</td>
-<td>9.970</td>
-<td>241.0</td>
-<td>5.0</td>
-<td>Utilities</td>
-<td>2386.0</td>
-<td>1130.0</td>
-<td>1605.0</td>
-<td>2735</td>
-<td>28.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>1755960</th>
-<td>OOMA</td>
-<td>2023-10-27</td>
-<td>-0.090601</td>
-<td>-0.186366</td>
-<td>10.740</td>
-<td>274.9</td>
-<td>3.9</td>
-<td>Communication Services</td>
-<td>2340.0</td>
-<td>1203.0</td>
-<td>1535.0</td>
-<td>2738</td>
-<td>42.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>1836328</th>
-<td>PETS</td>
-<td>2023-10-27</td>
-<td>-0.058350</td>
-<td>-0.494850</td>
-<td>9.360</td>
-<td>198.1</td>
-<td>1.7</td>
-<td>Consumer Defensive</td>
-<td>2465.0</td>
-<td>1700.0</td>
-<td>1048.0</td>
-<td>2748</td>
-<td>66.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>934187</th>
-<td>FNGR</td>
-<td>2023-10-27</td>
-<td>-0.106013</td>
-<td>-0.105187</td>
-<td>5.650</td>
-<td>296.9</td>
-<td>20.9</td>
-<td>Communication Services</td>
-<td>2308.0</td>
-<td>1019.0</td>
-<td>1749.0</td>
-<td>2768</td>
-<td>43.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>1617424</th>
-<td>NBR</td>
-<td>2023-10-27</td>
-<td>-0.134719</td>
-<td>-0.274794</td>
-<td>102.830</td>
-<td>973.3</td>
-<td>2.8</td>
-<td>Energy</td>
-<td>1746.0</td>
-<td>1388.0</td>
-<td>1389.0</td>
-<td>2777</td>
-<td>73.0</td>
-<td>4.0</td>
+<td>19.366</td>
 </tr>
 <tr>
 <th>1555752</th>
 <td>MP</td>
-<td>2023-10-27</td>
-<td>-0.042368</td>
-<td>-0.368177</td>
-<td>16.500</td>
-<td>2931.2</td>
-<td>2.1</td>
 <td>Basic Materials</td>
-<td>1124.0</td>
-<td>1572.0</td>
-<td>1207.0</td>
+<td>1572</td>
+<td>1207</td>
 <td>2779</td>
-<td>85.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>1781891</th>
-<td>OUT</td>
-<td>2023-10-27</td>
-<td>0.059471</td>
-<td>-0.392700</td>
-<td>9.620</td>
-<td>1587.7</td>
-<td>2.1</td>
-<td>Real Estate</td>
-<td>1481.0</td>
-<td>1610.0</td>
-<td>1208.0</td>
-<td>2818</td>
-<td>131.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>1042555</th>
-<td>GOGO</td>
-<td>2023-10-27</td>
-<td>-0.055013</td>
-<td>-0.144189</td>
-<td>10.650</td>
-<td>1370.6</td>
-<td>148.8</td>
-<td>Communication Services</td>
-<td>1560.0</td>
-<td>1113.0</td>
-<td>1776.0</td>
-<td>2889</td>
-<td>44.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>2615263</th>
-<td>XMTR</td>
-<td>2023-10-27</td>
-<td>-0.113422</td>
-<td>-0.717000</td>
-<td>14.070</td>
-<td>637.3</td>
-<td>1.9</td>
-<td>Industrials</td>
-<td>1964.0</td>
-<td>1773.0</td>
-<td>1134.0</td>
-<td>2907</td>
-<td>217.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>1457865</th>
-<td>MARA</td>
-<td>2023-10-27</td>
-<td>0.141753</td>
-<td>-0.386282</td>
-<td>8.860</td>
-<td>1544.0</td>
-<td>2.6</td>
-<td>Financial Services</td>
-<td>1499.0</td>
-<td>1598.0</td>
-<td>1339.0</td>
-<td>2937</td>
-<td>429.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>845359</th>
-<td>EVEX</td>
-<td>2023-10-27</td>
-<td>-0.047134</td>
-<td>-0.214218</td>
-<td>7.480</td>
-<td>2013.3</td>
-<td>8.7</td>
-<td>Industrials</td>
-<td>1350.0</td>
-<td>1261.0</td>
-<td>1690.0</td>
-<td>2951</td>
-<td>218.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>2468353</th>
-<td>VALU</td>
-<td>2023-10-27</td>
-<td>-0.020448</td>
-<td>-0.287057</td>
-<td>34.500</td>
-<td>363.1</td>
-<td>4.2</td>
-<td>Financial Services</td>
-<td>2236.0</td>
-<td>1414.0</td>
-<td>1568.0</td>
-<td>2982</td>
-<td>430.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>757849</th>
-<td>EE</td>
-<td>2023-10-27</td>
-<td>-0.022713</td>
-<td>-0.353075</td>
-<td>15.060</td>
-<td>1630.6</td>
-<td>3.3</td>
-<td>Utilities</td>
-<td>1470.0</td>
-<td>1547.0</td>
-<td>1466.0</td>
-<td>3013</td>
-<td>29.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>425453</th>
-<td>CBRL</td>
-<td>2023-10-27</td>
-<td>-0.049286</td>
-<td>-0.392918</td>
-<td>64.620</td>
-<td>1431.8</td>
-<td>3.0</td>
-<td>Consumer Cyclical</td>
-<td>1530.0</td>
-<td>1611.0</td>
-<td>1418.0</td>
-<td>3029</td>
-<td>187.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>362958</th>
-<td>BROG</td>
-<td>2023-10-27</td>
-<td>0.002935</td>
-<td>-0.331010</td>
-<td>5.125</td>
-<td>561.6</td>
-<td>3.9</td>
-<td>Energy</td>
-<td>2032.0</td>
-<td>1510.0</td>
-<td>1529.0</td>
-<td>3039</td>
-<td>74.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>1492207</th>
-<td>MED</td>
-<td>2023-10-27</td>
-<td>-0.056542</td>
-<td>-0.316738</td>
-<td>69.580</td>
-<td>757.7</td>
-<td>4.1</td>
-<td>Consumer Cyclical</td>
-<td>1881.0</td>
-<td>1480.0</td>
-<td>1561.0</td>
-<td>3041</td>
-<td>188.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>2425203</th>
-<td>UG</td>
-<td>2023-10-27</td>
-<td>-0.054757</td>
-<td>-0.436757</td>
-<td>6.180</td>
-<td>28.4</td>
-<td>2.7</td>
-<td>Consumer Defensive</td>
-<td>2751.0</td>
-<td>1664.0</td>
-<td>1382.0</td>
-<td>3046</td>
-<td>67.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>1869626</th>
-<td>PLMR</td>
-<td>2023-10-27</td>
-<td>0.000203</td>
-<td>-0.404552</td>
-<td>49.360</td>
-<td>1221.3</td>
-<td>3.0</td>
-<td>Financial Services</td>
-<td>1613.0</td>
-<td>1625.0</td>
-<td>1433.0</td>
-<td>3058</td>
-<td>431.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>291701</th>
-<td>BE</td>
-<td>2023-10-27</td>
-<td>-0.135279</td>
-<td>-0.284017</td>
-<td>9.780</td>
-<td>2048.1</td>
-<td>6.7</td>
-<td>Industrials</td>
-<td>1341.0</td>
-<td>1409.0</td>
-<td>1654.0</td>
-<td>3063</td>
-<td>219.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>2418352</th>
-<td>UDMY</td>
-<td>2023-10-27</td>
-<td>-0.047774</td>
-<td>-0.355058</td>
-<td>8.770</td>
-<td>1318.9</td>
-<td>4.0</td>
-<td>Consumer Defensive</td>
-<td>1580.0</td>
-<td>1551.0</td>
-<td>1551.0</td>
-<td>3102</td>
-<td>68.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>2375532</th>
-<td>TRUP</td>
-<td>2023-10-27</td>
-<td>-0.088948</td>
-<td>-0.437126</td>
-<td>20.690</td>
-<td>856.0</td>
-<td>3.0</td>
-<td>Financial Services</td>
-<td>1817.0</td>
-<td>1665.0</td>
-<td>1438.0</td>
-<td>3103</td>
-<td>432.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>804166</th>
-<td>ENVX</td>
-<td>2023-10-27</td>
-<td>-0.112348</td>
-<td>-0.321622</td>
-<td>8.770</td>
-<td>1404.3</td>
-<td>5.7</td>
-<td>Industrials</td>
-<td>1542.0</td>
-<td>1494.0</td>
-<td>1628.0</td>
-<td>3122</td>
-<td>220.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>2388282</th>
-<td>TTGT</td>
-<td>2023-10-27</td>
-<td>-0.047870</td>
-<td>-0.541736</td>
-<td>25.260</td>
-<td>702.8</td>
-<td>3.5</td>
-<td>Communication Services</td>
-<td>1926.0</td>
-<td>1732.0</td>
-<td>1497.0</td>
-<td>3229</td>
-<td>45.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>1374556</th>
-<td>LEE</td>
-<td>2023-10-27</td>
-<td>-0.081967</td>
-<td>-0.432131</td>
-<td>8.960</td>
-<td>54.4</td>
-<td>4.5</td>
-<td>Consumer Cyclical</td>
-<td>2709.0</td>
-<td>1658.0</td>
-<td>1578.0</td>
-<td>3236</td>
-<td>190.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>350200</th>
-<td>BOWL</td>
-<td>2023-10-27</td>
-<td>-0.075961</td>
-<td>-0.335635</td>
-<td>10.340</td>
-<td>1672.7</td>
-<td>10.8</td>
-<td>Consumer Cyclical</td>
-<td>1452.0</td>
-<td>1518.0</td>
-<td>1718.0</td>
-<td>3236</td>
-<td>189.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>2524170</th>
-<td>VVI</td>
-<td>2023-10-27</td>
-<td>-0.067557</td>
-<td>-0.318418</td>
-<td>23.050</td>
-<td>481.3</td>
-<td>29.2</td>
-<td>Industrials</td>
-<td>2114.0</td>
-<td>1484.0</td>
-<td>1759.0</td>
-<td>3243</td>
-<td>221.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>1549618</th>
-<td>MODN</td>
-<td>2023-10-27</td>
-<td>0.028114</td>
-<td>-0.355426</td>
-<td>23.770</td>
-<td>913.7</td>
-<td>8.8</td>
-<td>Technology</td>
-<td>1784.0</td>
-<td>1552.0</td>
-<td>1692.0</td>
-<td>3244</td>
-<td>205.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>312569</th>
-<td>BIGC</td>
-<td>2023-10-27</td>
-<td>-0.055556</td>
-<td>-0.333558</td>
-<td>8.925</td>
-<td>669.9</td>
-<td>24.9</td>
-<td>Technology</td>
-<td>1947.0</td>
-<td>1513.0</td>
-<td>1754.0</td>
-<td>3267</td>
-<td>206.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>356528</th>
-<td>BRDG</td>
-<td>2023-10-27</td>
-<td>-0.060686</td>
-<td>-0.362748</td>
-<td>7.120</td>
-<td>843.1</td>
-<td>9.9</td>
-<td>Financial Services</td>
-<td>1827.0</td>
-<td>1565.0</td>
-<td>1706.0</td>
-<td>3271</td>
-<td>433.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>794073</th>
-<td>ENFN</td>
-<td>2023-10-27</td>
-<td>-0.058219</td>
-<td>-0.341410</td>
-<td>8.250</td>
-<td>1018.3</td>
-<td>21.2</td>
-<td>Technology</td>
-<td>1727.0</td>
-<td>1524.0</td>
-<td>1750.0</td>
-<td>3274</td>
-<td>207.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>1544665</th>
-<td>MNTK</td>
-<td>2023-10-27</td>
-<td>0.001027</td>
-<td>-0.429198</td>
-<td>9.750</td>
-<td>1400.7</td>
-<td>6.1</td>
-<td>Utilities</td>
-<td>1544.0</td>
-<td>1657.0</td>
-<td>1644.0</td>
-<td>3301</td>
-<td>30.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>806691</th>
-<td>EP</td>
-<td>2023-10-27</td>
-<td>-0.044100</td>
-<td>-0.398876</td>
-<td>8.020</td>
-<td>182.2</td>
-<td>9.9</td>
-<td>Energy</td>
-<td>2491.0</td>
-<td>1618.0</td>
-<td>1707.0</td>
-<td>3325</td>
-<td>75.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<th>97708</th>
-<td>ALHC</td>
-<td>2023-10-27</td>
-<td>-0.036620</td>
-<td>-0.466154</td>
-<td>6.840</td>
-<td>1288.7</td>
-<td>6.1</td>
-<td>Healthcare</td>
-<td>1586.0</td>
-<td>1686.0</td>
-<td>1640.0</td>
-<td>3326</td>
-<td>285.0</td>
-<td>5.0</td>
-</tr>
-<tr>
-<th>2395412</th>
-<td>TVTX</td>
-<td>2023-10-27</td>
-<td>-0.059474</td>
-<td>-0.610288</td>
-<td>6.800</td>
-<td>510.1</td>
-<td>4.4</td>
-<td>Healthcare</td>
-<td>2077.0</td>
-<td>1750.0</td>
-<td>1577.0</td>
-<td>3327</td>
-<td>286.0</td>
-<td>4.0</td>
-</tr>
-<tr>
-<th>2077665</th>
-<td>SAVA</td>
-<td>2023-10-27</td>
-<td>0.418688</td>
-<td>-0.547334</td>
-<td>19.890</td>
-<td>834.8</td>
-<td>4.7</td>
-<td>Healthcare</td>
-<td>1830.0</td>
-<td>1736.0</td>
-<td>1593.0</td>
-<td>3329</td>
-<td>287.0</td>
-<td>3.0</td>
-</tr>
-<tr>
-<th>2514031</th>
-<td>VSCO</td>
-<td>2023-10-27</td>
-<td>-0.047815</td>
-<td>-0.567652</td>
-<td>18.520</td>
-<td>1431.1</td>
-<td>5.1</td>
-<td>Consumer Cyclical</td>
-<td>1531.0</td>
-<td>1741.0</td>
-<td>1611.0</td>
-<td>3352</td>
-<td>191.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>1458847</th>
-<td>MARPS</td>
-<td>2023-10-27</td>
-<td>-0.041905</td>
-<td>-0.436111</td>
-<td>5.030</td>
-<td>10.1</td>
-<td>10.3</td>
-<td>Energy</td>
-<td>2775.0</td>
-<td>1662.0</td>
-<td>1713.0</td>
-<td>3375</td>
-<td>76.0</td>
-<td>1.0</td>
-</tr>
-<tr>
-<th>1056027</th>
-<td>GRND</td>
-<td>2023-10-27</td>
-<td>0.003419</td>
-<td>-0.448706</td>
-<td>5.870</td>
-<td>1021.8</td>
-<td>49.1</td>
-<td>Technology</td>
-<td>1723.0</td>
-<td>1674.0</td>
-<td>1769.0</td>
-<td>3443</td>
-<td>208.0</td>
-<td>2.0</td>
+<td>16.500</td>
 </tr>
 <tr>
 <th>2379344</th>
 <td>TSE</td>
-<td>2023-10-27</td>
-<td>0.020443</td>
-<td>-0.546010</td>
-<td>5.990</td>
-<td>210.8</td>
-<td>9.9</td>
 <td>Basic Materials</td>
-<td>2438.0</td>
-<td>1735.0</td>
-<td>1708.0</td>
+<td>1735</td>
+<td>1708</td>
 <td>3443</td>
-<td>86.0</td>
-<td>1.0</td>
+<td>5.990</td>
+</tr>
+<tr>
+<th>1195703</th>
+<td>IDT</td>
+<td>Communication Services</td>
+<td>1159</td>
+<td>1501</td>
+<td>2660</td>
+<td>27.790</td>
+</tr>
+<tr>
+<th>1755960</th>
+<td>OOMA</td>
+<td>Communication Services</td>
+<td>1203</td>
+<td>1535</td>
+<td>2738</td>
+<td>10.740</td>
+</tr>
+<tr>
+<th>934187</th>
+<td>FNGR</td>
+<td>Communication Services</td>
+<td>1019</td>
+<td>1749</td>
+<td>2768</td>
+<td>5.650</td>
+</tr>
+<tr>
+<th>1042555</th>
+<td>GOGO</td>
+<td>Communication Services</td>
+<td>1113</td>
+<td>1776</td>
+<td>2889</td>
+<td>10.650</td>
+</tr>
+<tr>
+<th>2388282</th>
+<td>TTGT</td>
+<td>Communication Services</td>
+<td>1732</td>
+<td>1497</td>
+<td>3229</td>
+<td>25.260</td>
+</tr>
+<tr>
+<th>425453</th>
+<td>CBRL</td>
+<td>Consumer Cyclical</td>
+<td>1611</td>
+<td>1418</td>
+<td>3029</td>
+<td>64.620</td>
+</tr>
+<tr>
+<th>1492207</th>
+<td>MED</td>
+<td>Consumer Cyclical</td>
+<td>1480</td>
+<td>1561</td>
+<td>3041</td>
+<td>69.580</td>
+</tr>
+<tr>
+<th>350200</th>
+<td>BOWL</td>
+<td>Consumer Cyclical</td>
+<td>1518</td>
+<td>1718</td>
+<td>3236</td>
+<td>10.340</td>
+</tr>
+<tr>
+<th>1374556</th>
+<td>LEE</td>
+<td>Consumer Cyclical</td>
+<td>1658</td>
+<td>1578</td>
+<td>3236</td>
+<td>8.960</td>
+</tr>
+<tr>
+<th>2514031</th>
+<td>VSCO</td>
+<td>Consumer Cyclical</td>
+<td>1741</td>
+<td>1611</td>
+<td>3352</td>
+<td>18.520</td>
+</tr>
+<tr>
+<th>474829</th>
+<td>CHEF</td>
+<td>Consumer Defensive</td>
+<td>1649</td>
+<td>1018</td>
+<td>2667</td>
+<td>17.950</td>
+</tr>
+<tr>
+<th>2359074</th>
+<td>TR</td>
+<td>Consumer Defensive</td>
+<td>1293</td>
+<td>1381</td>
+<td>2674</td>
+<td>30.300</td>
+</tr>
+<tr>
+<th>1836328</th>
+<td>PETS</td>
+<td>Consumer Defensive</td>
+<td>1700</td>
+<td>1048</td>
+<td>2748</td>
+<td>9.360</td>
+</tr>
+<tr>
+<th>2425203</th>
+<td>UG</td>
+<td>Consumer Defensive</td>
+<td>1664</td>
+<td>1382</td>
+<td>3046</td>
+<td>6.180</td>
+</tr>
+<tr>
+<th>2418352</th>
+<td>UDMY</td>
+<td>Consumer Defensive</td>
+<td>1551</td>
+<td>1551</td>
+<td>3102</td>
+<td>8.770</td>
+</tr>
+<tr>
+<th>1324126</th>
+<td>KLXE</td>
+<td>Energy</td>
+<td>1155</td>
+<td>1567</td>
+<td>2722</td>
+<td>10.210</td>
+</tr>
+<tr>
+<th>1617424</th>
+<td>NBR</td>
+<td>Energy</td>
+<td>1388</td>
+<td>1389</td>
+<td>2777</td>
+<td>102.830</td>
+</tr>
+<tr>
+<th>362958</th>
+<td>BROG</td>
+<td>Energy</td>
+<td>1510</td>
+<td>1529</td>
+<td>3039</td>
+<td>5.125</td>
+</tr>
+<tr>
+<th>806691</th>
+<td>EP</td>
+<td>Energy</td>
+<td>1618</td>
+<td>1707</td>
+<td>3325</td>
+<td>8.020</td>
+</tr>
+<tr>
+<th>1458847</th>
+<td>MARPS</td>
+<td>Energy</td>
+<td>1662</td>
+<td>1713</td>
+<td>3375</td>
+<td>5.030</td>
+</tr>
+<tr>
+<th>1457865</th>
+<td>MARA</td>
+<td>Financial Services</td>
+<td>1598</td>
+<td>1339</td>
+<td>2937</td>
+<td>8.860</td>
+</tr>
+<tr>
+<th>2468353</th>
+<td>VALU</td>
+<td>Financial Services</td>
+<td>1414</td>
+<td>1568</td>
+<td>2982</td>
+<td>34.500</td>
+</tr>
+<tr>
+<th>1869626</th>
+<td>PLMR</td>
+<td>Financial Services</td>
+<td>1625</td>
+<td>1433</td>
+<td>3058</td>
+<td>49.360</td>
+</tr>
+<tr>
+<th>2375532</th>
+<td>TRUP</td>
+<td>Financial Services</td>
+<td>1665</td>
+<td>1438</td>
+<td>3103</td>
+<td>20.690</td>
+</tr>
+<tr>
+<th>356528</th>
+<td>BRDG</td>
+<td>Financial Services</td>
+<td>1565</td>
+<td>1706</td>
+<td>3271</td>
+<td>7.120</td>
+</tr>
+<tr>
+<th>97708</th>
+<td>ALHC</td>
+<td>Healthcare</td>
+<td>1686</td>
+<td>1640</td>
+<td>3326</td>
+<td>6.840</td>
+</tr>
+<tr>
+<th>2395412</th>
+<td>TVTX</td>
+<td>Healthcare</td>
+<td>1750</td>
+<td>1577</td>
+<td>3327</td>
+<td>6.800</td>
+</tr>
+<tr>
+<th>2077665</th>
+<td>SAVA</td>
+<td>Healthcare</td>
+<td>1736</td>
+<td>1593</td>
+<td>3329</td>
+<td>19.890</td>
 </tr>
 <tr>
 <th>38102</th>
 <td>ACXP</td>
-<td>2023-10-27</td>
-<td>0.038610</td>
-<td>-0.544073</td>
-<td>5.380</td>
-<td>70.0</td>
-<td>11.3</td>
 <td>Healthcare</td>
-<td>2683.0</td>
-<td>1733.0</td>
-<td>1719.0</td>
+<td>1733</td>
+<td>1719</td>
 <td>3452</td>
-<td>288.0</td>
-<td>2.0</td>
+<td>5.380</td>
 </tr>
 <tr>
 <th>2056469</th>
 <td>RVNC</td>
-<td>2023-10-27</td>
-<td>-0.056738</td>
-<td>-0.488859</td>
-<td>7.980</td>
-<td>701.9</td>
-<td>26.2</td>
 <td>Healthcare</td>
-<td>1928.0</td>
-<td>1697.0</td>
-<td>1756.0</td>
+<td>1697</td>
+<td>1756</td>
 <td>3453</td>
-<td>289.0</td>
-<td>1.0</td>
+<td>7.980</td>
+</tr>
+<tr>
+<th>2615263</th>
+<td>XMTR</td>
+<td>Industrials</td>
+<td>1773</td>
+<td>1134</td>
+<td>2907</td>
+<td>14.070</td>
+</tr>
+<tr>
+<th>845359</th>
+<td>EVEX</td>
+<td>Industrials</td>
+<td>1261</td>
+<td>1690</td>
+<td>2951</td>
+<td>7.480</td>
+</tr>
+<tr>
+<th>291701</th>
+<td>BE</td>
+<td>Industrials</td>
+<td>1409</td>
+<td>1654</td>
+<td>3063</td>
+<td>9.780</td>
+</tr>
+<tr>
+<th>804166</th>
+<td>ENVX</td>
+<td>Industrials</td>
+<td>1494</td>
+<td>1628</td>
+<td>3122</td>
+<td>8.770</td>
+</tr>
+<tr>
+<th>2524170</th>
+<td>VVI</td>
+<td>Industrials</td>
+<td>1484</td>
+<td>1759</td>
+<td>3243</td>
+<td>23.050</td>
+</tr>
+<tr>
+<th>1756063</th>
+<td>OPAD</td>
+<td>Real Estate</td>
+<td>1353</td>
+<td>992</td>
+<td>2345</td>
+<td>7.880</td>
+</tr>
+<tr>
+<th>2428020</th>
+<td>UHT</td>
+<td>Real Estate</td>
+<td>1050</td>
+<td>1297</td>
+<td>2347</td>
+<td>38.040</td>
+</tr>
+<tr>
+<th>113290</th>
+<td>ALX</td>
+<td>Real Estate</td>
+<td>1102</td>
+<td>1477</td>
+<td>2579</td>
+<td>179.250</td>
+</tr>
+<tr>
+<th>1043620</th>
+<td>GOOD</td>
+<td>Real Estate</td>
+<td>1328</td>
+<td>1311</td>
+<td>2639</td>
+<td>11.640</td>
+</tr>
+<tr>
+<th>1781891</th>
+<td>OUT</td>
+<td>Real Estate</td>
+<td>1610</td>
+<td>1208</td>
+<td>2818</td>
+<td>9.620</td>
+</tr>
+<tr>
+<th>1549618</th>
+<td>MODN</td>
+<td>Technology</td>
+<td>1552</td>
+<td>1692</td>
+<td>3244</td>
+<td>23.770</td>
+</tr>
+<tr>
+<th>312569</th>
+<td>BIGC</td>
+<td>Technology</td>
+<td>1513</td>
+<td>1754</td>
+<td>3267</td>
+<td>8.925</td>
+</tr>
+<tr>
+<th>794073</th>
+<td>ENFN</td>
+<td>Technology</td>
+<td>1524</td>
+<td>1750</td>
+<td>3274</td>
+<td>8.250</td>
+</tr>
+<tr>
+<th>1056027</th>
+<td>GRND</td>
+<td>Technology</td>
+<td>1674</td>
+<td>1769</td>
+<td>3443</td>
+<td>5.870</td>
 </tr>
 <tr>
 <th>1856242</th>
 <td>PI</td>
-<td>2023-10-27</td>
-<td>0.216174</td>
-<td>-0.526542</td>
-<td>61.660</td>
-<td>1668.3</td>
-<td>47.9</td>
 <td>Technology</td>
-<td>1455.0</td>
-<td>1724.0</td>
-<td>1768.0</td>
+<td>1724</td>
+<td>1768</td>
 <td>3492</td>
-<td>209.0</td>
-<td>1.0</td>
+<td>61.660</td>
+</tr>
+<tr>
+<th>248602</th>
+<td>AWR</td>
+<td>Utilities</td>
+<td>1025</td>
+<td>1518</td>
+<td>2543</td>
+<td>77.560</td>
+</tr>
+<tr>
+<th>1575731</th>
+<td>MSEX</td>
+<td>Utilities</td>
+<td>1264</td>
+<td>1371</td>
+<td>2635</td>
+<td>63.500</td>
+</tr>
+<tr>
+<th>1076808</th>
+<td>GWRS</td>
+<td>Utilities</td>
+<td>1130</td>
+<td>1605</td>
+<td>2735</td>
+<td>9.970</td>
+</tr>
+<tr>
+<th>757849</th>
+<td>EE</td>
+<td>Utilities</td>
+<td>1547</td>
+<td>1466</td>
+<td>3013</td>
+<td>15.060</td>
+</tr>
+<tr>
+<th>1544665</th>
+<td>MNTK</td>
+<td>Utilities</td>
+<td>1657</td>
+<td>1644</td>
+<td>3301</td>
+<td>9.750</td>
 </tr>
 </tbody>
 </table>
@@ -12750,10 +10841,10 @@ annualized mean short return is 1.82%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [229]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">rnk</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">long_neutral</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -12764,7 +10855,7 @@ annualized mean short return is 1.82%
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[229]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>sector
 Basic Materials           5
@@ -12778,7 +10869,7 @@ Industrials               5
 Real Estate               5
 Technology                5
 Utilities                 5
-Name: rnk, dtype: int64</pre>
+Name: ticker, dtype: int64</pre>
 </div>
 </div>
 </div>
@@ -12788,10 +10879,10 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [230]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bottom</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">rnk</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">short_neutral</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"sector"</span><span class="p">)</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -12802,7 +10893,7 @@ Name: rnk, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[230]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>sector
 Basic Materials           5
@@ -12816,7 +10907,7 @@ Industrials               5
 Real Estate               5
 Technology                5
 Utilities                 5
-Name: rnk, dtype: int64</pre>
+Name: ticker, dtype: int64</pre>
 </div>
 </div>
 </div>
@@ -12829,7 +10920,7 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="How-many-shares-to-buy/sell?">How many shares to buy/sell?<a class="anchor-link" href="#How-many-shares-to-buy/sell?">¶</a></h3><ul>
-<li>Can do this either for top50 and bottom50 or top and bottom (sector-neutral)</li>
+<li>Can do this either for long and short or long_neutral and short_neutral</li>
 <li>$1,000,000 to invest long and short</li>
 <li>Divide by number of stocks to get $ per stock</li>
 <li>Divide by price to get shares per stock</li>
@@ -12853,12 +10944,12 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [231]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000000</span> <span class="o">/</span> <span class="mi">55</span><span class="p">)</span> <span class="o">/</span> <span class="n">top</span><span class="o">.</span><span class="n">closeunadj</span>
-<span class="n">top</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="n">top</span><span class="o">.</span><span class="n">shares</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">top</span><span class="p">[[</span><span class="s2">"sector"</span><span class="p">,</span> <span class="s2">"combined_rnk"</span><span class="p">,</span> <span class="s2">"ticker"</span><span class="p">,</span> <span class="s2">"shares"</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"sector"</span><span class="p">,</span> <span class="s2">"combined_rnk"</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">long_neutral</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000000</span><span class="o">/</span><span class="n">long_neutral</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">long_neutral</span><span class="o">.</span><span class="n">closeunadj</span>
+<span class="n">long_neutral</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="n">long_neutral</span><span class="o">.</span><span class="n">shares</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">long_neutral</span>
 </pre></div>
 </div>
 </div>
@@ -12869,7 +10960,7 @@ Name: rnk, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[231]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -12889,396 +10980,564 @@ Name: rnk, dtype: int64</pre>
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>sector</th>
-<th>combined_rnk</th>
 <th>ticker</th>
+<th>sector</th>
+<th>mom_rnk</th>
+<th>pb_rnk</th>
+<th>combined_rnk</th>
+<th>closeunadj</th>
 <th>shares</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>2449388</th>
-<td>Basic Materials</td>
-<td>299</td>
 <td>USAP</td>
+<td>Basic Materials</td>
+<td>102</td>
+<td>197</td>
+<td>299</td>
+<td>14.020</td>
 <td>1297</td>
 </tr>
 <tr>
 <th>1597522</th>
-<td>Basic Materials</td>
-<td>366</td>
 <td>MUX</td>
+<td>Basic Materials</td>
+<td>99</td>
+<td>267</td>
+<td>366</td>
+<td>7.090</td>
 <td>2564</td>
 </tr>
 <tr>
 <th>950535</th>
-<td>Basic Materials</td>
-<td>423</td>
 <td>FRD</td>
+<td>Basic Materials</td>
+<td>276</td>
+<td>147</td>
+<td>423</td>
+<td>9.710</td>
 <td>1872</td>
 </tr>
 <tr>
 <th>2638060</th>
-<td>Basic Materials</td>
-<td>683</td>
 <td>ZEUS</td>
+<td>Basic Materials</td>
+<td>47</td>
+<td>636</td>
+<td>683</td>
+<td>49.430</td>
 <td>368</td>
 </tr>
 <tr>
 <th>986128</th>
-<td>Basic Materials</td>
-<td>761</td>
 <td>GATO</td>
+<td>Basic Materials</td>
+<td>182</td>
+<td>579</td>
+<td>761</td>
+<td>5.010</td>
 <td>3629</td>
 </tr>
 <tr>
 <th>2197648</th>
-<td>Communication Services</td>
-<td>151</td>
 <td>SPHR</td>
+<td>Communication Services</td>
+<td>100</td>
+<td>51</td>
+<td>151</td>
+<td>33.470</td>
 <td>543</td>
 </tr>
 <tr>
 <th>2300744</th>
-<td>Communication Services</td>
-<td>528</td>
 <td>TDS</td>
+<td>Communication Services</td>
+<td>504</td>
+<td>24</td>
+<td>528</td>
+<td>17.800</td>
 <td>1021</td>
 </tr>
 <tr>
 <th>2455127</th>
-<td>Communication Services</td>
-<td>704</td>
 <td>USM</td>
+<td>Communication Services</td>
+<td>274</td>
+<td>430</td>
+<td>704</td>
+<td>41.390</td>
 <td>439</td>
 </tr>
 <tr>
 <th>1177442</th>
-<td>Communication Services</td>
-<td>863</td>
 <td>IAC</td>
+<td>Communication Services</td>
+<td>704</td>
+<td>159</td>
+<td>863</td>
+<td>41.840</td>
 <td>435</td>
 </tr>
 <tr>
 <th>2116089</th>
-<td>Communication Services</td>
-<td>946</td>
 <td>SGA</td>
+<td>Communication Services</td>
+<td>751</td>
+<td>195</td>
+<td>946</td>
+<td>19.150</td>
 <td>949</td>
 </tr>
 <tr>
 <th>387833</th>
-<td>Consumer Cyclical</td>
-<td>269</td>
 <td>BZH</td>
+<td>Consumer Cyclical</td>
+<td>48</td>
+<td>221</td>
+<td>269</td>
+<td>23.430</td>
 <td>776</td>
 </tr>
 <tr>
 <th>1139786</th>
-<td>Consumer Cyclical</td>
-<td>391</td>
 <td>HOV</td>
+<td>Consumer Cyclical</td>
+<td>29</td>
+<td>362</td>
+<td>391</td>
+<td>66.360</td>
 <td>274</td>
 </tr>
 <tr>
 <th>925188</th>
-<td>Consumer Cyclical</td>
-<td>480</td>
 <td>FLXS</td>
+<td>Consumer Cyclical</td>
+<td>239</td>
+<td>241</td>
+<td>480</td>
+<td>19.750</td>
 <td>921</td>
 </tr>
 <tr>
 <th>306996</th>
-<td>Consumer Cyclical</td>
-<td>507</td>
 <td>BH</td>
+<td>Consumer Cyclical</td>
+<td>442</td>
+<td>65</td>
+<td>507</td>
+<td>144.660</td>
 <td>126</td>
 </tr>
 <tr>
 <th>438831</th>
-<td>Consumer Cyclical</td>
-<td>523</td>
 <td>CCS</td>
+<td>Consumer Cyclical</td>
+<td>195</td>
+<td>328</td>
+<td>523</td>
+<td>60.850</td>
 <td>299</td>
 </tr>
 <tr>
 <th>2193812</th>
-<td>Consumer Defensive</td>
-<td>726</td>
 <td>SPB</td>
+<td>Consumer Defensive</td>
+<td>106</td>
+<td>620</td>
+<td>726</td>
+<td>75.250</td>
 <td>242</td>
 </tr>
 <tr>
 <th>889276</th>
-<td>Consumer Defensive</td>
-<td>867</td>
 <td>FDP</td>
+<td>Consumer Defensive</td>
+<td>727</td>
+<td>140</td>
+<td>867</td>
+<td>25.010</td>
 <td>727</td>
 </tr>
 <tr>
 <th>2601835</th>
-<td>Consumer Defensive</td>
-<td>915</td>
 <td>WVVI</td>
+<td>Consumer Defensive</td>
+<td>856</td>
+<td>59</td>
+<td>915</td>
+<td>5.242</td>
 <td>3468</td>
 </tr>
 <tr>
 <th>142373</th>
-<td>Consumer Defensive</td>
-<td>1051</td>
 <td>ANDE</td>
+<td>Consumer Defensive</td>
+<td>197</td>
+<td>854</td>
+<td>1051</td>
+<td>49.310</td>
 <td>369</td>
 </tr>
 <tr>
 <th>37223</th>
-<td>Consumer Defensive</td>
-<td>1113</td>
 <td>ACU</td>
+<td>Consumer Defensive</td>
+<td>327</td>
+<td>786</td>
+<td>1113</td>
+<td>30.400</td>
 <td>598</td>
 </tr>
 <tr>
 <th>1738882</th>
-<td>Energy</td>
-<td>504</td>
 <td>OIS</td>
+<td>Energy</td>
+<td>232</td>
+<td>272</td>
+<td>504</td>
+<td>7.990</td>
 <td>2276</td>
 </tr>
 <tr>
 <th>1123116</th>
-<td>Energy</td>
-<td>700</td>
 <td>HLX</td>
+<td>Energy</td>
+<td>116</td>
+<td>584</td>
+<td>700</td>
+<td>9.870</td>
 <td>1842</td>
 </tr>
 <tr>
 <th>1641108</th>
-<td>Energy</td>
-<td>700</td>
 <td>NGS</td>
+<td>Energy</td>
+<td>315</td>
+<td>385</td>
+<td>700</td>
+<td>14.220</td>
 <td>1279</td>
 </tr>
 <tr>
 <th>538462</th>
-<td>Energy</td>
-<td>726</td>
 <td>CNX</td>
+<td>Energy</td>
+<td>268</td>
+<td>458</td>
+<td>726</td>
+<td>21.200</td>
 <td>858</td>
 </tr>
 <tr>
 <th>1004675</th>
-<td>Energy</td>
-<td>822</td>
 <td>GEOS</td>
+<td>Energy</td>
+<td>16</td>
+<td>806</td>
+<td>822</td>
+<td>12.570</td>
 <td>1446</td>
 </tr>
 <tr>
 <th>772871</th>
-<td>Financial Services</td>
-<td>58</td>
 <td>EHTH</td>
+<td>Financial Services</td>
+<td>26</td>
+<td>32</td>
+<td>58</td>
+<td>7.860</td>
 <td>2313</td>
 </tr>
 <tr>
 <th>1761051</th>
-<td>Financial Services</td>
-<td>316</td>
 <td>OPRT</td>
+<td>Financial Services</td>
+<td>272</td>
+<td>44</td>
+<td>316</td>
+<td>5.510</td>
 <td>3300</td>
 </tr>
 <tr>
 <th>2200559</th>
-<td>Financial Services</td>
-<td>423</td>
 <td>SPNT</td>
+<td>Financial Services</td>
+<td>129</td>
+<td>294</td>
+<td>423</td>
+<td>9.610</td>
 <td>1892</td>
 </tr>
 <tr>
 <th>1041933</th>
-<td>Financial Services</td>
-<td>425</td>
 <td>GNW</td>
+<td>Financial Services</td>
+<td>392</td>
+<td>33</td>
+<td>425</td>
+<td>5.810</td>
 <td>3129</td>
 </tr>
 <tr>
 <th>2178802</th>
-<td>Financial Services</td>
-<td>428</td>
 <td>SNFCA</td>
+<td>Financial Services</td>
+<td>325</td>
+<td>103</td>
+<td>428</td>
+<td>7.050</td>
 <td>2579</td>
 </tr>
 <tr>
 <th>427948</th>
-<td>Healthcare</td>
-<td>99</td>
 <td>CBUS</td>
+<td>Healthcare</td>
+<td>30</td>
+<td>69</td>
+<td>99</td>
+<td>10.270</td>
 <td>1770</td>
 </tr>
 <tr>
 <th>2367118</th>
-<td>Healthcare</td>
-<td>131</td>
 <td>TRML</td>
+<td>Healthcare</td>
+<td>78</td>
+<td>53</td>
+<td>131</td>
+<td>14.000</td>
 <td>1299</td>
 </tr>
 <tr>
 <th>32796</th>
-<td>Healthcare</td>
-<td>516</td>
 <td>ACOR</td>
+<td>Healthcare</td>
+<td>513</td>
+<td>3</td>
+<td>516</td>
+<td>9.560</td>
 <td>1902</td>
 </tr>
 <tr>
 <th>2639665</th>
-<td>Healthcare</td>
-<td>535</td>
 <td>ZIMV</td>
+<td>Healthcare</td>
+<td>508</td>
+<td>27</td>
+<td>535</td>
+<td>7.020</td>
 <td>2590</td>
 </tr>
 <tr>
 <th>839021</th>
-<td>Healthcare</td>
-<td>782</td>
 <td>ETNB</td>
+<td>Healthcare</td>
+<td>126</td>
+<td>656</td>
+<td>782</td>
+<td>6.700</td>
 <td>2714</td>
 </tr>
 <tr>
 <th>1593141</th>
-<td>Industrials</td>
-<td>394</td>
 <td>MTW</td>
+<td>Industrials</td>
+<td>128</td>
+<td>266</td>
+<td>394</td>
+<td>12.320</td>
 <td>1476</td>
 </tr>
 <tr>
 <th>2149533</th>
-<td>Industrials</td>
-<td>449</td>
 <td>SKYW</td>
+<td>Industrials</td>
+<td>36</td>
+<td>413</td>
+<td>449</td>
+<td>42.270</td>
 <td>430</td>
 </tr>
 <tr>
 <th>1309749</th>
-<td>Industrials</td>
-<td>531</td>
 <td>KELYA</td>
+<td>Industrials</td>
+<td>445</td>
+<td>86</td>
+<td>531</td>
+<td>17.580</td>
 <td>1034</td>
 </tr>
 <tr>
 <th>2097818</th>
-<td>Industrials</td>
-<td>550</td>
 <td>SCX</td>
+<td>Industrials</td>
+<td>356</td>
+<td>194</td>
+<td>550</td>
+<td>10.390</td>
 <td>1750</td>
 </tr>
 <tr>
 <th>1700409</th>
-<td>Industrials</td>
-<td>551</td>
 <td>NVRI</td>
+<td>Industrials</td>
+<td>162</td>
+<td>389</td>
+<td>551</td>
+<td>5.730</td>
 <td>3173</td>
 </tr>
 <tr>
 <th>1429651</th>
-<td>Real Estate</td>
-<td>136</td>
 <td>LSEA</td>
+<td>Real Estate</td>
+<td>97</td>
+<td>39</td>
+<td>136</td>
+<td>7.240</td>
 <td>2511</td>
 </tr>
 <tr>
 <th>1488461</th>
-<td>Real Estate</td>
-<td>385</td>
 <td>MDV</td>
+<td>Real Estate</td>
+<td>125</td>
+<td>260</td>
+<td>385</td>
+<td>15.210</td>
 <td>1195</td>
 </tr>
 <tr>
 <th>941111</th>
-<td>Real Estate</td>
-<td>521</td>
 <td>FOR</td>
+<td>Real Estate</td>
+<td>41</td>
+<td>480</td>
+<td>521</td>
+<td>23.390</td>
 <td>777</td>
 </tr>
 <tr>
 <th>256238</th>
-<td>Real Estate</td>
-<td>556</td>
 <td>AXR</td>
+<td>Real Estate</td>
+<td>243</td>
+<td>313</td>
+<td>556</td>
+<td>16.700</td>
 <td>1089</td>
 </tr>
 <tr>
 <th>1157233</th>
-<td>Real Estate</td>
-<td>583</td>
 <td>HT</td>
+<td>Real Estate</td>
+<td>426</td>
+<td>157</td>
+<td>583</td>
+<td>9.890</td>
 <td>1838</td>
 </tr>
 <tr>
 <th>2038182</th>
-<td>Technology</td>
-<td>699</td>
 <td>RPAY</td>
+<td>Technology</td>
+<td>413</td>
+<td>286</td>
+<td>699</td>
+<td>5.890</td>
 <td>3087</td>
 </tr>
 <tr>
 <th>29775</th>
-<td>Technology</td>
-<td>745</td>
 <td>ACMR</td>
+<td>Technology</td>
+<td>21</td>
+<td>724</td>
+<td>745</td>
+<td>13.710</td>
 <td>1326</td>
 </tr>
 <tr>
 <th>3791</th>
-<td>Technology</td>
-<td>860</td>
 <td>AAOI</td>
+<td>Technology</td>
+<td>10</td>
+<td>850</td>
+<td>860</td>
+<td>7.040</td>
 <td>2583</td>
 </tr>
 <tr>
 <th>2373620</th>
-<td>Technology</td>
-<td>880</td>
 <td>TRT</td>
+<td>Technology</td>
+<td>250</td>
+<td>630</td>
+<td>880</td>
+<td>6.870</td>
 <td>2647</td>
 </tr>
 <tr>
 <th>586665</th>
-<td>Technology</td>
-<td>904</td>
 <td>CRNC</td>
+<td>Technology</td>
+<td>443</td>
+<td>461</td>
+<td>904</td>
+<td>15.140</td>
 <td>1201</td>
 </tr>
 <tr>
 <th>1035432</th>
-<td>Utilities</td>
-<td>1477</td>
 <td>GNE</td>
+<td>Utilities</td>
+<td>167</td>
+<td>1310</td>
+<td>1477</td>
+<td>19.180</td>
 <td>948</td>
 </tr>
 <tr>
 <th>94400</th>
-<td>Utilities</td>
-<td>1480</td>
 <td>ALE</td>
+<td>Utilities</td>
+<td>838</td>
+<td>642</td>
+<td>1480</td>
+<td>52.590</td>
 <td>346</td>
 </tr>
 <tr>
 <th>644205</th>
-<td>Utilities</td>
-<td>1483</td>
 <td>CWCO</td>
+<td>Utilities</td>
+<td>124</td>
+<td>1359</td>
+<td>1483</td>
+<td>29.030</td>
 <td>626</td>
 </tr>
 <tr>
 <th>1703602</th>
-<td>Utilities</td>
-<td>1507</td>
 <td>NWE</td>
+<td>Utilities</td>
+<td>903</td>
+<td>604</td>
+<td>1507</td>
+<td>46.550</td>
 <td>391</td>
 </tr>
 <tr>
 <th>1820539</th>
-<td>Utilities</td>
-<td>1659</td>
 <td>PCYO</td>
+<td>Utilities</td>
+<td>537</td>
+<td>1122</td>
+<td>1659</td>
+<td>9.310</td>
 <td>1953</td>
 </tr>
 </tbody>
@@ -13304,12 +11563,12 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [232]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bottom</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000000</span> <span class="o">/</span> <span class="mi">55</span><span class="p">)</span> <span class="o">/</span> <span class="n">bottom</span><span class="o">.</span><span class="n">closeunadj</span>
-<span class="n">bottom</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bottom</span><span class="o">.</span><span class="n">shares</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">bottom</span><span class="p">[[</span><span class="s2">"sector"</span><span class="p">,</span> <span class="s2">"combined_rnk"</span><span class="p">,</span> <span class="s2">"ticker"</span><span class="p">,</span> <span class="s2">"shares"</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"sector"</span><span class="p">,</span> <span class="s2">"combined_rnk"</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">short_neutral</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000000</span><span class="o">/</span><span class="n">short_neutral</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">short_neutral</span><span class="o">.</span><span class="n">closeunadj</span>
+<span class="n">short_neutral</span><span class="p">[</span><span class="s2">"shares"</span><span class="p">]</span> <span class="o">=</span> <span class="n">short_neutral</span><span class="o">.</span><span class="n">shares</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">short_neutral</span>
 </pre></div>
 </div>
 </div>
@@ -13320,7 +11579,7 @@ Name: rnk, dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[232]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -13340,396 +11599,564 @@ Name: rnk, dtype: int64</pre>
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>sector</th>
-<th>combined_rnk</th>
 <th>ticker</th>
+<th>sector</th>
+<th>mom_rnk</th>
+<th>pb_rnk</th>
+<th>combined_rnk</th>
+<th>closeunadj</th>
 <th>shares</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>1433593</th>
-<td>Basic Materials</td>
-<td>2619</td>
 <td>LTHM</td>
+<td>Basic Materials</td>
+<td>1633</td>
+<td>986</td>
+<td>2619</td>
+<td>15.110</td>
 <td>1203</td>
 </tr>
 <tr>
 <th>1573351</th>
-<td>Basic Materials</td>
-<td>2675</td>
 <td>MSB</td>
+<td>Basic Materials</td>
+<td>950</td>
+<td>1725</td>
+<td>2675</td>
+<td>20.170</td>
 <td>901</td>
 </tr>
 <tr>
 <th>2165284</th>
-<td>Basic Materials</td>
-<td>2689</td>
 <td>SMID</td>
+<td>Basic Materials</td>
+<td>1242</td>
+<td>1447</td>
+<td>2689</td>
+<td>19.366</td>
 <td>939</td>
 </tr>
 <tr>
 <th>1555752</th>
-<td>Basic Materials</td>
-<td>2779</td>
 <td>MP</td>
+<td>Basic Materials</td>
+<td>1572</td>
+<td>1207</td>
+<td>2779</td>
+<td>16.500</td>
 <td>1102</td>
 </tr>
 <tr>
 <th>2379344</th>
-<td>Basic Materials</td>
-<td>3443</td>
 <td>TSE</td>
+<td>Basic Materials</td>
+<td>1735</td>
+<td>1708</td>
+<td>3443</td>
+<td>5.990</td>
 <td>3035</td>
 </tr>
 <tr>
 <th>1195703</th>
-<td>Communication Services</td>
-<td>2660</td>
 <td>IDT</td>
+<td>Communication Services</td>
+<td>1159</td>
+<td>1501</td>
+<td>2660</td>
+<td>27.790</td>
 <td>654</td>
 </tr>
 <tr>
 <th>1755960</th>
-<td>Communication Services</td>
-<td>2738</td>
 <td>OOMA</td>
+<td>Communication Services</td>
+<td>1203</td>
+<td>1535</td>
+<td>2738</td>
+<td>10.740</td>
 <td>1693</td>
 </tr>
 <tr>
 <th>934187</th>
-<td>Communication Services</td>
-<td>2768</td>
 <td>FNGR</td>
+<td>Communication Services</td>
+<td>1019</td>
+<td>1749</td>
+<td>2768</td>
+<td>5.650</td>
 <td>3218</td>
 </tr>
 <tr>
 <th>1042555</th>
-<td>Communication Services</td>
-<td>2889</td>
 <td>GOGO</td>
+<td>Communication Services</td>
+<td>1113</td>
+<td>1776</td>
+<td>2889</td>
+<td>10.650</td>
 <td>1707</td>
 </tr>
 <tr>
 <th>2388282</th>
-<td>Communication Services</td>
-<td>3229</td>
 <td>TTGT</td>
+<td>Communication Services</td>
+<td>1732</td>
+<td>1497</td>
+<td>3229</td>
+<td>25.260</td>
 <td>720</td>
 </tr>
 <tr>
 <th>425453</th>
-<td>Consumer Cyclical</td>
-<td>3029</td>
 <td>CBRL</td>
+<td>Consumer Cyclical</td>
+<td>1611</td>
+<td>1418</td>
+<td>3029</td>
+<td>64.620</td>
 <td>281</td>
 </tr>
 <tr>
 <th>1492207</th>
-<td>Consumer Cyclical</td>
-<td>3041</td>
 <td>MED</td>
+<td>Consumer Cyclical</td>
+<td>1480</td>
+<td>1561</td>
+<td>3041</td>
+<td>69.580</td>
 <td>261</td>
 </tr>
 <tr>
 <th>350200</th>
-<td>Consumer Cyclical</td>
-<td>3236</td>
 <td>BOWL</td>
+<td>Consumer Cyclical</td>
+<td>1518</td>
+<td>1718</td>
+<td>3236</td>
+<td>10.340</td>
 <td>1758</td>
 </tr>
 <tr>
 <th>1374556</th>
-<td>Consumer Cyclical</td>
-<td>3236</td>
 <td>LEE</td>
+<td>Consumer Cyclical</td>
+<td>1658</td>
+<td>1578</td>
+<td>3236</td>
+<td>8.960</td>
 <td>2029</td>
 </tr>
 <tr>
 <th>2514031</th>
-<td>Consumer Cyclical</td>
-<td>3352</td>
 <td>VSCO</td>
+<td>Consumer Cyclical</td>
+<td>1741</td>
+<td>1611</td>
+<td>3352</td>
+<td>18.520</td>
 <td>982</td>
 </tr>
 <tr>
 <th>474829</th>
-<td>Consumer Defensive</td>
-<td>2667</td>
 <td>CHEF</td>
+<td>Consumer Defensive</td>
+<td>1649</td>
+<td>1018</td>
+<td>2667</td>
+<td>17.950</td>
 <td>1013</td>
 </tr>
 <tr>
 <th>2359074</th>
-<td>Consumer Defensive</td>
-<td>2674</td>
 <td>TR</td>
+<td>Consumer Defensive</td>
+<td>1293</td>
+<td>1381</td>
+<td>2674</td>
+<td>30.300</td>
 <td>600</td>
 </tr>
 <tr>
 <th>1836328</th>
-<td>Consumer Defensive</td>
-<td>2748</td>
 <td>PETS</td>
+<td>Consumer Defensive</td>
+<td>1700</td>
+<td>1048</td>
+<td>2748</td>
+<td>9.360</td>
 <td>1943</td>
 </tr>
 <tr>
 <th>2425203</th>
-<td>Consumer Defensive</td>
-<td>3046</td>
 <td>UG</td>
+<td>Consumer Defensive</td>
+<td>1664</td>
+<td>1382</td>
+<td>3046</td>
+<td>6.180</td>
 <td>2942</td>
 </tr>
 <tr>
 <th>2418352</th>
-<td>Consumer Defensive</td>
-<td>3102</td>
 <td>UDMY</td>
+<td>Consumer Defensive</td>
+<td>1551</td>
+<td>1551</td>
+<td>3102</td>
+<td>8.770</td>
 <td>2073</td>
 </tr>
 <tr>
 <th>1324126</th>
-<td>Energy</td>
-<td>2722</td>
 <td>KLXE</td>
+<td>Energy</td>
+<td>1155</td>
+<td>1567</td>
+<td>2722</td>
+<td>10.210</td>
 <td>1781</td>
 </tr>
 <tr>
 <th>1617424</th>
-<td>Energy</td>
-<td>2777</td>
 <td>NBR</td>
+<td>Energy</td>
+<td>1388</td>
+<td>1389</td>
+<td>2777</td>
+<td>102.830</td>
 <td>177</td>
 </tr>
 <tr>
 <th>362958</th>
-<td>Energy</td>
-<td>3039</td>
 <td>BROG</td>
+<td>Energy</td>
+<td>1510</td>
+<td>1529</td>
+<td>3039</td>
+<td>5.125</td>
 <td>3548</td>
 </tr>
 <tr>
 <th>806691</th>
-<td>Energy</td>
-<td>3325</td>
 <td>EP</td>
+<td>Energy</td>
+<td>1618</td>
+<td>1707</td>
+<td>3325</td>
+<td>8.020</td>
 <td>2267</td>
 </tr>
 <tr>
 <th>1458847</th>
-<td>Energy</td>
-<td>3375</td>
 <td>MARPS</td>
+<td>Energy</td>
+<td>1662</td>
+<td>1713</td>
+<td>3375</td>
+<td>5.030</td>
 <td>3615</td>
 </tr>
 <tr>
 <th>1457865</th>
-<td>Financial Services</td>
-<td>2937</td>
 <td>MARA</td>
+<td>Financial Services</td>
+<td>1598</td>
+<td>1339</td>
+<td>2937</td>
+<td>8.860</td>
 <td>2052</td>
 </tr>
 <tr>
 <th>2468353</th>
-<td>Financial Services</td>
-<td>2982</td>
 <td>VALU</td>
+<td>Financial Services</td>
+<td>1414</td>
+<td>1568</td>
+<td>2982</td>
+<td>34.500</td>
 <td>527</td>
 </tr>
 <tr>
 <th>1869626</th>
-<td>Financial Services</td>
-<td>3058</td>
 <td>PLMR</td>
+<td>Financial Services</td>
+<td>1625</td>
+<td>1433</td>
+<td>3058</td>
+<td>49.360</td>
 <td>368</td>
 </tr>
 <tr>
 <th>2375532</th>
-<td>Financial Services</td>
-<td>3103</td>
 <td>TRUP</td>
+<td>Financial Services</td>
+<td>1665</td>
+<td>1438</td>
+<td>3103</td>
+<td>20.690</td>
 <td>879</td>
 </tr>
 <tr>
 <th>356528</th>
-<td>Financial Services</td>
-<td>3271</td>
 <td>BRDG</td>
+<td>Financial Services</td>
+<td>1565</td>
+<td>1706</td>
+<td>3271</td>
+<td>7.120</td>
 <td>2554</td>
 </tr>
 <tr>
 <th>97708</th>
-<td>Healthcare</td>
-<td>3326</td>
 <td>ALHC</td>
+<td>Healthcare</td>
+<td>1686</td>
+<td>1640</td>
+<td>3326</td>
+<td>6.840</td>
 <td>2658</td>
 </tr>
 <tr>
 <th>2395412</th>
-<td>Healthcare</td>
-<td>3327</td>
 <td>TVTX</td>
+<td>Healthcare</td>
+<td>1750</td>
+<td>1577</td>
+<td>3327</td>
+<td>6.800</td>
 <td>2674</td>
 </tr>
 <tr>
 <th>2077665</th>
-<td>Healthcare</td>
-<td>3329</td>
 <td>SAVA</td>
+<td>Healthcare</td>
+<td>1736</td>
+<td>1593</td>
+<td>3329</td>
+<td>19.890</td>
 <td>914</td>
 </tr>
 <tr>
 <th>38102</th>
-<td>Healthcare</td>
-<td>3452</td>
 <td>ACXP</td>
+<td>Healthcare</td>
+<td>1733</td>
+<td>1719</td>
+<td>3452</td>
+<td>5.380</td>
 <td>3380</td>
 </tr>
 <tr>
 <th>2056469</th>
-<td>Healthcare</td>
-<td>3453</td>
 <td>RVNC</td>
+<td>Healthcare</td>
+<td>1697</td>
+<td>1756</td>
+<td>3453</td>
+<td>7.980</td>
 <td>2278</td>
 </tr>
 <tr>
 <th>2615263</th>
-<td>Industrials</td>
-<td>2907</td>
 <td>XMTR</td>
+<td>Industrials</td>
+<td>1773</td>
+<td>1134</td>
+<td>2907</td>
+<td>14.070</td>
 <td>1292</td>
 </tr>
 <tr>
 <th>845359</th>
-<td>Industrials</td>
-<td>2951</td>
 <td>EVEX</td>
+<td>Industrials</td>
+<td>1261</td>
+<td>1690</td>
+<td>2951</td>
+<td>7.480</td>
 <td>2431</td>
 </tr>
 <tr>
 <th>291701</th>
-<td>Industrials</td>
-<td>3063</td>
 <td>BE</td>
+<td>Industrials</td>
+<td>1409</td>
+<td>1654</td>
+<td>3063</td>
+<td>9.780</td>
 <td>1859</td>
 </tr>
 <tr>
 <th>804166</th>
-<td>Industrials</td>
-<td>3122</td>
 <td>ENVX</td>
+<td>Industrials</td>
+<td>1494</td>
+<td>1628</td>
+<td>3122</td>
+<td>8.770</td>
 <td>2073</td>
 </tr>
 <tr>
 <th>2524170</th>
-<td>Industrials</td>
-<td>3243</td>
 <td>VVI</td>
+<td>Industrials</td>
+<td>1484</td>
+<td>1759</td>
+<td>3243</td>
+<td>23.050</td>
 <td>789</td>
 </tr>
 <tr>
 <th>1756063</th>
-<td>Real Estate</td>
-<td>2345</td>
 <td>OPAD</td>
+<td>Real Estate</td>
+<td>1353</td>
+<td>992</td>
+<td>2345</td>
+<td>7.880</td>
 <td>2307</td>
 </tr>
 <tr>
 <th>2428020</th>
-<td>Real Estate</td>
-<td>2347</td>
 <td>UHT</td>
+<td>Real Estate</td>
+<td>1050</td>
+<td>1297</td>
+<td>2347</td>
+<td>38.040</td>
 <td>478</td>
 </tr>
 <tr>
 <th>113290</th>
-<td>Real Estate</td>
-<td>2579</td>
 <td>ALX</td>
+<td>Real Estate</td>
+<td>1102</td>
+<td>1477</td>
+<td>2579</td>
+<td>179.250</td>
 <td>101</td>
 </tr>
 <tr>
 <th>1043620</th>
-<td>Real Estate</td>
-<td>2639</td>
 <td>GOOD</td>
+<td>Real Estate</td>
+<td>1328</td>
+<td>1311</td>
+<td>2639</td>
+<td>11.640</td>
 <td>1562</td>
 </tr>
 <tr>
 <th>1781891</th>
-<td>Real Estate</td>
-<td>2818</td>
 <td>OUT</td>
+<td>Real Estate</td>
+<td>1610</td>
+<td>1208</td>
+<td>2818</td>
+<td>9.620</td>
 <td>1890</td>
 </tr>
 <tr>
 <th>1549618</th>
-<td>Technology</td>
-<td>3244</td>
 <td>MODN</td>
+<td>Technology</td>
+<td>1552</td>
+<td>1692</td>
+<td>3244</td>
+<td>23.770</td>
 <td>765</td>
 </tr>
 <tr>
 <th>312569</th>
-<td>Technology</td>
-<td>3267</td>
 <td>BIGC</td>
+<td>Technology</td>
+<td>1513</td>
+<td>1754</td>
+<td>3267</td>
+<td>8.925</td>
 <td>2037</td>
 </tr>
 <tr>
 <th>794073</th>
-<td>Technology</td>
-<td>3274</td>
 <td>ENFN</td>
+<td>Technology</td>
+<td>1524</td>
+<td>1750</td>
+<td>3274</td>
+<td>8.250</td>
 <td>2204</td>
 </tr>
 <tr>
 <th>1056027</th>
-<td>Technology</td>
-<td>3443</td>
 <td>GRND</td>
+<td>Technology</td>
+<td>1674</td>
+<td>1769</td>
+<td>3443</td>
+<td>5.870</td>
 <td>3097</td>
 </tr>
 <tr>
 <th>1856242</th>
-<td>Technology</td>
-<td>3492</td>
 <td>PI</td>
+<td>Technology</td>
+<td>1724</td>
+<td>1768</td>
+<td>3492</td>
+<td>61.660</td>
 <td>295</td>
 </tr>
 <tr>
 <th>248602</th>
-<td>Utilities</td>
-<td>2543</td>
 <td>AWR</td>
+<td>Utilities</td>
+<td>1025</td>
+<td>1518</td>
+<td>2543</td>
+<td>77.560</td>
 <td>234</td>
 </tr>
 <tr>
 <th>1575731</th>
-<td>Utilities</td>
-<td>2635</td>
 <td>MSEX</td>
+<td>Utilities</td>
+<td>1264</td>
+<td>1371</td>
+<td>2635</td>
+<td>63.500</td>
 <td>286</td>
 </tr>
 <tr>
 <th>1076808</th>
-<td>Utilities</td>
-<td>2735</td>
 <td>GWRS</td>
+<td>Utilities</td>
+<td>1130</td>
+<td>1605</td>
+<td>2735</td>
+<td>9.970</td>
 <td>1824</td>
 </tr>
 <tr>
 <th>757849</th>
-<td>Utilities</td>
-<td>3013</td>
 <td>EE</td>
+<td>Utilities</td>
+<td>1547</td>
+<td>1466</td>
+<td>3013</td>
+<td>15.060</td>
 <td>1207</td>
 </tr>
 <tr>
 <th>1544665</th>
-<td>Utilities</td>
-<td>3301</td>
 <td>MNTK</td>
+<td>Utilities</td>
+<td>1657</td>
+<td>1644</td>
+<td>3301</td>
+<td>9.750</td>
 <td>1865</td>
 </tr>
 </tbody>
@@ -13744,15 +12171,15 @@ Name: rnk, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [237]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">"portfolios 2023-11-01.xlsx"</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
-    <span class="n">top</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">bottom</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">top50</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"top50"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">bottom50</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"bottom50"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">today</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"today"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">long</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"long"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">short</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"short"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">long_neutral</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"long neutral"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">short_neutral</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"short neutral"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">today</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">"today"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
