@@ -6,3 +6,5 @@
 [2. Pairs Trading](02-pairs.slides.html){target="_blank"} [(pdf)](pdfs/02-pairs.slides.pdf){target="_blank"}
 
 [3. Momentum and SQL Database](03-momentum.slides.html){target="_blank"} [(pdf)](pdfs/03-momentum.slides.pdf){target="_blank"}
+
+[4. Small Cap Value and Momentum](04-small_cap_value.slides.html){target="_blank"} [(pdf)](pdfs/04-small_cap_value.slides.pdf){target="_blank"}
