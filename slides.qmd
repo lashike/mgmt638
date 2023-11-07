@@ -9,4 +9,12 @@
 
 [4. Small Cap Value and Momentum](04-small_cap_value.slides.html){target="_blank"} [(pdf)](pdfs/04-small_cap_value.slides.pdf){target="_blank"}
 
-[5. Fundamentals](05-fundamentals.slides.html){target="_blank"} [(pdf)](pdfs/05-fundamentals.slides.pdf){target="_blank"}
+[5a. Fundamentals](05a-fundamentals.slides.html){target="_blank"} [(pdf)](pdfs/05a-fundamentals.slides.pdf){target="_blank"}
+
+[5b. Random Forest](05b-random_forest.slides.html){target="_blank"} [(pdf)](pdfs/05b-random_forest.slides.pdf){target="_blank"}
+
+[6a. Random Forest Backtest](06a-random_forest_backtest.slides.html){target="_blank"} [(pdf)](pdfs/06a-random_forest_backtest.slides.pdf){target="_blank"}
+
+[6b. Random Forest Training](06b-random_forest_train.slides.html){target="_blank"} [(pdf)](pdfs/06b-random_forest_train.slides.pdf){target="_blank"}
+
+[6c. Random Forest Application](06c-random_forest_apply.slides.html){target="_blank"} [(pdf)](pdfs/06c-random_forest_apply.slides.pdf){target="_blank"}
