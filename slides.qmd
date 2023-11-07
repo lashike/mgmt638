@@ -9,4 +9,4 @@
 
 [4. Small Cap Value and Momentum](04-small_cap_value.slides.html){target="_blank"} [(pdf)](pdfs/04-small_cap_value.slides.pdf){target="_blank"}
 
-[5. Fundamentals](05_fundamentals.slides.html){target="_blank"} [(pdf)](pdfs/05_fundamentals.slides.pdf){target="_blank"}
+[5. Fundamentals](05-fundamentals.slides.html){target="_blank"} [(pdf)](pdfs/05-fundamentals.slides.pdf){target="_blank"}
