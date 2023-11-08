@@ -5,6 +5,9 @@ project:
     - index.qmd
     - slides.qmd
     - assignments.qmd
+    - data.qmd
+    - assignment1.qmd
+    - assignment2.qmd
       
 website:
   title: ""
@@ -20,7 +23,9 @@ website:
         file: assignments.qmd
       - text: Notebooks
         href: https://github.com/kerryback/mgmt638/tree/main/notebooks
-      
+      - text: Data
+        file: data.qmd
+
     
 format: 
   html:

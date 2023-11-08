@@ -1,4 +1,6 @@
 ## Assignments<br>Data-Driven Investments: Equity<br>Rice University
 
 
+[1. Moving Averages and Pairs](assignment1.html){target="_blank"}
 
+[2. Backtesting Loop](assignment2.html){target="_blank"}

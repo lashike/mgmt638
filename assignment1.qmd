@@ -1,0 +1,13 @@
+## Assignment 1<br>MGMT 638: Data-Driven Investments: Equity<br>Rice University
+
+
+::: {.callout-note appearance="minimal"}
+
+## Instructions 
+
+Submit a Jupyter notebook for each question to Canvas.
+:::
+
+1. Backtest a moving average strategy for a stock.  Compute its Sharpe ratio.
+
+2. Backtest a pairs strategy for a pair of stocks.  Compute its alpha.
