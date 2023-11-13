@@ -15,6 +15,16 @@
 
 [6a. Random Forest Backtest](06a-random_forest_backtest.slides.html){target="_blank"} [(pdf)](pdfs/06a-random_forest_backtest.slides.pdf){target="_blank"}
 
-[6b. Random Forest Training](06b-random_forest_train.slides.html){target="_blank"} [(pdf)](pdfs/06b-random_forest_train.slides.pdf){target="_blank"}
+[6b. Random Forest Train](06b-random_forest_train.slides.html){target="_blank"} [(pdf)](pdfs/06b-random_forest_train.slides.pdf){target="_blank"}
 
-[6c. Random Forest Application](06c-random_forest_apply.slides.html){target="_blank"} [(pdf)](pdfs/06c-random_forest_apply.slides.pdf){target="_blank"}
+[6c. Random Forest Apply](06c-random_forest_apply.slides.html){target="_blank"} [(pdf)](pdfs/06c-random_forest_apply.slides.pdf){target="_blank"}
+
+[7a. Data](07a-data.slides.html){target="_blank"} [(pdf)](pdfs/07a-data.slides.pdf){target="_blank"}
+
+[7b. Random Forest Backtest II](07b-random_forest_backtest_ver2.slides.html){target="_blank"} [(pdf)](pdfs/07b-random_forest_backtest_ver2.slides.pdf){target="_blank"}
+
+[7c. Random Forest Train II](07c-random_forest_train_ver2.slides.html){target="_blank"} [(pdf)](pdfs/07c-random_forest_train_ver2.slides.pdf){target="_blank"}
+
+[7d. Current Data](07d-current_data.slides.html){target="_blank"} [(pdf)](pdfs/07d-current_-data.slides.pdf){target="_blank"}
+
+[7e. Random Forest Apply II](07e-random_forest_apply_ver2.slides.html){target="_blank"} [(pdf)](pdfs/07e-random_forest_apply_ver2.slides.pdf){target="_blank"}
