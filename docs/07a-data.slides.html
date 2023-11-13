@@ -14659,6 +14659,17 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Data-for-Random-Forest-Model-II">Data for Random Forest Model II<a class="anchor-link" href="#Data-for-Random-Forest-Model-II">&#182;</a></h1><h3 id="MGMT-638:-Data-Driven-Investments:-Equity">MGMT 638: Data-Driven Investments: Equity<a class="anchor-link" href="#MGMT-638:-Data-Driven-Investments:-Equity">&#182;</a></h3><h3 id="Kerry-Back,-Rice-University">Kerry Back, Rice University<a class="anchor-link" href="#Kerry-Back,-Rice-University">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Features">Features<a class="anchor-link" href="#Features">&#182;</a></h3><ul>
 <li>pb</li>
 <li>mom</li>
@@ -14707,12 +14718,12 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14732,46 +14743,6 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Exception during reset or similar
-Traceback (most recent call last):
-  File &#34;c:\Users\kerry\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\pool\base.py&#34;, line 753, in _finalize_fairy
-    fairy._reset(pool)
-  File &#34;c:\Users\kerry\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\pool\base.py&#34;, line 1004, in _reset
-    pool._dialect.do_rollback(self)
-  File &#34;c:\Users\kerry\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\dialects\mssql\base.py&#34;, line 2792, in do_rollback
-    super(MSDialect, self).do_rollback(dbapi_connection)
-  File &#34;c:\Users\kerry\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py&#34;, line 683, in do_rollback
-    dbapi_connection.rollback()
-  File &#34;src\pymssql\_pymssql.pyx&#34;, line 316, in pymssql._pymssql.Connection.rollback
-  File &#34;src\pymssql\_pymssql.pyx&#34;, line 300, in pymssql._pymssql.Connection.rollback
-  File &#34;src\pymssql\_mssql.pyx&#34;, line 1055, in pymssql._mssql.MSSQLConnection.execute_non_query
-  File &#34;src\pymssql\_mssql.pyx&#34;, line 1076, in pymssql._mssql.MSSQLConnection.execute_non_query
-  File &#34;src\pymssql\_mssql.pyx&#34;, line 1250, in pymssql._mssql.MSSQLConnection.format_and_run_query
-  File &#34;src\pymssql\_mssql.pyx&#34;, line 1788, in pymssql._mssql.check_cancel_and_raise
-  File &#34;src\pymssql\_mssql.pyx&#34;, line 1834, in pymssql._mssql.raise_MSSQLDatabaseException
-pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047, severity 9:\nDBPROCESS is dead or not enabled\n&#39;)
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14789,7 +14760,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sf1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
@@ -14817,7 +14788,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"netinc"</span><span class="p">,</span> <span class="s2">"ncfo"</span><span class="p">]:</span>
@@ -14856,7 +14827,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sep_weekly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
@@ -14883,7 +14854,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sep_weekly</span><span class="p">[</span><span class="s2">"ret"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sep_weekly</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">closeadj</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
@@ -14921,7 +14892,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">weekly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
@@ -14960,7 +14931,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">weekly</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sep_weekly</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"ticker"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
@@ -14993,7 +14964,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"roe"</span><span class="p">,</span> <span class="s2">"accruals"</span><span class="p">,</span> <span class="s2">"agr"</span><span class="p">]:</span>
@@ -15023,7 +14994,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
@@ -15056,7 +15027,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"pb"</span><span class="p">,</span> <span class="s2">"mom"</span><span class="p">,</span> <span class="s2">"volume"</span><span class="p">,</span> <span class="s2">"volatility"</span><span class="p">,</span> <span class="s2">"marketcap"</span><span class="p">,</span> <span class="s2">"closeunadj"</span><span class="p">]:</span>
@@ -15084,7 +15055,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
@@ -15132,7 +15103,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 
 
 
@@ -15165,11 +15136,11 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
   <tbody>
     <tr>
       <th>2010-02-12</th>
-      <td>0.192778</td>
+      <td>0.192777</td>
     </tr>
     <tr>
       <th>2010-02-19</th>
-      <td>0.198034</td>
+      <td>0.198035</td>
     </tr>
     <tr>
       <th>2010-02-26</th>
@@ -15202,7 +15173,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
@@ -15229,7 +15200,7 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">closeunadj</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
@@ -15264,171 +15235,15 @@ pymssql._mssql.MSSQLDatabaseException: (20047, b&#39;DB-Lib error message 20047,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"../../data-2023-11-15.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"../../data-2023-11-13.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ticker</th>
-      <th>date</th>
-      <th>marketcap</th>
-      <th>pb</th>
-      <th>ret</th>
-      <th>mom</th>
-      <th>volume</th>
-      <th>volatility</th>
-      <th>roe</th>
-      <th>accruals</th>
-      <th>agr</th>
-      <th>sector</th>
-      <th>mktvol</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1183</th>
-      <td>AACC</td>
-      <td>2011-01-14</td>
-      <td>188.3</td>
-      <td>1.4</td>
-      <td>-0.014634</td>
-      <td>-0.184615</td>
-      <td>2.078000e+04</td>
-      <td>0.071498</td>
-      <td>-0.118239</td>
-      <td>-0.182275</td>
-      <td>0.004383</td>
-      <td>Financial Services</td>
-      <td>0.055937</td>
-    </tr>
-    <tr>
-      <th>2047</th>
-      <td>AAI</td>
-      <td>2011-01-14</td>
-      <td>1012.1</td>
-      <td>2.0</td>
-      <td>0.002677</td>
-      <td>0.438224</td>
-      <td>2.775580e+06</td>
-      <td>0.128450</td>
-      <td>0.108073</td>
-      <td>-0.220045</td>
-      <td>0.002237</td>
-      <td>Industrials</td>
-      <td>0.055937</td>
-    </tr>
-    <tr>
-      <th>2117</th>
-      <td>AAIC</td>
-      <td>2011-01-14</td>
-      <td>189.3</td>
-      <td>1.0</td>
-      <td>-0.010119</td>
-      <td>0.684547</td>
-      <td>3.466000e+04</td>
-      <td>0.048505</td>
-      <td>0.136967</td>
-      <td>0.108055</td>
-      <td>0.135697</td>
-      <td>Real Estate</td>
-      <td>0.055937</td>
-    </tr>
-    <tr>
-      <th>4543</th>
-      <td>AAON</td>
-      <td>2011-01-14</td>
-      <td>479.4</td>
-      <td>4.2</td>
-      <td>0.007778</td>
-      <td>0.528685</td>
-      <td>2.817291e+05</td>
-      <td>0.044912</td>
-      <td>0.191801</td>
-      <td>-0.088557</td>
-      <td>0.011656</td>
-      <td>Basic Materials</td>
-      <td>0.055937</td>
-    </tr>
-    <tr>
-      <th>7543</th>
-      <td>AATC</td>
-      <td>2011-01-14</td>
-      <td>63.3</td>
-      <td>1.4</td>
-      <td>-0.013960</td>
-      <td>0.008216</td>
-      <td>6.800000e+03</td>
-      <td>0.049756</td>
-      <td>0.072269</td>
-      <td>-0.008792</td>
-      <td>0.089436</td>
-      <td>Technology</td>
-      <td>0.055937</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div></section></section>

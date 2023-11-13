@@ -25,6 +25,6 @@
 
 [7c. Random Forest Train II](07c-random_forest_train_ver2.slides.html){target="_blank"} [(pdf)](pdfs/07c-random_forest_train_ver2.slides.pdf){target="_blank"}
 
-[7d. Current Data](07d-current_data.slides.html){target="_blank"} [(pdf)](pdfs/07d-current_-data.slides.pdf){target="_blank"}
+[7d. Current Data](07d-current_data.slides.html){target="_blank"} [(pdf)](pdfs/07d-current_data.slides.pdf){target="_blank"}
 
 [7e. Random Forest Apply II](07e-random_forest_apply_ver2.slides.html){target="_blank"} [(pdf)](pdfs/07e-random_forest_apply_ver2.slides.pdf){target="_blank"}
